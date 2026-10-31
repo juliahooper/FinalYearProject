@@ -1,0 +1,47 @@
+# The fixed tag list. Readings may only use tags listed here.
+# All tag text is black (#1F1B1E), so there is no per-tag text colour.
+# Every bg must give black text at least WCAG AA contrast (4.5:1); scripts/check.mjs checks this.
+#
+# Palette for tags added later (the app takes the next unused one and cycles):
+#   "#F3E5FC", "#E3F4F8", "#FDEBD5", "#E8EEFC", "#FCE7E2", "#E5F5E0"
+
+- id: architecture
+  label: Architecture
+  group: project area
+  bg: "#ECE6FB"
+- id: metrics
+  label: Metrics
+  group: project area
+  bg: "#FCE4EE"
+- id: detector-model
+  label: Detector model
+  group: project area
+  bg: "#FFE9F6"
+- id: ci-cd
+  label: CI/CD
+  group: project area
+  bg: "#E1EFFB"
+- id: medical
+  label: Medical
+  group: project area
+  bg: "#DFF4EA"
+- id: benchmarks
+  label: Benchmarks
+  group: project area
+  bg: "#FDE8D8"
+- id: governance
+  label: Governance
+  group: project area
+  bg: "#E6F3F5"
+- id: usability
+  label: Usability
+  group: project area
+  bg: "#FBF3CF"
+- id: ethics
+  label: Ethics
+  group: project area
+  bg: "#F1ECE4"
+- id: data-curation
+  label: Data curation
+  group: project area
+  bg: "#EAF0DC"
