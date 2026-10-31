@@ -1,0 +1,131 @@
+{
+  "readings": {
+    "total": 0,
+    "target": 30,
+    "verified": 0,
+    "byStatus": {
+      "to-read": 0,
+      "skimmed": 0,
+      "summarised": 0,
+      "verified": 0
+    },
+    "byStars": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "byTag": {
+      "architecture": 0,
+      "metrics": 0,
+      "detector-model": 0,
+      "ci-cd": 0,
+      "medical": 0,
+      "benchmarks": 0,
+      "governance": 0,
+      "usability": 0,
+      "ethics": 0,
+      "data-curation": 0
+    },
+    "bySection": {
+      "abstract": 0,
+      "introduction": 0,
+      "background": 0,
+      "related-work": 0,
+      "methodology": 0,
+      "deliverable": 0,
+      "analysis": 0,
+      "conclusion": 0
+    },
+    "byDecision": {
+      "ARCH-01": 0,
+      "ARCH-02": 0,
+      "ARCH-03": 0,
+      "ARCH-04": 0,
+      "ARCH-05": 0,
+      "ARCH-06": 0,
+      "ARCH-07": 0,
+      "CI-01": 0,
+      "CI-02": 0,
+      "CI-03": 0,
+      "DET-01": 0,
+      "DET-02": 0,
+      "DET-03": 0,
+      "DET-04": 0,
+      "DET-05": 0,
+      "DET-06": 0,
+      "ETH-01": 0,
+      "ETH-02": 0,
+      "MET-01": 0,
+      "MET-02": 0,
+      "MET-03": 0,
+      "MET-04": 0,
+      "MET-05": 0,
+      "MET-06": 0,
+      "UI-01": 0,
+      "UI-02": 0,
+      "VAL-01": 0,
+      "VAL-02": 0,
+      "VAL-03": 0
+    },
+    "unverifiedClaude": []
+  },
+  "decisions": {
+    "total": 29,
+    "byStatus": {
+      "open": 29,
+      "exploring": 0,
+      "decided": 0
+    },
+    "byGroup": {
+      "system": {
+        "total": 7,
+        "open": 7,
+        "exploring": 0,
+        "decided": 0
+      },
+      "detector": {
+        "total": 6,
+        "open": 6,
+        "exploring": 0,
+        "decided": 0
+      },
+      "metrics": {
+        "total": 6,
+        "open": 6,
+        "exploring": 0,
+        "decided": 0
+      },
+      "ci-cd": {
+        "total": 3,
+        "open": 3,
+        "exploring": 0,
+        "decided": 0
+      },
+      "reporting": {
+        "total": 2,
+        "open": 2,
+        "exploring": 0,
+        "decided": 0
+      },
+      "validation": {
+        "total": 3,
+        "open": 3,
+        "exploring": 0,
+        "decided": 0
+      },
+      "governance": {
+        "total": 2,
+        "open": 2,
+        "exploring": 0,
+        "decided": 0
+      }
+    }
+  },
+  "bib": {
+    "total": 0,
+    "withoutReading": []
+  }
+}

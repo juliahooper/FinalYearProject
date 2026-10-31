@@ -64,7 +64,7 @@ From the proposal form, with the interim date corrected to the current deadline.
 | [`journal/`](journal/) | Supervisor meeting notes and weekly entries |
 | [`paper/`](paper/) | The report in LaTeX (IEEE conference template, UL Harvard referencing) |
 | [`docs/`](docs/) | How-to guides: the reading workflow and the app |
-| `scripts/` | Repo consistency checks (stage 2) |
+| [`scripts/`](scripts/) | Repo consistency checks: run `npm install` once, then `npm run check` |
 | `app/` | The web app (stage 4 onwards) |
 | [`.github/workflows/`](.github/workflows/) | Paper build and checks |
 
