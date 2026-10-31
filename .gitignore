@@ -1,0 +1,28 @@
+# Reading PDFs are never committed (publisher copyright). Only the README in the folder is tracked.
+readings/pdfs/*
+!readings/pdfs/README.md
+
+# LaTeX build output (the PDF is built by the Action; dated snapshots go in paper/drafts/)
+paper/*.aux
+paper/*.bbl
+paper/*.bcf
+paper/*.blg
+paper/*.fdb_latexmk
+paper/*.fls
+paper/*.log
+paper/*.out
+paper/*.run.xml
+paper/*.synctex.gz
+paper/*.toc
+paper/main.pdf
+
+# App
+node_modules/
+app/dist/
+.vercel/
+.env*
+
+# Editor and OS files
+*.code-workspace
+.DS_Store
+Thumbs.db
