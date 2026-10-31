@@ -1,6 +1,4 @@
-# Screening training data for representational bias before LLM training: a CI-integrated, self-hostable tool
-
-**Julia Hooper** (24430706) · ISE Final Year Project, University of Limerick · Supervisor: **Colin Venters**
+# Screening training data for representational bias before LLM training: CI-integrated, self-hostable tool
 
 <!-- status:start -->
 > Readings: 0 / 30 · verified: 0 · decisions: 0 decided / 29 open · interim report in 6 days
