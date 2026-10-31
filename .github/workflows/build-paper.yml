@@ -1,0 +1,39 @@
+# Builds paper/main.tex into a PDF on every push that touches the paper or the bibliography.
+# Download the PDF from: GitHub -> Actions tab -> "Build paper" -> latest run -> Artifacts -> paper-pdf.
+name: Build paper
+
+on:
+  push:
+    paths:
+      - "paper/**"
+      - "references.bib"
+      - ".github/workflows/build-paper.yml"
+  pull_request:
+    paths:
+      - "paper/**"
+      - "references.bib"
+  workflow_dispatch:   # lets you click "Run workflow" by hand in the Actions tab
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      # latexmk runs biber (not bibtex) automatically, because main.tex loads
+      # biblatex with backend=biber. The bibliography is ../references.bib.
+      - name: Compile LaTeX (pdflatex + biber via latexmk)
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          working_directory: paper
+          latexmk_use_xelatex: false
+          args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode
+
+      - name: Upload the PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper-pdf
+          path: paper/main.pdf
+          if-no-files-found: error

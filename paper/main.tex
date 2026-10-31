@@ -1,0 +1,117 @@
+% =====================================================================
+%  FYP report (IEEE two-column conference format, UL Cite It Right referencing)
+%  Each section lives in its own file in sections/. Rough notes live in notes/.
+%  Referencing set-up and its known gaps: REFERENCING.md
+%  Limit: 10,000 words maximum, including the reference list (FYP spec).
+% =====================================================================
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[british]{babel}
+\usepackage[style=british]{csquotes}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{flafter}   % a figure/table never appears before its place in the text
+\graphicspath{{figures/}}
+
+\DeclareRobustCommand{\todo}[1]{\textcolor{magenta}{[TODO: #1]}}   % robust so it also works inside captions
+
+% ---------------------------------------------------------------------
+%  Referencing: UL Cite It Right (Harvard) approximated with biblatex.
+%  In text: (Author Year), (Author Year, p. X), "et al." for 3+ authors.
+%  Online sources end with "available: URL [accessed DD Mon YYYY]".
+% ---------------------------------------------------------------------
+\usepackage[
+  backend=biber,
+  style=authoryear,
+  maxcitenames=2, mincitenames=1,   % 3+ authors -> "Nangia et al."
+  maxbibnames=99,                   % every author in the reference list
+  giveninits=true,                  % "Pikuliak, M."
+  uniquename=false, uniquelist=false,
+  dashed=false,
+  url=true, doi=true, eprint=true
+]{biblatex}
+\addbibresource{../references.bib}
+
+% Names: "Surname, I." for every author; "and" before the last.
+\DeclareNameAlias{sortname}{family-given}
+\DeclareNameAlias{default}{family-given}
+\DeclareDelimFormat{finalnamedelim}{\addspace\bibstring{and}\space}
+\DeclareDelimFormat[bib]{finalnamedelim}{\addspace\bibstring{and}\space}
+
+% "Pikuliak, M. (2025) 'Title', Venue, ..." : units separated by commas, no full stop after the year.
+\renewcommand*{\newunitpunct}{\addcomma\space}
+\DeclareDelimFormat[bib]{nametitledelim}{\addspace}
+
+% Article and chapter titles in single quotes, venue and book titles in italics, no "In:".
+\DeclareFieldFormat[article,inproceedings,incollection,inbook,online,misc,report,thesis,unpublished]{title}{\mkbibquote{#1}}
+\renewbibmacro{in:}{}
+
+% Journal volume(issue): "Journal, 27(3), pp. 1-10"
+\DeclareFieldFormat[article]{volume}{#1}
+\DeclareFieldFormat[article]{number}{\mkbibparens{#1}}
+\renewbibmacro*{volume+number+eid}{%
+  \printfield{volume}%
+  \setunit*{}%
+  \printfield{number}%
+  \setunit{\addcomma\space}%
+  \printfield{eid}}
+\renewbibmacro*{journal+issuetitle}{%
+  \usebibmacro{journal}%
+  \setunit*{\addcomma\space}%
+  \usebibmacro{volume+number+eid}%
+  \setunit{\addcolon\space}%
+  \usebibmacro{issue}%
+  \newunit}
+
+% "arXiv:2505.12054", as in the proposal form
+\DeclareFieldFormat{eprint:arxiv}{arXiv\addcolon#1}
+
+% "available: URL [accessed 07 Oct 2026]"
+\newcommand*{\ulmonth}[1]{\ifcase#1\or Jan\or Feb\or Mar\or Apr\or May\or Jun\or Jul\or Aug\or Sep\or Oct\or Nov\or Dec\fi}
+\DeclareFieldFormat{url}{available\addcolon\space\url{#1}}
+\renewbibmacro*{url+urldate}{%
+  \printfield{url}%
+  \iffieldundef{urlyear}{}{%
+    \setunit*{\addspace}%
+    \printtext[brackets]{accessed\space
+      \mkdayzeros{\thefield{urlday}}\space
+      \ulmonth{\thefield{urlmonth}}\space
+      \thefield{urlyear}}}}
+
+\begin{document}
+
+\title{Screening Training Data for Representational Bias Before LLM Training:\\[0.2em]
+{\Large A CI-Integrated, Self-Hostable Tool}}
+
+\author{
+\IEEEauthorblockN{Julia Hooper (24430706)}
+\IEEEauthorblockA{\textit{ISE Final Year Project, University of Limerick}\\
+Supervisor: Colin Venters}
+}
+
+\maketitle
+
+\begin{abstract}
+\input{sections/abstract}
+\end{abstract}
+
+\begin{IEEEkeywords}
+\todo{keywords}
+\end{IEEEkeywords}
+
+\input{sections/introduction}
+\input{sections/background}
+\input{sections/related-work}
+\input{sections/methodology}
+\input{sections/deliverable}
+\input{sections/analysis}
+\input{sections/conclusion}
+
+\printbibliography[title={References}]
+
+\end{document}
