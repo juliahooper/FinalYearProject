@@ -126,7 +126,7 @@ Build the README from Julia's proposal form. Keep it short:
 
 ### 3.2 Reading template (`readings/_template.md`)
 
-The five questions come from the Research Methods lecture (29/10/2026). They're written for framing your own FYP, so in a reading note each one is asked **about the paper**.
+The five questions are the per-paper note questions from the Research Methods lecture (29/10/2026, slide 3). The lecture's five FYP framing questions are in the README instead.
 
 ```markdown
 ---
@@ -151,26 +151,23 @@ found_via: ""                 # e.g. IEEE Xplore search "representational bias d
 ## TL;DR
 Two or three sentences: what the paper did, what it found, and why it matters to this project.
 
-## 1. What is the problem?
-The problem the paper tackles, its scope, and why it's hard.
+## 1. What is the aim of the paper?
+The problem the paper tackles, its scope, and what it set out to do.
 
-## 2. Who said it's a problem?
-The evidence the authors give that the problem is real and matters: prior work, incidents, statistics.
-
-## 3. What do we know about the problem?
-The prior and related work the paper builds on, and what it says was still missing.
-
-## 4. How did they investigate it?
+## 2. How did the authors carry out the research?
 Method: data, models, setup, metrics, sample sizes.
 
-## 5. How did it change the state of knowledge?
-The contribution: key results, with numbers.
+## 3. What are the primary results?
+The key results, with numbers.
+
+## 4. What do the authors think the results mean?
+The authors' own interpretation of their results, in relation to the aim (question 1).
+
+## 5. What do I think it means?
+Your own view: how this supports, challenges or shapes the tool. Name the decision IDs and report sections it feeds. If Claude drafted this, rewrite it in your own words when you verify.
 
 ## Key numbers
 - Figures worth citing, each with its page number (p. X).
-
-## What it means for my project
-How this supports, challenges or shapes the tool. Name the decision IDs and report sections it feeds.
 
 ## Concerns
 Limitations, narrow data, things not to overstate.
@@ -460,10 +457,10 @@ The layout has three panes:
 │ Readings ● │ ┌─────────────────────┐ │ CrowS-Pairs: a challenge dataset │
 │ Report     │ │ CrowS-Pairs         │ │ ★★★★★ [metrics][benchmarks] MET-02│
 │  notes     │ │ ★★★★★ Nangia 2020   │ │                                  │
-│ Decisions  │ │ [metrics][benchmarks]│ │ 1 · What is the problem?         │
+│ Decisions  │ │ [metrics][benchmarks]│ │ 1 · What is the aim of the paper?│
 │ Guide      │ └─────────────────────┘ │ Masked language models absorb…   │
 │            │  StereoSet …            │                                  │
-│ ─────      │  Dolma …                │ 2 · Who said it's a problem?     │
+│ ─────      │  Dolma …                │ 2 · How did the authors carry …  │
 │ Sign out   │                         │ …                                │
 └────────────┴─────────────────────────┴──────────────────────────────────┘
 ```
@@ -578,7 +575,7 @@ When Julia says "summarise `<citekey>`" or "summarise new readings":
 2. Read the whole PDF.
 3. Create `readings/<citekey>.md` from `_template.md`:
    - Front matter: copy title, authors, year, venue and DOI from the bib entry, not from memory. Set `summarised_by: claude`, `verified: false`, `status: summarised`, `stars: 0` and `added: today`.
-   - Suggest `tags`, `sections` and `decisions` using only values that exist in `tags.yml`, §3.5 and `decisions/`. Explain each suggestion in one line under "What it means for my project".
+   - Suggest `tags`, `sections` and `decisions` using only values that exist in `tags.yml`, §3.5 and `decisions/`. Explain each suggestion in one line under "5. What do I think it means?".
    - Answer the five questions **about the paper**, in plain language, in your own words. Use at most one direct quote per reading, under 15 words, with a page number.
    - Under "Key numbers", give every figure with its page number. If you can't find a page number, write `(p. ?)`.
    - Write `NOT FOUND IN SOURCE` rather than guessing.

@@ -86,12 +86,14 @@ From the research methods lecture, on reading 30 papers quickly:
 
 ## The note questions
 
-Each reading note answers the five FYP framing questions from the research methods lecture, asked about the paper:
+Each reading note answers the five per-paper note questions from the research methods lecture (slide 3):
 
-1. What is the problem?
-2. Who said it's a problem?
-3. What do we know about the problem?
-4. How did they investigate it?
-5. How did it change the state of knowledge?
+1. What is the aim of the paper?
+2. How did the authors carry out the research, i.e. methods?
+3. What are the primary results?
+4. What do the authors think the results mean (for question 1)?
+5. What do you think it means?
 
-In the literature review, question 2 feeds the **background** section and question 3 feeds **related work and the gap** (research methods lecture).
+Question 5 is your own view. If Claude drafted it, rewrite it in your own words when you verify the note.
+
+The lecture's five framing questions for the FYP itself are on the README.

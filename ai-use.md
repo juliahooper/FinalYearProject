@@ -36,3 +36,4 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-10-31 | `drafts/README.md` | Drafted | |
 | 2026-10-31 | `docs/reading-workflow.md`, `docs/using-the-app.md` | Drafted | |
 | 2026-10-31 | `ai-use.md` | Drafted | |
+| 2026-10-31 | `readings/_template.md`, `PLAN.md`, `docs/reading-workflow.md`, `README.md` | Edited: note questions switched to the lecture's per-paper list; framing questions added to the README (Julia's request) | |

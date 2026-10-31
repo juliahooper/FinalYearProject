@@ -17,6 +17,18 @@ This project designs, implements and evaluates an open-source, self-hostable too
 - Governance platforms (Credo AI, Holistic AI) are enterprise products, not open, self-hostable detectors.
 - Bias research mostly examines model outputs (e.g. GenderBench). This project works on the training data upstream.
 
+## Framing questions
+
+From the research methods lecture (29/10/2026). After skim-reading the literature, answer these in a few sentences and use them to revise the introduction.
+
+1. **What is the problem?** (Scope and challenge)
+2. **Who said it's a problem?** (Contextual evidence)
+3. **What do we know about the problem?** (Literature review)
+4. **How are you going to investigate the problem?** (Method)
+5. **How is the state of knowledge changed?** (= Why bother?)
+
+In the report, question 1 sets the scope in the introduction, question 2 is the background section, and question 3 is related work and the gap.
+
 ## Aim and objectives
 
 **Aim:** To design, implement and evaluate an open-source, self-hostable tool that screens training data for representational bias and stereotyping, as a CI/CD step before the data is admitted to an LLM training pipeline.

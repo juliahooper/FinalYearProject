@@ -20,26 +20,23 @@ found_via: ""                 # e.g. IEEE Xplore search "representational bias d
 ## TL;DR
 Two or three sentences: what the paper did, what it found, and why it matters to this project.
 
-## 1. What is the problem?
-The problem the paper tackles, its scope, and why it's hard.
+## 1. What is the aim of the paper?
+The problem the paper tackles, its scope, and what it set out to do.
 
-## 2. Who said it's a problem?
-The evidence the authors give that the problem is real and matters: prior work, incidents, statistics.
-
-## 3. What do we know about the problem?
-The prior and related work the paper builds on, and what it says was still missing.
-
-## 4. How did they investigate it?
+## 2. How did the authors carry out the research?
 Method: data, models, setup, metrics, sample sizes.
 
-## 5. How did it change the state of knowledge?
-The contribution: key results, with numbers.
+## 3. What are the primary results?
+The key results, with numbers.
+
+## 4. What do the authors think the results mean?
+The authors' own interpretation of their results, in relation to the aim (question 1).
+
+## 5. What do I think it means?
+Your own view: how this supports, challenges or shapes the tool. Name the decision IDs and report sections it feeds. If Claude drafted this, rewrite it in your own words when you verify.
 
 ## Key numbers
 - Figures worth citing, each with its page number (p. X).
-
-## What it means for my project
-How this supports, challenges or shapes the tool. Name the decision IDs and report sections it feeds.
 
 ## Concerns
 Limitations, narrow data, things not to overstate.
