@@ -1,0 +1,5 @@
+# Keep LF line endings everywhere, so files edited on Windows, in the app (GitHub API) and in Actions match.
+* text=auto eol=lf
+*.pdf binary
+*.png binary
+*.jpg binary
