@@ -61,7 +61,7 @@ After that, every push to `main` redeploys the site automatically.
 - The header shows the authors, venue and year, and an **Open paper** link (DOI or URL).
 - Click the stars or change the status to save straight away, without opening the editor. Click the current star again to clear the rating.
 - Decision chips open that decision. Diagrams and formulas are drawn in the page.
-- While a note is still Claude's unverified draft, a banner says so. When you've checked it against the PDF, click **Mark as verified**. That sets `verified: true` and `status: verified`, and fills in today's date in the "Verified by Julia" column of `ai-use.md`.
+- When you've checked a note against the PDF, choose **Verified** in the status menu. That sets `verified: true` and `status: verified`, and fills in today's date in the "Verified by Julia" column of `ai-use.md`. Choosing any other status afterwards un-verifies it. The orange dot in the list shows which readings aren't verified yet.
 - **Expand** hides the list for a wider reading view.
 
 **Editing a note**

@@ -527,7 +527,7 @@ The layout has three panes:
 
 - Header: authors · venue · year, the title in Literata, stars, tag pills, decision chips (each links to the decision) and section chips. A DOI/URL link opens the paper.
 - Body: sections in template order. Question labels are small and in `--acc-text` pink, and the answers are in Literata.
-- An "Unverified: drafted by Claude" banner appears while `verified: false` and `summarised_by: claude`, with a **Mark as verified** button. That button sets `verified: true` and `status: verified`, then saves.
+- No unverified banner (removed at Julia's request, 2026-11-01). Verifying is done by choosing **Verified** in the status menu, which sets `verified: true` and `status: verified`, fills in the date in `ai-use.md`, and saves. Unverified readings are marked with a small dot in the list.
 
 **Editing** (rich text, never raw markdown)
 

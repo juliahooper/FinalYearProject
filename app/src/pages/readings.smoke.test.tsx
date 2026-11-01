@@ -72,10 +72,11 @@ describe('Readings screens', () => {
     expect(c.querySelector('.list-pane mark, .list-pane .item-title')).toBeTruthy()
   })
 
-  it('shows a reading with maths, diagrams, chips and the unverified banner', async () => {
+  it('shows a reading with maths, diagrams and chips, and no unverified banner', async () => {
     const c = await render('/readings/caliskan2017semantics')
     expect(c.querySelector('.reading-title')?.textContent).toContain('Semantics Derived Automatically')
-    expect(c.textContent).toContain('Unverified: drafted by Claude.')
+    expect(c.textContent).not.toContain('Unverified')
+    expect(c.textContent).not.toContain('Mark as verified')
     expect(c.querySelectorAll('.markdown h2').length).toBeGreaterThan(5)
     expect(c.querySelectorAll('.katex').length).toBeGreaterThan(5)
     expect(c.querySelector('[data-test="diagram"]')).toBeTruthy()
@@ -111,11 +112,14 @@ describe('Readings screens', () => {
     expect(changed).toEqual(['stars: 4'])
   })
 
-  it('Mark as verified saves the reading and dates ai-use.md', async () => {
+  it('choosing Verified in the status menu saves the reading and dates ai-use.md', async () => {
     save.mockClear()
     const c = await render('/readings/rajawat2024investigating')
-    const button = [...c.querySelectorAll('button')].find((b) => b.textContent === 'Mark as verified')!
-    await act(async () => button.click())
+    const select = c.querySelector<HTMLSelectElement>('#status')!
+    await act(async () => {
+      Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype, 'value')!.set!.call(select, 'verified')
+      select.dispatchEvent(new Event('change', { bubbles: true }))
+    })
     for (let i = 0; i < 5; i++) await act(async () => new Promise((r) => setTimeout(r, 10)))
     const calls = save.mock.calls as unknown as [string, string][]
     expect(calls.map((x) => x[0])).toEqual(['readings/rajawat2024investigating.md', 'ai-use.md'])

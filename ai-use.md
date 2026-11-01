@@ -61,3 +61,4 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-11-01 | `docs/using-the-app.md` | Edited: how to use the Decisions screens | |
 | 2026-11-01 | `app/src/pages/Notes.tsx`, `app/src/pages/notes/*`, `app/src/data/sectionNeeds.ts`, `app/src/data/repo.ts`, `app/src/editor/*` | Drafted stage 7 (Report notes: interim/final switch, notes editor, What this section needs, readings panel with Cite/Copy cite/Open), plus editor fixes for level-1 headings and LaTeX citations, with tests | |
 | 2026-11-01 | `docs/using-the-app.md` | Edited: how to use the Report notes screen | |
+| 2026-11-01 | `app/src/pages/readings/ReadingView.tsx`, `docs/using-the-app.md`, `PLAN.md` | Edited: removed the unverified banner (Julia's request); verifying moved to the status menu | |

@@ -86,9 +86,20 @@ export function ReadingView({ reading, onEdit }: { reading: Doc<ReadingMeta>; on
         <label className="sr-only" htmlFor="status">
           Status
         </label>
-        <select id="status" className="select" value={m.status} disabled={saving} onChange={(e) => void setMeta({ status: e.target.value as ReadingStatus, verified: e.target.value === 'verified' ? m.verified : false })}>
+        {/* Choosing Verified marks the reading as checked against the PDF and dates it in ai-use.md. */}
+        <select
+          id="status"
+          className="select"
+          value={m.status}
+          disabled={saving}
+          onChange={(e) => {
+            const status = e.target.value as ReadingStatus
+            if (status === 'verified') void markVerified()
+            else void setMeta({ status, verified: false })
+          }}
+        >
           {READING_STATUSES.map((s) => (
-            <option key={s} value={s} disabled={s === 'verified' && !m.verified}>
+            <option key={s} value={s}>
               {statusLabel(s)}
             </option>
           ))}
@@ -122,18 +133,6 @@ export function ReadingView({ reading, onEdit }: { reading: Doc<ReadingMeta>; on
       {hasDraft && (
         <Banner kind="warn" actions={<button className="btn" onClick={onEdit}>Continue editing</button>}>
           You have unsaved changes to this reading.
-        </Banner>
-      )}
-      {!m.verified && m.summarised_by === 'claude' && (
-        <Banner
-          kind="warn"
-          actions={
-            <button className="btn btn-primary" disabled={saving} onClick={() => void markVerified()}>
-              Mark as verified
-            </button>
-          }
-        >
-          <strong>Unverified: drafted by Claude.</strong> Check every number, page reference and quote against the PDF before relying on it.
         </Banner>
       )}
 
