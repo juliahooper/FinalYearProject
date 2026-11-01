@@ -62,7 +62,7 @@ From the proposal form, with the interim date corrected to the current deadline.
 | [`decisions/`](decisions/) | One file per design or metric decision, from open to decided |
 | [`drafts/`](drafts/) | Rough drafts in any format |
 | [`journal/`](journal/) | Supervisor meeting notes and weekly entries |
-| [`paper/`](paper/) | The report in LaTeX (IEEE conference template, UL Harvard referencing) |
+| [`paper/`](paper/) | The interim and final reports in LaTeX (IEEE conference template, UL Harvard referencing) |
 | [`docs/`](docs/) | How-to guides: the reading workflow and the app |
 | [`scripts/`](scripts/) | Repo consistency checks: run `npm install` once, then `npm run check` |
 | `app/` | The web app (stage 4 onwards) |
@@ -71,4 +71,4 @@ From the proposal form, with the interim date corrected to the current deadline.
 ## Links
 
 - App: not deployed yet (stage 4).
-- Latest paper PDF: built by the **Build paper** action (Actions tab → latest run → Artifacts → `paper-pdf`). Dated snapshots go in [`paper/drafts/`](paper/drafts/).
+- Latest paper PDFs: built by the **Build paper** action (Actions tab → latest run → Artifacts → `interim-pdf` and `final-pdf`), with word counts on the run's Summary page. Dated snapshots go in [`paper/drafts/`](paper/drafts/).

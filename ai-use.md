@@ -45,3 +45,7 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-11-01 | `readings/rajawat2024investigating.md` | Drafted reading summary from the published IEEE PDF (pilot 3); no decisions linked | |
 | 2026-11-01 | `readings/follow-up.yml` | Drafted, from the reference lists of the three pilot readings and the proposal form, as printed there | |
 | 2026-11-01 | `scripts/check.mjs`, `PLAN.md`, `docs/reading-workflow.md` | Edited: follow-up list validation and Zotero matching; the app's "To read next" view in the plan; the workflow step | |
+| 2026-11-01 | `paper/shared/*`, `paper/interim/*`, `paper/final/*` | Edited: split the report into interim and final documents with a shared preamble and metadata; drafted section comment blocks from the FYP spec (no report text) | |
+| 2026-11-01 | `paper/README.md`, `paper/drafts/README.md`, `paper/REFERENCING.md`, `paper/notes/work-to-date.md`, `paper/notes/project-plan.md` | Edited/drafted for the two-report structure | |
+| 2026-11-01 | `.github/workflows/build-paper.yml`, `scripts/wordcount.sh` | Edited/drafted: build only the changed report, two artifacts, word count | |
+| 2026-11-01 | `PLAN.md`, `scripts/check.mjs`, `docs/reading-workflow.md`, `README.md`, `.gitignore` | Edited: section IDs (work-to-date, project-plan, reports column), report notes switch, countdown wording | |

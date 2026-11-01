@@ -84,12 +84,19 @@ One place for everything in the FYP:
 │   ├── meetings/                # YYYY-MM-DD.md, supervisor meetings
 │   ├── weekly/                  # YYYY-MM-DD-week-N.md
 │   └── templates/
-├── paper/
-│   ├── main.tex                 # IEEEtran conference template
-│   ├── sections/*.tex           # one file per report section
-│   ├── notes/*.md               # report notes edited in the app (§6.5)
-│   ├── figures/
-│   └── drafts/                  # dated PDF snapshots
+├── paper/                       # two reports (§3.6)
+│   ├── shared/
+│   │   ├── preamble.tex         # IEEEtran conference options, packages, biblatex (UL Harvard), \todo macro
+│   │   ├── metadata.tex         # name, student ID, supervisor, project title
+│   │   └── figures/             # figures used by either report
+│   ├── interim/
+│   │   ├── main.tex             # interim report (due 06/11/2026)
+│   │   └── sections/*.tex
+│   ├── final/
+│   │   ├── main.tex             # final report (due 07/04/2027)
+│   │   └── sections/*.tex
+│   ├── notes/*.md               # report notes edited in the app, one per section ID, shared by both reports (§6.5)
+│   └── drafts/                  # dated PDF snapshots: interim-YYYY-MM-DD.pdf, final-YYYY-MM-DD.pdf
 ├── docs/
 │   ├── reading-workflow.md      # how a reading goes from Zotero to verified (shown in the app's Guide page)
 │   └── using-the-app.md         # also shown in the Guide page
@@ -282,31 +289,44 @@ What this decision commits the project to, or rules out.
 
 ### 3.5 Report sections
 
-These IDs are used in `sections:` in readings, in `paper/sections/`, and in `paper/notes/`. They follow the FYP marking guide.
+These IDs are used in `sections:` in readings, in `paper/interim/sections/` and `paper/final/sections/`, and in `paper/notes/`. They follow the FYP marking guide. The order below is the order in each report.
 
-| ID | Section | Marks |
-|---|---|---|
-| `abstract` | Abstract | – |
-| `introduction` | Introduction: problem, research question, objectives, expected impact | 10 |
-| `background` | Literature review: background ("who said it's a problem") | 20 (shared with related-work) |
-| `related-work` | Literature review: related work and the gap | (shared) |
-| `methodology` | Methodology: approach, ethics, practical considerations | 10 |
-| `deliverable` | Primary research / deliverable: the tool and its evaluation | 25 |
-| `analysis` | Analysis | 10 |
-| `conclusion` | Summary, conclusions, recommendations, future work | 10 |
+| ID | Section | Reports | Marks |
+|---|---|---|---|
+| `abstract` | Abstract | interim, final | – |
+| `introduction` | Introduction: problem, research question, objectives, expected impact | interim, final | 10 |
+| `background` | Literature review: background ("who said it's a problem") | interim, final | 20 (shared with related-work) |
+| `related-work` | Literature review: related work and the gap | interim, final | (shared) |
+| `methodology` | Methodology: approach, ethics, practical considerations (interim: the proposed approach, architecture, metrics and validation plan) | interim, final | 10 |
+| `work-to-date` | Work to date: what has been done so far, with evidence | interim | – |
+| `project-plan` | Project plan: remaining work, timeline to April 2027, risks | interim | – |
+| `deliverable` | Primary research / deliverable: the tool and its evaluation | final | 25 |
+| `analysis` | Analysis | final | 10 |
+| `conclusion` | Summary, conclusions, recommendations, future work | final | 10 |
+
+Both reports also end with `declarations.tex` (academic integrity and generative AI). It has no section ID, because readings don't feed it and it has no notes file.
+
+The marks come from the spec's marking guide, which isn't labelled as interim or final, and whose rubric is headed "Residency 4" (the module the final report is submitted under). Check with Colin which marking scheme applies to the interim report.
 
 ### 3.6 Paper (`paper/`)
 
-- Base it on `paper/` from Julia's earlier repo (ISE-XAI-Group-10): `main.tex` with IEEEtran `conference`, one `\input` per section file, and a `\todo{}` macro. At the top of each section file, add a comment block listing what the marking guide expects in that section.
-- **Referencing is UL Cite It Right (Harvard), not IEEE numbered.** Use `biblatex` with `backend=biber, style=authoryear`, plus `\addbibresource{../references.bib}`. Adjust the style to match the UL guide as closely as biblatex allows:
+- **Two reports**, as two separate LaTeX documents:
+  - **Interim report** (`paper/interim/`, due 06/11/2026). IEEE conference format. It covers work done so far and the research. It follows the final report's structure without the results sections (deliverable, analysis, conclusion), and adds `work-to-date` and `project-plan`.
+  - **Final report** (`paper/final/`, due 07/04/2027).
+
+  Both `main.tex` files `\input` `../shared/preamble` and `../shared/metadata`, use `../../references.bib`, and end with `sections/declarations.tex`.
+- **Section text is never shared between the reports with `\input`.** The interim text will be revised for the final report. After the interim is submitted, Julia will ask Claude Code to copy `interim/sections/` into `final/sections/` as a starting point.
+- Base the template on `paper/` from Julia's earlier repo (ISE-XAI-Group-10): IEEEtran `conference`, one `\input` per section file, and a `\todo{}` macro. At the top of each section file, add a comment block listing what the marking guide and rubric expect in that section. Interim-only sections also explain what an examiner looks for in "evidence of work done to date". Section bodies stay as `\todo{}` placeholders; Claude Code doesn't write report text.
+- **Referencing is UL Cite It Right (Harvard), not IEEE numbered.** Use `biblatex` with `backend=biber, style=authoryear` in `shared/preamble.tex`, plus `\addbibresource{../../references.bib}` in each `main.tex`. Adjust the style to match the UL guide as closely as biblatex allows:
   - in-text citations as (Author Year) and (Author Year, p. X)
   - "et al." for 3+ authors in text
   - online sources end with "available: URL [accessed DD Mon YYYY]"
 
   Write a short `paper/REFERENCING.md` explaining any differences that remain from the official UL guide, so Julia can check with Colin.
 - Use `\textcite` / `\parencite` in the section files.
-- Copy `.github/workflows/build-paper.yml` from the old repo, changed so latexmk runs biber. The workflow uploads `main.pdf` as an artifact.
-- `paper/drafts/README.md` explains how to save dated PDF snapshots, as in the old repo.
+- `.github/workflows/build-paper.yml` (based on the old repo's) builds both PDFs with latexmk and biber, and uploads them as two artifacts, `interim-pdf` and `final-pdf`. It only rebuilds the report whose folder changed. A change to `paper/shared/`, `references.bib`, the word count script or the workflow rebuilds both.
+- **Word count:** `scripts/wordcount.sh` runs in the Action and prints each report's count on the run's Summary page. The body is counted with texcount. The total, including references, is counted from the PDF text, because texcount can't count a biblatex bibliography. Declarations are left out. Limits: the final report has 10,000 words including references (FYP spec); the interim limit is to be confirmed with the supervisor.
+- `paper/drafts/README.md` explains how to save dated PDF snapshots, named `interim-YYYY-MM-DD.pdf` or `final-YYYY-MM-DD.pdf`.
 
 ### 3.7 Zotero setup (`docs/reading-workflow.md`, part 1)
 
@@ -352,7 +372,7 @@ course-materials/
 - When there are conflicting versions of the same document (e.g. two spec PDFs with different dates), the most recent wins. Note the difference in the README. The submission dates changed during the semester; the current ones are interim 06/11/2026 and final 07/04/2027.
 - Claude Code reads this folder when writing the "What this section needs" boxes (§6.5), the README, the paper section comments (§3.6) and the Guide page (§6.6).
 
-**Stage 1 is done when:** every folder and template in §2 exists (including `course-materials/` with its README), the README is written, all 25 decision files are seeded, `paper/` builds to a PDF in the Action, and `docs/reading-workflow.md` covers Zotero setup.
+**Stage 1 is done when:** every folder and template in §2 exists (including `course-materials/` with its README), the README is written, all 25 decision files are seeded (29 in the end; see the seed list), `paper/` builds to a PDF in the Action (now two PDFs, interim and final), and `docs/reading-workflow.md` covers Zotero setup.
 
 ---
 
@@ -372,7 +392,7 @@ A Node script (no extra dependencies beyond `yaml` and a small bib parser such a
    - verified count
    - readings per tag, report section and decision
    - decisions by status and group
-6. Rewrites the README status block (§3.1).
+6. Rewrites the README status block (§3.1). The countdown names the interim report up to and including 06/11/2026, then the final report and video.
 
 The workflow runs the script on every push. It commits README changes back only when the status block changed, with the message `chore: update status`, using `[skip ci]` to avoid loops.
 
@@ -530,7 +550,8 @@ The layout has three panes:
 
 ### 6.5 Stage 7: Report notes (feature 12)
 
-- The list pane shows the report sections from §3.5, in order. Each has its marks weight, word count of notes, and number of tagged readings.
+- An **Interim / Final** switch at the top of the list pane chooses the report. The list then shows only that report's sections from §3.5, in report order. Each shows its marks weight, the word count of its notes, and the number of tagged readings. Interim-only sections (`work-to-date`, `project-plan`) show no marks weight. The switch defaults to the report whose deadline is next, and the choice is kept in the URL (e.g. `/notes/interim/methodology`).
+- Notes are shared: `paper/notes/<section>.md` is the same file whichever report is selected, so notes written for the interim carry over to the final report.
 - The reader pane shows a rich text editor (Literata) for `paper/notes/<section>.md`. Saving works as in §6.1. These notes are rough working notes, kept apart from the `.tex` files so they can never break the paper build.
 - A **side panel** on the right (collapsible) lists readings whose `sections:` include this section, sorted by stars. Each reading has:
   - **Cite**: inserts `\parencite{key}` at the cursor
@@ -542,7 +563,7 @@ The layout has three panes:
 
 **Dashboard** (built from `status.json`, recomputed in the browser when the live data is newer)
 
-- **Countdown** to the next deadline (interim 06/11/2026, then final 07/04/2027).
+- **Countdown** to the next deadline. It shows the interim report (06/11/2026) up to and including 06/11/2026 ("due today" on the day), then switches to the final report and video (07/04/2027). The README status block (§4) follows the same rule.
 - **Sources:** a progress bar toward 30, showing verified / summarised / to-read.
 - **Decisions:** decided / exploring / open, by group, linking to the Decisions page.
 - **Coverage:** readings per report section and per tag as a small bar chart, with sections that have fewer than 3 readings highlighted as gaps.

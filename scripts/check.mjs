@@ -26,7 +26,12 @@ const READING_STATUS = ["to-read", "skimmed", "summarised", "verified"];
 const SUMMARISED_BY = ["claude", "julia"];
 const DECISION_STATUS = ["open", "exploring", "decided"];
 const DECISION_GROUPS = ["system", "detector", "metrics", "ci-cd", "reporting", "validation", "governance"];
-const SECTIONS = ["abstract", "introduction", "background", "related-work", "methodology", "deliverable", "analysis", "conclusion"];
+// Report section IDs (PLAN.md §3.5). work-to-date and project-plan are interim only;
+// deliverable, analysis and conclusion are final only.
+const SECTIONS = [
+  "abstract", "introduction", "background", "related-work", "methodology",
+  "work-to-date", "project-plan", "deliverable", "analysis", "conclusion",
+];
 const TAG_FIELDS = ["id", "label", "group", "bg"];
 const TAG_FG = "#1F1B1E";
 // Pastels the app gives to tags added later (PLAN.md §3.3); they must pass contrast too.
