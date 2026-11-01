@@ -15,7 +15,10 @@ export function Notes() {
       {SECTIONS.map((s) => (
         <Link key={s.id} to={`/notes/${s.id}`} className={`list-item${s.id === section ? ' active' : ''}`}>
           <div>{s.label}</div>
-          <div className="sub">Marks: {s.marks}</div>
+          <div className="sub">
+            {s.reports.length === 2 ? 'Interim and final' : s.reports[0] === 'interim' ? 'Interim only' : 'Final only'}
+            {s.marks ? ` · marks ${s.marks}` : ''}
+          </div>
         </Link>
       ))}
     </>

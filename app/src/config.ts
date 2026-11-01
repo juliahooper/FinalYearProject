@@ -12,17 +12,22 @@ export const DEADLINES = [
 
 export const READINGS_TARGET = 30
 
-// Report sections, in order (PLAN.md §3.5).
-export const SECTIONS = [
-  { id: 'abstract', label: 'Abstract', marks: '–' },
-  { id: 'introduction', label: 'Introduction', marks: '10' },
-  { id: 'background', label: 'Literature review: background', marks: '20 (shared)' },
-  { id: 'related-work', label: 'Literature review: related work', marks: '(shared)' },
-  { id: 'methodology', label: 'Methodology', marks: '10' },
-  { id: 'deliverable', label: 'Primary research / deliverable', marks: '25' },
-  { id: 'analysis', label: 'Analysis', marks: '10' },
-  { id: 'conclusion', label: 'Summary and conclusions', marks: '10' },
-] as const
+export type Report = 'interim' | 'final'
+
+// Report sections, in report order (PLAN.md §3.5). marks is null for interim-only sections.
+export const SECTIONS: { id: string; label: string; reports: Report[]; marks: string | null }[] = [
+  { id: 'abstract', label: 'Abstract', reports: ['interim', 'final'], marks: '–' },
+  { id: 'introduction', label: 'Introduction', reports: ['interim', 'final'], marks: '10' },
+  { id: 'background', label: 'Literature review: background', reports: ['interim', 'final'], marks: '20 (shared)' },
+  { id: 'related-work', label: 'Literature review: related work', reports: ['interim', 'final'], marks: '(shared)' },
+  { id: 'methodology', label: 'Methodology', reports: ['interim', 'final'], marks: '10' },
+  { id: 'work-to-date', label: 'Work to date', reports: ['interim'], marks: null },
+  { id: 'project-plan', label: 'Project plan', reports: ['interim'], marks: null },
+  { id: 'deliverable', label: 'The tool (deliverable)', reports: ['final'], marks: '25 (shared)' },
+  { id: 'evaluation', label: 'Evaluation', reports: ['final'], marks: '(shared)' },
+  { id: 'analysis', label: 'Analysis', reports: ['final'], marks: '10' },
+  { id: 'conclusion', label: 'Summary and conclusions', reports: ['final'], marks: '10' },
+]
 
 export const DECISION_GROUPS = [
   { id: 'system', label: 'System design' },
@@ -31,5 +36,6 @@ export const DECISION_GROUPS = [
   { id: 'ci-cd', label: 'CI/CD' },
   { id: 'reporting', label: 'Reporting' },
   { id: 'validation', label: 'Validation' },
+  { id: 'evaluation', label: 'Impact evaluation' },
   { id: 'governance', label: 'Governance' },
 ] as const
