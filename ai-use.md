@@ -53,3 +53,5 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-11-01 | `readings/follow-up.yml` | Edited: impact evaluation references copied from Julia's earlier source reviews (ISE-XAI-Group-10), plus two "find" entries | |
 | 2026-11-01 | `paper/final/sections/evaluation.tex`, `paper/final/sections/deliverable.tex`, `paper/final/main.tex`, `paper/interim/sections/methodology.tex`, `paper/interim/sections/project-plan.tex`, `paper/notes/evaluation.md` | Drafted/edited comment blocks for the new evaluation section (no report text) | |
 | 2026-11-01 | `PLAN.md`, `docs/reading-workflow.md`, `paper/README.md` | Edited for the evaluation group, tag and section | |
+| 2026-11-01 | `app/` (Vite + React + TypeScript scaffold, `src/`, `vite.config.ts`, `vercel.json`, `index.html`) | Drafted: sign-in, data layer (GitHub API, IndexedDB cache, front matter, save with conflict detection, drafts), app shell and placeholder pages; built and tested the data layer against the repo's files | |
+| 2026-11-01 | `docs/using-the-app.md` | Drafted: sign-in, running locally, Vercel deployment | |
