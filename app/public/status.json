@@ -143,8 +143,10 @@
     }
   },
   "bib": {
-    "total": 3,
-    "withoutReading": []
+    "total": 4,
+    "withoutReading": [
+      "mendu2025safer"
+    ]
   },
   "followUp": {
     "total": 28,
