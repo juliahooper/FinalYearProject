@@ -1,5 +1,8 @@
-# Builds paper/main.tex into a PDF on every push that touches the paper or the bibliography.
-# Download the PDF from: GitHub -> Actions tab -> "Build paper" -> latest run -> Artifacts -> paper-pdf.
+# Builds the interim and final reports into PDFs, and prints each one's word count.
+# Only the report whose folder changed is rebuilt; a change to paper/shared/, references.bib,
+# the word count script or this workflow rebuilds both. "Run workflow" by hand also builds both.
+# Download the PDFs from: Actions tab -> "Build paper" -> latest run -> Artifacts -> interim-pdf / final-pdf.
+# The word counts are on the run's Summary page.
 name: Build paper
 
 on:
@@ -7,33 +10,85 @@ on:
     paths:
       - "paper/**"
       - "references.bib"
+      - "scripts/wordcount.sh"
       - ".github/workflows/build-paper.yml"
   pull_request:
     paths:
       - "paper/**"
       - "references.bib"
-  workflow_dispatch:   # lets you click "Run workflow" by hand in the Actions tab
+      - "scripts/wordcount.sh"
+      - ".github/workflows/build-paper.yml"
+  workflow_dispatch:
 
 jobs:
-  build:
+  changes:
     runs-on: ubuntu-latest
+    outputs:
+      reports: ${{ steps.pick.outputs.reports }}
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Work out which reports changed
+        id: pick
+        env:
+          EVENT: ${{ github.event_name }}
+          BEFORE: ${{ github.event.before }}
+          PR_BASE: ${{ github.event.pull_request.base.sha }}
+        run: |
+          base="$BEFORE"
+          [ "$EVENT" = "pull_request" ] && base="$PR_BASE"
+          if [ "$EVENT" = "workflow_dispatch" ] || [ -z "$base" ] || ! git cat-file -e "$base^{commit}" 2>/dev/null; then
+            echo "Building both reports."
+            echo 'reports=["interim","final"]' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          changed=$(git diff --name-only "$base" HEAD)
+          echo "$changed"
+          both=false; interim=false; final=false
+          echo "$changed" | grep -qE '^(paper/shared/|references\.bib$|scripts/wordcount\.sh$|\.github/workflows/build-paper\.yml$)' && both=true
+          echo "$changed" | grep -q '^paper/interim/' && interim=true
+          echo "$changed" | grep -q '^paper/final/' && final=true
+          list=()
+          { $both || $interim; } && list+=('"interim"')
+          { $both || $final; } && list+=('"final"')
+          reports="[$(IFS=,; echo "${list[*]}")]"
+          echo "Reports to build: $reports"
+          echo "reports=$reports" >> "$GITHUB_OUTPUT"
+
+  build:
+    needs: changes
+    if: needs.changes.outputs.reports != '[]'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        report: ${{ fromJSON(needs.changes.outputs.reports) }}
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
 
-      # latexmk runs biber (not bibtex) automatically, because main.tex loads
-      # biblatex with backend=biber. The bibliography is ../references.bib.
+      # latexmk runs biber (not bibtex) automatically, because the shared preamble loads
+      # biblatex with backend=biber. The bibliography is ../../references.bib.
+      # texcount runs inside the same TeX Live container, after the build.
       - name: Compile LaTeX (pdflatex + biber via latexmk)
         uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
-          working_directory: paper
-          latexmk_use_xelatex: false
+          working_directory: paper/${{ matrix.report }}
           args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode
+          post_compile: "texcount -inc -sum -1 main.tex > wordcount-body.txt"
 
       - name: Upload the PDF
         uses: actions/upload-artifact@v4
         with:
-          name: paper-pdf
-          path: paper/main.pdf
+          name: ${{ matrix.report }}-pdf
+          path: paper/${{ matrix.report }}/main.pdf
           if-no-files-found: error
+
+      - name: Word count
+        run: |
+          command -v pdftotext >/dev/null || { sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils; }
+          bash scripts/wordcount.sh ${{ matrix.report }}
