@@ -44,14 +44,17 @@ export function useDocEditor<T, M extends object>(doc: EditableDoc<T>, pick: (me
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [doc.path])
 
-  const originalBody = splitFrontMatter(doc.text).body
+  // Files without front matter (report notes) are all body.
+  const hasFrontMatter = splitFrontMatter(doc.text).data !== null
+  const bodyOf = (text: string) => (hasFrontMatter ? splitFrontMatter(text).body : text)
+  const originalBody = bodyOf(doc.text)
 
   const compose = useCallback(
     (m: M) => {
       const body = editorRef.current ? fromEditor(editorRef.current, originalBody) : originalBody
-      return updateMarkdownFile(doc.text, m as Record<string, unknown>, body)
+      return hasFrontMatter ? updateMarkdownFile(doc.text, m as Record<string, unknown>, body) : body
     },
-    [doc.text, originalBody],
+    [doc.text, originalBody, hasFrontMatter],
   )
 
   // Keep a local draft a moment after each change.
@@ -111,6 +114,9 @@ export function useDocEditor<T, M extends object>(doc: EditableDoc<T>, pick: (me
     window.location.reload()
   }, [doc.path])
 
+  // Stable, so screens can depend on it in effects.
+  const getEditor = useCallback(() => editorRef.current, [])
+
   const copyMyText = useCallback(async () => {
     try {
       await navigator.clipboard.writeText(compose(meta))
@@ -121,7 +127,8 @@ export function useDocEditor<T, M extends object>(doc: EditableDoc<T>, pick: (me
 
   return {
     start,
-    startBody: start ? splitFrontMatter(start.text).body : '',
+    startBody: start ? bodyOf(start.text) : '',
+    getEditor,
     meta,
     changeMeta,
     dirty,

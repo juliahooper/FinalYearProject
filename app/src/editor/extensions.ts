@@ -7,7 +7,7 @@ import { Markdown } from 'tiptap-markdown'
 export function editorExtensions(): Extensions {
   return [
     StarterKit.configure({
-      heading: { levels: [2, 3] },
+      heading: { levels: [1, 2, 3] }, // notes files start with a level-1 title; the toolbar offers 2 and 3
       link: { openOnClick: false, autolink: false, HTMLAttributes: { rel: 'noreferrer', target: '_blank' } },
       underline: false, // markdown has no underline
     }),

@@ -16,12 +16,15 @@ function meaning(line: string): string {
 
 // For newly written lines: undo escapes the editor adds that aren't needed in plain text,
 // so new text looks like hand-written markdown. \[x\] stays escaped if it's followed by
-// ( or [ or :, where unescaping would turn it into a link.
+// ( or [ or :, where unescaping would turn it into a link. A backslash before a letter is
+// literal in markdown, so LaTeX like \parencite{key} is written as is.
 function tidy(line: string): string {
   if (/^\s*(```|~~~|\|)/.test(line)) return line // leave fences and table rows alone
   return line
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
+    .replace(/\\\\(?=[A-Za-z])/g, '\\')
+    .replace(/(?<!~)\\~(?!~)/g, '~') // a single ~ (e.g. LaTeX p.~4) isn't strikethrough
     .replace(/\\\[([^\]\\]*)\\\](?![([:])/g, '[$1]')
 }
 

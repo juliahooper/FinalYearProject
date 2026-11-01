@@ -61,6 +61,16 @@ describe('reading notes in the repo, with no edits', () => {
   }
 })
 
+describe('report notes in the repo, with no edits', () => {
+  const dir = join(__dirname, '../../../paper/notes')
+  for (const f of readdirSync(dir).filter((x) => x.endsWith('.md'))) {
+    it(f, () => {
+      const text = readFileSync(join(dir, f), 'utf8')
+      expect(roundTrip(text)).toBe(text)
+    })
+  }
+})
+
 describe('an edit changes only the edited line', () => {
   it('typing at the end of one paragraph', () => {
     const md = '## TL;DR\nFirst [13] p < 0.05.\n\n## Next\nSecond paragraph.\n'
@@ -86,6 +96,18 @@ describe('an edit changes only the edited line', () => {
     const out = fromEditor(editor, md)
     editor.destroy()
     expect(out).toBe('## TL;DR\nFirst [13].\n\n## Next\nSecond.\n\nA new [14] paragraph, p < 0.05.\n')
+  })
+
+  it('a LaTeX citation typed into a note is saved as written', () => {
+    const md = '# Notes: background\n\nRough working notes.\n'
+    const editor = load(md)
+    editor.commands.insertContentAt(editor.state.doc.content.size, {
+      type: 'paragraph',
+      content: [{ type: 'text', text: 'As shown by \\parencite{caliskan2017semantics} and \\textcite[p.~4]{kumar2025detecting}.' }],
+    })
+    const out = fromEditor(editor, md)
+    editor.destroy()
+    expect(out).toBe('# Notes: background\n\nRough working notes.\n\nAs shown by \\parencite{caliskan2017semantics} and \\textcite[p.~4]{kumar2025detecting}.\n')
   })
 
   it('deleting a paragraph removes only that line', () => {
