@@ -460,6 +460,8 @@ Reader style with a pink accent. Interface text is Inter, and reading text (summ
   - `minisearch`
   - `idb-keyval`
   - `mermaid` (diagrams in reading notes), `katex` (formulas in reading notes) and `vitest` (dev only, for the round-trip tests). Approved by Julia on 2026-11-01.
+  - `markdown-it` (view-mode rendering; the same copy `tiptap-markdown` uses). Approved by Julia on 2026-11-01.
+  - Supporting packages these need: `@tiptap/pm` (Tiptap's required companion package), and dev only `jsdom` (runs the editor in tests) and `@types/markdown-it`.
 
   The Vite template also brings its own build tooling (`typescript`, `@vitejs/plugin-react`, `oxlint`). Ask before adding anything else.
 - **Sign-in screen:** explains how to create a fine-grained PAT (only this repo; Contents: read and write; Metadata: read), with a field to paste it. The token is stored in `localStorage` and verified with a test API call. "Sign out" clears it. The repo owner, name and branch are set in `app/src/config.ts`.
