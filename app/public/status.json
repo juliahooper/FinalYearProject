@@ -1,16 +1,16 @@
 {
   "readings": {
-    "total": 0,
+    "total": 1,
     "target": 30,
     "verified": 0,
     "byStatus": {
       "to-read": 0,
       "skimmed": 0,
-      "summarised": 0,
+      "summarised": 1,
       "verified": 0
     },
     "byStars": {
-      "0": 0,
+      "0": 1,
       "1": 0,
       "2": 0,
       "3": 0,
@@ -19,7 +19,7 @@
     },
     "byTag": {
       "architecture": 0,
-      "metrics": 0,
+      "metrics": 1,
       "detector-model": 0,
       "ci-cd": 0,
       "medical": 0,
@@ -27,13 +27,13 @@
       "governance": 0,
       "usability": 0,
       "ethics": 0,
-      "data-curation": 0
+      "data-curation": 1
     },
     "bySection": {
       "abstract": 0,
-      "introduction": 0,
-      "background": 0,
-      "related-work": 0,
+      "introduction": 1,
+      "background": 1,
+      "related-work": 1,
       "methodology": 0,
       "deliverable": 0,
       "analysis": 0,
@@ -50,7 +50,7 @@
       "CI-01": 0,
       "CI-02": 0,
       "CI-03": 0,
-      "DET-01": 0,
+      "DET-01": 1,
       "DET-02": 0,
       "DET-03": 0,
       "DET-04": 0,
@@ -58,7 +58,7 @@
       "DET-06": 0,
       "ETH-01": 0,
       "ETH-02": 0,
-      "MET-01": 0,
+      "MET-01": 1,
       "MET-02": 0,
       "MET-03": 0,
       "MET-04": 0,
@@ -70,7 +70,9 @@
       "VAL-02": 0,
       "VAL-03": 0
     },
-    "unverifiedClaude": []
+    "unverifiedClaude": [
+      "caliskan2017semantics"
+    ]
   },
   "decisions": {
     "total": 29,
@@ -125,7 +127,10 @@
     }
   },
   "bib": {
-    "total": 0,
-    "withoutReading": []
+    "total": 3,
+    "withoutReading": [
+      "kumar2025detecting",
+      "rajawatInvestigatingMethodsIdentify2024"
+    ]
   }
 }

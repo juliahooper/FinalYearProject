@@ -4,7 +4,7 @@ title: Definition of representational bias
 group: detector
 status: open
 decided_on:
-readings: []
+readings: [caliskan2017semantics]
 ---
 
 ## Question
