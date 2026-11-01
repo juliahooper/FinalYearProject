@@ -67,7 +67,7 @@ Read the draft with the PDF open beside it.
 
 - `stars`: 1–5 for how useful it is to this project (0 means not rated).
 - `tags`: only tags from `tags.yml`.
-- `sections`: the report sections it feeds: abstract, introduction, background, related-work, methodology, work-to-date and project-plan (interim only), deliverable, analysis and conclusion (final only).
+- `sections`: the report sections it feeds: abstract, introduction, background, related-work, methodology, work-to-date and project-plan (interim only), deliverable, evaluation, analysis and conclusion (final only).
 - `decisions`: the decision IDs it informs, for example `[MET-02, VAL-01]`. Also add the citekey to the `readings:` list in those decision files.
 
 ### 6. Mark it as verified

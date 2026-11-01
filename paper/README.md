@@ -15,7 +15,7 @@ Two reports, both in the IEEE two-column conference template with UL Cite It Rig
 | `shared/metadata.tex` | Name, student ID, supervisor and project title. Used by both reports. |
 | `shared/figures/` | Figures used by either report. |
 | `interim/main.tex`, `interim/sections/*.tex` | The interim report: abstract, introduction, background, related work, methodology, **work to date**, **project plan**, declarations. |
-| `final/main.tex`, `final/sections/*.tex` | The final report: abstract, introduction, background, related work, methodology, deliverable, analysis, conclusion, declarations. |
+| `final/main.tex`, `final/sections/*.tex` | The final report: abstract, introduction, background, related work, methodology, deliverable (the tool), **evaluation** (test suite and downstream impact), analysis, conclusion, declarations. |
 | `notes/*.md` | Rough working notes, one file per section ID, shared by both reports (edited in the app later). Never used by either build. |
 | `drafts/` | Dated PDF snapshots of each report (see `drafts/README.md`). |
 | `REFERENCING.md` | How Cite It Right is set up in biblatex, and what still needs checking. |

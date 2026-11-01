@@ -27,7 +27,8 @@
       "governance": 1,
       "usability": 0,
       "ethics": 0,
-      "data-curation": 1
+      "data-curation": 1,
+      "impact-evaluation": 0
     },
     "bySection": {
       "abstract": 0,
@@ -38,6 +39,7 @@
       "work-to-date": 0,
       "project-plan": 0,
       "deliverable": 0,
+      "evaluation": 0,
       "analysis": 0,
       "conclusion": 0
     },
@@ -60,6 +62,12 @@
       "DET-06": 0,
       "ETH-01": 0,
       "ETH-02": 0,
+      "EVAL-01": 0,
+      "EVAL-02": 0,
+      "EVAL-03": 0,
+      "EVAL-04": 0,
+      "EVAL-05": 0,
+      "EVAL-06": 0,
       "MET-01": 1,
       "MET-02": 0,
       "MET-03": 0,
@@ -79,9 +87,9 @@
     ]
   },
   "decisions": {
-    "total": 29,
+    "total": 35,
     "byStatus": {
-      "open": 29,
+      "open": 35,
       "exploring": 0,
       "decided": 0
     },
@@ -122,6 +130,12 @@
         "exploring": 0,
         "decided": 0
       },
+      "evaluation": {
+        "total": 6,
+        "open": 6,
+        "exploring": 0,
+        "decided": 0
+      },
       "governance": {
         "total": 2,
         "open": 2,
@@ -135,16 +149,16 @@
     "withoutReading": []
   },
   "followUp": {
-    "total": 13,
+    "total": 28,
     "byStatus": {
-      "suggested": 13,
+      "suggested": 28,
       "saved": 0,
       "skipped": 0
     },
     "suggestedByPriority": {
-      "high": 7,
-      "medium": 4,
-      "low": 2
+      "high": 10,
+      "medium": 14,
+      "low": 4
     }
   }
 }

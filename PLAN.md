@@ -200,6 +200,7 @@ Tags come only from this list. The app's tag picker offers these and can append 
 - id: usability      ; label: Usability      ; bg: "#FBF3CF"
 - id: ethics         ; label: Ethics         ; bg: "#F1ECE4"
 - id: data-curation  ; label: Data curation  ; bg: "#EAF0DC"
+- id: impact-evaluation ; label: Impact evaluation ; bg: "#F3E5FC"   # added 2026-11-01 (first spare palette colour)
 ```
 
 The `;` lines above are shorthand. Write the real file as proper YAML: a list of maps with `id`, `label`, `group` and `bg` keys. Text colour is always black, so there's no per-tag `fg`.
@@ -219,7 +220,7 @@ Seed one file for **every** decision below, all with `status: open`. Julia fills
 ---
 id: MET-02
 title: Per-item bias score
-group: metrics          # system | detector | metrics | ci-cd | reporting | validation | governance
+group: metrics          # system | detector | metrics | ci-cd | reporting | validation | evaluation | governance
 status: open            # open | exploring | decided
 decided_on:             # YYYY-MM-DD
 readings: []            # citekeys that inform this decision
@@ -283,6 +284,14 @@ What this decision commits the project to, or rules out.
 - `VAL-02` Medical labelled sample: size, sourcing, who labels it, and agreement checks.
 - `VAL-03` Usability evaluation method: readability measures, heuristic evaluation, cognitive walkthrough, and who takes part.
 
+**Impact evaluation (`group: evaluation`)**, added 2026-11-01. VAL-* asks whether the detector is accurate. EVAL-* asks whether acting on the tool's decisions changes a trained model's output, how the tool itself is tested, and how the results are reflected on.
+- `EVAL-01` Downstream impact experiment: how to show that acting on the tool's accept/reject decisions changes a trained model's behaviour (e.g. a small model trained on unfiltered vs filtered versions of the same corpus), including model, corpus and compute.
+- `EVAL-02` Output bias measures: which output-side benchmarks and metrics compare the models before and after (e.g. StereoSet, CrowS-Pairs, GenderBench, template-based tests), for which categories, and for the medical case study.
+- `EVAL-03` Controls and statistics: baselines (no filtering, random removal of the same amount of data, an existing toxicity or quality filter), data volume and seed control, and statistical tests.
+- `EVAL-04` Attribution and explanation tests: whether post-hoc attribution (e.g. SHAP, LIME) or training-data attribution links output changes to removed sources, and how faithfulness is checked.
+- `EVAL-05` Tool test suite: unit, integration and regression tests (on fixed labelled examples) for the scanner, gate and report, run in CI.
+- `EVAL-06` Post-implementation reflection: what changed, side effects (such as removing useful text by or about minority groups), threats to validity, and what it means for the recommendations.
+
 **Governance (`group: governance`)**
 - `ETH-01` Ethics position: whether any part involves human participants (VAL-02 labelling, VAL-03 evaluators), and if so, the UL Science & Engineering expedited application. Lead time is 4–6+ weeks, and the committee deadline is the first Thursday of each month.
 - `ETH-02` Data licensing and use: licences of every dataset used, and how the tool handles data it scans.
@@ -300,7 +309,8 @@ These IDs are used in `sections:` in readings, in `paper/interim/sections/` and 
 | `methodology` | Methodology: approach, ethics, practical considerations (interim: the proposed approach, architecture, metrics and validation plan) | interim, final | 10 |
 | `work-to-date` | Work to date: what has been done so far, with evidence | interim | – |
 | `project-plan` | Project plan: remaining work, timeline to April 2027, risks | interim | – |
-| `deliverable` | Primary research / deliverable: the tool and its evaluation | final | 25 |
+| `deliverable` | Primary research / deliverable: the tool (design and implementation) | final | 25 (shared with evaluation) |
+| `evaluation` | Evaluation: test suite, downstream impact on trained models, attribution tests, post-implementation reflection (EVAL-*) | final | (shared) |
 | `analysis` | Analysis | final | 10 |
 | `conclusion` | Summary, conclusions, recommendations, future work | final | 10 |
 
@@ -311,7 +321,7 @@ The marks come from the spec's marking guide, which isn't labelled as interim or
 ### 3.6 Paper (`paper/`)
 
 - **Two reports**, as two separate LaTeX documents:
-  - **Interim report** (`paper/interim/`, due 06/11/2026). IEEE conference format. It covers work done so far and the research. It follows the final report's structure without the results sections (deliverable, analysis, conclusion), and adds `work-to-date` and `project-plan`.
+  - **Interim report** (`paper/interim/`, due 06/11/2026). IEEE conference format. It covers work done so far and the research. It follows the final report's structure without the results sections (deliverable, evaluation, analysis, conclusion), and adds `work-to-date` and `project-plan`. The impact evaluation plan (EVAL-*) goes in the interim methodology.
   - **Final report** (`paper/final/`, due 07/04/2027).
 
   Both `main.tex` files `\input` `../shared/preamble` and `../shared/metadata`, use `../../references.bib`, and end with `sections/declarations.tex`.
@@ -538,7 +548,7 @@ The layout has three panes:
 
 ### 6.4 Stage 6: Decisions (feature 13)
 
-- The list pane groups decisions under their headings (System design, Detector, Metrics, CI/CD, Reporting, Validation, Governance), with counts such as "Metrics · 1 / 6 decided".
+- The list pane groups decisions under their headings (System design, Detector, Metrics, CI/CD, Reporting, Validation, Impact evaluation, Governance), with counts such as "Metrics · 1 / 6 decided".
 - Each decision shows as a **collapsible section** (accordion).
   - **Collapsed:** ID, title and status pill (open / exploring / decided).
   - **Expanded:** Question, Options considered, Decision, Why and Consequences, all editable in the same rich text editor, plus a "Readings" panel.

@@ -49,3 +49,7 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-11-01 | `paper/README.md`, `paper/drafts/README.md`, `paper/REFERENCING.md`, `paper/notes/work-to-date.md`, `paper/notes/project-plan.md` | Edited/drafted for the two-report structure | |
 | 2026-11-01 | `.github/workflows/build-paper.yml`, `scripts/wordcount.sh` | Edited/drafted: build only the changed report, two artifacts, word count | |
 | 2026-11-01 | `PLAN.md`, `scripts/check.mjs`, `docs/reading-workflow.md`, `README.md`, `.gitignore` | Edited: section IDs (work-to-date, project-plan, reports column), report notes switch, countdown wording | |
+| 2026-11-01 | `tags.yml`, `decisions/EVAL-01..06`, `decisions/_template.md`, `scripts/check.mjs` | Drafted: impact evaluation tag, decision group and seeded open questions (Julia's request) | |
+| 2026-11-01 | `readings/follow-up.yml` | Edited: impact evaluation references copied from Julia's earlier source reviews (ISE-XAI-Group-10), plus two "find" entries | |
+| 2026-11-01 | `paper/final/sections/evaluation.tex`, `paper/final/sections/deliverable.tex`, `paper/final/main.tex`, `paper/interim/sections/methodology.tex`, `paper/interim/sections/project-plan.tex`, `paper/notes/evaluation.md` | Drafted/edited comment blocks for the new evaluation section (no report text) | |
+| 2026-11-01 | `PLAN.md`, `docs/reading-workflow.md`, `paper/README.md` | Edited for the evaluation group, tag and section | |
