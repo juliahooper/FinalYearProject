@@ -459,8 +459,9 @@ Reader style with a pink accent. Interface text is Inter, and reading text (summ
   - `@tiptap/react`, `@tiptap/starter-kit`, `@tiptap/extension-link`, `@tiptap/extension-table` (+ row/cell/header) and `tiptap-markdown`
   - `minisearch`
   - `idb-keyval`
+  - `mermaid` (diagrams in reading notes), `katex` (formulas in reading notes) and `vitest` (dev only, for the round-trip tests). Approved by Julia on 2026-11-01.
 
-  Ask before adding anything else.
+  The Vite template also brings its own build tooling (`typescript`, `@vitejs/plugin-react`, `oxlint`). Ask before adding anything else.
 - **Sign-in screen:** explains how to create a fine-grained PAT (only this repo; Contents: read and write; Metadata: read), with a field to paste it. The token is stored in `localStorage` and verified with a test API call. "Sign out" clears it. The repo owner, name and branch are set in `app/src/config.ts`.
 - **Data layer** (`app/src/data/`):
   - On load, fetch the repo tree recursively (`git/trees/{branch}?recursive=1`), then the contents of `readings/*.md`, `readings/follow-up.yml`, `decisions/*.md`, `paper/notes/*.md`, `tags.yml`, `docs/*.md` and `app/public/status.json`.
