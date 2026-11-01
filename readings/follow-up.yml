@@ -3,7 +3,8 @@
 #
 # Fields:
 #   title, authors, year, venue  as printed in the source that cites it; NOT FOUND IN SOURCE if absent
-#   found_in    where it was recommended: a reading citekey or a repo file path, with the page
+#   found_in    where it was recommended: a reading citekey, a repo file path, or
+#               "external: <where>" for a source outside this repo, with the page
 #   why         one line on why it's worth reading for this project
 #   priority    high | medium | low
 #   status      suggested | saved | skipped
@@ -147,3 +148,160 @@
   priority: low
   status: suggested
   key: ""
+
+# --- Impact evaluation (EVAL-01..06). Details as printed in Julia's earlier source reviews
+# --- in the ISE-XAI-Group-10 repo (journal/sources/), including any "to check" warnings.
+
+- title: "Studies that train models on filtered vs unfiltered data and measure downstream bias"
+  authors: []
+  year:
+  venue: "NOT FOUND IN SOURCE"
+  found_in: [{source: "external: impact evaluation planning, 2026-11-01", page: "-"}]
+  why: "The core design question for EVAL-01 and EVAL-03: has anyone measured how filtering pretraining or fine-tuning data changes a model's bias, and how did they control for data volume?"
+  priority: high
+  status: suggested
+  key: ""
+  notes: "No source yet. Search IEEE Xplore, ACL Anthology and arXiv for data filtering ablations and downstream bias."
+
+- title: "Training-data attribution methods (linking model outputs back to training examples)"
+  authors: []
+  year:
+  venue: "NOT FOUND IN SOURCE"
+  found_in: [{source: "external: impact evaluation planning, 2026-11-01", page: "-"}]
+  why: "For EVAL-04: post-hoc attribution explains inputs, but linking an output change to removed sources needs training-data attribution (e.g. influence-style methods)."
+  priority: medium
+  status: suggested
+  key: ""
+  notes: "No source yet. Find a survey or the original method paper before relying on it."
+
+- title: "Documenting large webtext corpora: A case study on the Colossal Clean Crawled Corpus"
+  authors: ["Dodge, J.", "Sap, M.", "Marasović, A.", "Agnew, W.", "Ilharco, G.", "Groeneveld, D.", "Mitchell, M.", "Gardner, M."]
+  year: 2021
+  venue: "Proc. 2021 Conf. Empirical Methods in Natural Language Processing (EMNLP), pp. 1286–1305, doi: 10.18653/v1/2021.emnlp-main.98"
+  found_in: [{source: "external: ISE-XAI-Group-10 journal/sources/2026-10-16-dodge-2021.md", page: "-"}]
+  why: "Documents what C4's filters actually removed, including text by and about minority groups; the side effect EVAL-06 must check for."
+  priority: high
+  status: suggested
+  key: ""
+
+- title: "Whose language counts as high quality? Measuring language ideologies in text data selection"
+  authors: ["Gururangan, S.", "Card, D.", "Dreier, S. K.", "Gade, E. K.", "Wang, L. Z.", "Wang, Z.", "Zettlemoyer, L.", "Smith, N. A."]
+  year: 2022
+  venue: "Proc. EMNLP 2022, pp. 2562–2580"
+  found_in: [{source: "external: ISE-XAI-Group-10 journal/sources/2026-10-01-gururangan-2022.md", page: "-"}]
+  why: "Shows a data-selection filter favours some groups' writing over others; a model for measuring who a filter removes (EVAL-03, EVAL-06)."
+  priority: high
+  status: suggested
+  key: ""
+
+- title: "Epistemic Injustice in Language Models: An Audit of Pretraining Filters and Guardrails"
+  authors: ["Stranisci, M. A.", "Pranav, A.", "Damiano, R.", "Hardmeier, C.", "Lauscher, A."]
+  year: 2026
+  venue: "arXiv preprint arXiv:2606.05936"
+  found_in: [{source: "external: ISE-XAI-Group-10 journal/sources/2026-10-05-stranisci-2026.md", page: "-"}]
+  why: "An audit of pretraining filters; a recent model for comparing flag rates across groups (EVAL-03, EVAL-06)."
+  priority: medium
+  status: suggested
+  key: ""
+
+- title: "Towards safer pretraining: Analyzing and filtering harmful content in webscale datasets for responsible LLMs"
+  authors: ["Mendu, S. K.", "Yenala, H.", "Gulati, A.", "Kumar, S.", "Agrawal, P."]
+  year: 2025
+  venue: "Proc. 34th Int. Joint Conf. Artificial Intelligence (IJCAI-25), pp. 466–474"
+  found_in: [{source: "external: ISE-XAI-Group-10 journal/sources/2026-10-05-mendu-2025.md", page: "-"}]
+  why: "Harmful-content filtering of web-scale pretraining data; a close comparison point for the tool and for EVAL-03 baselines."
+  priority: medium
+  status: suggested
+  key: ""
+  notes: "The earlier review says the link and DOI (10.24963/ijcai.2025/53) were inferred and need confirming."
+
+- title: "A unified approach to interpreting model predictions"
+  authors: ["Lundberg, S. M.", "Lee, S.-I."]
+  year: 2017
+  venue: "Advances in Neural Information Processing Systems 30 (NIPS 2017)"
+  found_in: [{source: "external: ISE-XAI-Group-10 journal/sources/2026-10-18-lundberg-2017.md", page: "-"}]
+  why: "SHAP, the main post-hoc attribution method for EVAL-04."
+  priority: medium
+  status: suggested
+  key: ""
+
+- title: "The disagreement problem in explainable machine learning: A practitioner's perspective"
+  authors: ["Krishna, S.", "Han, T.", "Gu, A.", "Wu, S.", "Jabbari, S.", "Lakkaraju, H."]
+  year: 2024
+  venue: "Transactions on Machine Learning Research (first released as arXiv:2202.01602, 2022)"
+  found_in: [{source: "external: ISE-XAI-Group-10 journal/sources/2026-10-09-krishna-2022.md", page: "-"}]
+  why: "Attribution methods often disagree, so EVAL-04 can't rely on one explainer without checking it."
+  priority: medium
+  status: suggested
+  key: ""
+
+- title: "ERASER: A benchmark to evaluate rationalized NLP models"
+  authors: ["DeYoung, J.", "Jain, S.", "Rajani, N. F.", "Lehman, E.", "Xiong, C.", "Socher, R.", "Wallace, B. C."]
+  year: 2020
+  venue: "Proc. 58th Annu. Meeting Assoc. Comput. Linguistics (ACL), pp. 4443–4458, doi: 10.18653/v1/2020.acl-main.408"
+  found_in: [{source: "external: ISE-XAI-Group-10 journal/sources/2026-10-22-deyoung-2020.md", page: "-"}]
+  why: "Faithfulness metrics for explanations; how EVAL-04 would check that attributions reflect what the model did."
+  priority: medium
+  status: suggested
+  key: ""
+
+- title: "Fooling LIME and SHAP: Adversarial attacks on post hoc explanation methods"
+  authors: ["Slack, D.", "Hilgard, S.", "Jia, E.", "Singh, S.", "Lakkaraju, H."]
+  year: 2020
+  venue: "Proc. 2020 AAAI/ACM Conf. AI, Ethics, and Society (AIES), pp. 180–186, doi: 10.1145/3375627.3375830"
+  found_in: [{source: "external: ISE-XAI-Group-10 journal/sources/2026-10-09-slack-2020.md", page: "-"}]
+  why: "Limits of post-hoc attribution; a caveat for EVAL-04 and the reflection in EVAL-06."
+  priority: low
+  status: suggested
+  key: ""
+
+- title: "The out-of-distribution problem in explainability and search methods for feature importance explanations"
+  authors: ["Hase, P.", "Xie, H.", "Bansal, M."]
+  year: 2021
+  venue: "Advances in Neural Information Processing Systems 34 (NeurIPS)"
+  found_in: [{source: "external: ISE-XAI-Group-10 journal/sources/2026-10-22-hase-2021.md", page: "-"}]
+  why: "Why removal-based attribution tests can mislead; a caveat for EVAL-04."
+  priority: low
+  status: suggested
+  key: ""
+
+- title: "Measuring and mitigating unintended bias in text classification"
+  authors: ["Dixon, L.", "Li, J.", "Sorensen, J.", "Thain, N.", "Vasserman, L."]
+  year: 2018
+  venue: "Proc. 2018 AAAI/ACM Conf. AI, Ethics, and Society (AIES), pp. 67–73, doi: 10.1145/3278721.3278729"
+  found_in: [{source: "external: ISE-XAI-Group-10 journal/sources/2026-10-05-dixon-2018.md", page: "-"}]
+  why: "Template-based identity-term tests; a cheap output-side bias measure for EVAL-02 and a regression set for EVAL-05."
+  priority: medium
+  status: suggested
+  key: ""
+
+- title: "Nuanced metrics for measuring unintended bias with real data for text classification"
+  authors: ["Borkan, D.", "Dixon, L.", "Sorensen, J.", "Thain, N.", "Vasserman, L."]
+  year: 2019
+  venue: "Companion Proc. 2019 World Wide Web Conf. (WWW '19 Companion), pp. 491–500, doi: 10.1145/3308560.3317593"
+  found_in: [{source: "external: ISE-XAI-Group-10 journal/sources/2026-10-21-borkan-2019.md", page: "-"}]
+  why: "Per-group bias metrics on real data; candidates for EVAL-02 and for MET-05."
+  priority: medium
+  status: suggested
+  key: ""
+
+- title: "The risk of racial bias in hate speech detection"
+  authors: ["Sap, M.", "Card, D.", "Gabriel, S.", "Choi, Y.", "Smith, N. A."]
+  year: 2019
+  venue: "Proc. 57th Annu. Meeting Assoc. Computational Linguistics (ACL), pp. 1668–1678, doi: 10.18653/v1/P19-1163"
+  found_in: [{source: "external: ISE-XAI-Group-10 journal/sources/2026-10-17-sap-2019.md", page: "-"}]
+  why: "Detectors that over-flag some dialects would remove that text if used as a filter; a risk for the tool itself (EVAL-06, DET-01)."
+  priority: medium
+  status: suggested
+  key: ""
+
+- title: "Bias analysis and mitigation through protected attribute detection and regard classification"
+  authors: ["Udagawa, T.", "Zhao, Y.", "Kanayama, H.", "Bhattacharjee, B."]
+  year: 2025
+  venue: "Findings of the Association for Computational Linguistics: EMNLP 2025, pp. 16–25"
+  found_in: [{source: "external: ISE-XAI-Group-10 journal/sources/2026-10-05-udagawa-2025.md", page: "-"}]
+  why: "Protected attribute detection and regard classification as a way to analyse bias in text; relevant to both the detector and EVAL-02."
+  priority: medium
+  status: suggested
+  key: ""
+  notes: "The earlier review says the DOI (10.18653/v1/2025.findings-emnlp.2) is inferred and needs confirming."
