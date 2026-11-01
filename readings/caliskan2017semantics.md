@@ -7,12 +7,12 @@ venue: "Science"
 doi: "10.1126/science.aal4230"
 url: "https://www.science.org/doi/abs/10.1126/science.aal4230"
 stars: 0
-status: summarised
+status: verified
 tags: [data-curation, metrics]
 sections: [introduction, background, related-work]
 decisions: [DET-01, MET-01]
 summarised_by: claude
-verified: false
+verified: true
 added: 2026-11-01
 found_via: ""
 ---
