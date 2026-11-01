@@ -88,4 +88,18 @@ The **To read next** tab lists the follow-up papers from `readings/follow-up.yml
 - **Readings panel:** lists every reading that informs the decision, with stars and the start of its TL;DR. **Link a reading** adds the decision to the reading's `decisions:` and the reading to the decision's `readings:`, as two commits. **Unlink** removes both.
 - **New decision:** pick a group and the next free ID is assigned (for example MET-07), then give it a title and, optionally, its question.
 
-The report notes screen arrives in stage 7. This page will grow with it.
+## Report notes
+
+Rough working notes for each report section, kept in `paper/notes/` and never used by the LaTeX build.
+
+- The **Interim / Final** switch at the top chooses the report. It starts on the report whose deadline is next: interim up to and including 06/11/2026, then final. Each section shows its marks (none for interim-only sections), how many words of notes it has, and how many readings are tagged with it.
+- The notes are shared between the reports. "Methodology" is the same notes file whether Interim or Final is selected, so notes written for the interim carry over.
+- **What this section needs** (click to open) summarises what the marking guide and rubric expect from that section. It's read from the comment block at the top of the section's `.tex` file, so it always matches the report.
+- The notes are always in the rich text editor. Save with the **Save** button or Ctrl+S; **Cancel** discards unsaved changes. Unsaved changes are kept in the browser, as with readings.
+- The **readings panel** on the right lists readings tagged with this section, best first:
+  - **Cite** inserts `\parencite{key}` at the cursor (or at the end, if you haven't clicked into the notes yet).
+  - **Copy cite** copies `\textcite{key}` to paste into a `.tex` file.
+  - **Open** opens the reading.
+  - **Hide readings** collapses the panel for more writing space.
+
+The dashboard and guide arrive in stage 8. This page will grow with them.
