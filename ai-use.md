@@ -40,3 +40,4 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-10-31 | `scripts/check.mjs`, `package.json`, `app/public/status.json` | Drafted; tested on the clean repo and on a deliberately broken copy | |
 | 2026-10-31 | `.github/workflows/check.yml` | Drafted | |
 | 2026-11-01 | `readings/caliskan2017semantics.md` | Drafted reading summary from the arXiv preprint PDF (pilot 1); added the citekey to DET-01 and MET-01 | |
+| 2026-11-01 | `readings/caliskan2017semantics.md`, `PLAN.md` | Edited: rewrote the note in Julia's requested style (analogies, examples, Mermaid diagrams, the paper's formulas); added the style rule to PLAN.md §7 | |
