@@ -1,0 +1,149 @@
+# Recommended follow-up readings, collected from the reference lists of summarised readings
+# (and the proposal form). The app shows these as "To read next".
+#
+# Fields:
+#   title, authors, year, venue  as printed in the source that cites it; NOT FOUND IN SOURCE if absent
+#   found_in    where it was recommended: a reading citekey or a repo file path, with the page
+#   why         one line on why it's worth reading for this project
+#   priority    high | medium | low
+#   status      suggested | saved | skipped
+#   key         the Zotero citekey once it's saved (status: saved); empty until then
+#   notes       optional
+#
+# When you save one to Zotero: set status: saved and key: <citekey>. scripts/check.mjs
+# warns when a suggested title appears in references.bib, so you don't miss one.
+
+- title: "Bias in bios: A case study of semantic representation bias in a high-stakes setting"
+  authors: ["De-Arteaga, M.", "Romanov, A.", "Wallach, H.", "Chayes, J.", "Borgs, C.", "Chouldechova, A.", "Geyik, S.", "Kenthapadi, K.", "Kalai, A."]
+  year: 2019
+  venue: "Proceedings of the ACM on Human-Computer Interaction, vol. 3, no. CSCW, pp. 1–30"
+  found_in: [{source: kumar2025detecting, page: "613"}]
+  why: "The original Bias in Bios gender and occupation dataset; a candidate benchmark for VAL-01."
+  priority: high
+  status: suggested
+  key: ""
+
+- title: "Man is to computer programmer as woman is to homemaker? debiasing word embeddings"
+  authors: ["Bolukbasi, T.", "Chang, K.-W.", "Zou, J. Y.", "Saligrama, V.", "Kalai, A. T."]
+  year: 2016
+  venue: "Advances in Neural Information Processing Systems, pp. 4349–4357"
+  found_in: [{source: caliskan2017semantics, page: "13"}, {source: kumar2025detecting, page: "613"}]
+  why: "The classic paper on gender bias in word embeddings and how to debias them; Caliskan et al. argue against its approach."
+  priority: high
+  status: suggested
+  key: ""
+  notes: "Caliskan et al. cite the arXiv version (arXiv:1607.06520); Kumar et al. cite the NeurIPS version."
+
+- title: "Equality of opportunity in supervised learning"
+  authors: ["Hardt, M.", "Price, E.", "Srebro, N."]
+  year: 2016
+  venue: "Advances in Neural Information Processing Systems (NeurIPS), pp. 3325–3333"
+  found_in: [{source: kumar2025detecting, page: "613"}]
+  why: "The source of the equal opportunity fairness metric; useful when defining MET-05 and explaining why classifier metrics differ from text scoring."
+  priority: high
+  status: suggested
+  key: ""
+
+- title: "GenderBench: evaluation suite for gender biases in LLMs"
+  authors: ["Pikuliak, M."]
+  year: 2025
+  venue: "arXiv:2505.12054"
+  found_in: [{source: course-materials/forms/fyp-proposal-form-signed-2026-10-08.pdf, page: "1–2"}]
+  why: "Cited in the proposal as the example of output-side bias research that this project contrasts with."
+  priority: high
+  status: suggested
+  key: ""
+
+- title: "StereoSet"
+  authors: []
+  year:
+  venue: "NOT FOUND IN SOURCE"
+  found_in: [{source: course-materials/forms/fyp-proposal-form-signed-2026-10-08.pdf, page: "2"}]
+  why: "Named in the proposal as a benchmark to review for validation (VAL-01)."
+  priority: high
+  status: suggested
+  key: ""
+  notes: "The proposal only names the benchmark. Find the original paper and save it to Zotero."
+
+- title: "CrowS-Pairs"
+  authors: []
+  year:
+  venue: "NOT FOUND IN SOURCE"
+  found_in: [{source: course-materials/forms/fyp-proposal-form-signed-2026-10-08.pdf, page: "2"}]
+  why: "Named in the proposal as a benchmark to review for validation (VAL-01)."
+  priority: high
+  status: suggested
+  key: ""
+  notes: "The proposal only names the benchmark. Find the original paper and save it to Zotero."
+
+- title: "Studies reporting gender-dependent urgency in medical LLM responses"
+  authors: []
+  year:
+  venue: "NOT FOUND IN SOURCE"
+  found_in: [{source: course-materials/forms/fyp-proposal-form-signed-2026-10-08.pdf, page: "1"}]
+  why: "The proposal makes this claim without a citation; the report needs a source for it, and it's directly relevant to the medical case study."
+  priority: high
+  status: suggested
+  key: ""
+  notes: "The proposal gives no reference. Find the study (or studies) and save them to Zotero, or drop the claim."
+
+- title: "Big data's disparate impact"
+  authors: ["Barocas, S.", "Selbst, A. D."]
+  year: 2014
+  venue: "California Law Review, 104"
+  found_in: [{source: caliskan2017semantics, page: "13"}]
+  why: "How bias gets in indirectly through proxies; relevant to DET-01 and to why removing names alone isn't enough."
+  priority: medium
+  status: suggested
+  key: ""
+
+- title: "Men also like shopping: Reducing gender bias amplification using corpus-level constraints"
+  authors: ["Zhao, J.", "Wang, T.", "Yatskar, M.", "Ordonez, V.", "Chang, K.-W."]
+  year: 2017
+  venue: "arXiv preprint arXiv:1707.09457"
+  found_in: [{source: kumar2025detecting, page: "613"}]
+  why: "Shows models can amplify bias beyond what is in the training data; background on why data-side screening alone has limits."
+  priority: medium
+  status: suggested
+  key: ""
+
+- title: "Measuring individual differences in implicit cognition: the implicit association test"
+  authors: ["Greenwald, A. G.", "McGhee, D. E.", "Schwartz, J. L."]
+  year: 1998
+  venue: "Journal of personality and social psychology, 74(6):1464"
+  found_in: [{source: caliskan2017semantics, page: "13"}]
+  why: "The original IAT, which WEAT is modelled on; read if you explain WEAT in the background section."
+  priority: medium
+  status: suggested
+  key: ""
+
+- title: "Fairness through awareness"
+  authors: ["Dwork, C.", "Hardt, M.", "Pitassi, T.", "Reingold, O.", "Zemel, R."]
+  year: 2012
+  venue: "Proceedings of the 3rd Innovations in Theoretical Computer Science Conference, pp. 214–226, ACM"
+  found_in: [{source: caliskan2017semantics, page: "13"}]
+  why: "A foundational fairness paper; the source of the 'fairness through blindness' framing in Caliskan et al."
+  priority: medium
+  status: suggested
+  key: ""
+
+- title: "Nullifying unwanted biases with adversarial training"
+  authors: ["Ravfogel, S.", "Shwartz, A.", "Goldberg, Y.", "Shwartz, A."]
+  year: 2020
+  venue: "Proceedings of the 37th International Conference on Machine Learning (ICML), PMLR, pp. 15661–15671"
+  found_in: [{source: kumar2025detecting, page: "613"}]
+  why: "Adversarial removal of protected attributes; background on model-side mitigation."
+  priority: low
+  status: suggested
+  key: ""
+  notes: "Title and authors as printed in kumar2025detecting, which has other citation errors; check them against the real paper."
+
+- title: "Need of Mitigating Bias in the Datasets using Machine Learning Algorithms"
+  authors: ["Mandhala, V. N.", "Bhattacharyya, D.", "Midhunchakkaravarthy, D."]
+  year: 2022
+  venue: "2022 International Conference on Advances in Computing, Communication and Applied Informatics (ACCAI), pp. 1–7"
+  found_in: [{source: rajawat2024investigating, page: "8"}]
+  why: "On dataset bias, which is on topic, but cited by a weak paper; check its quality before saving."
+  priority: low
+  status: suggested
+  key: ""

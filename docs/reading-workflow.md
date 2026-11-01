@@ -76,7 +76,11 @@ Set `verified: true` and `status: verified`. Then, in `ai-use.md`, fill in the "
 
 Only you set `verified: true`.
 
-### 7. Skim-reading tip
+### 7. Pick the next paper
+
+Each summary's "Follow-up" papers are collected in [`readings/follow-up.yml`](../readings/follow-up.yml), with a priority and a reason. When you save one to Zotero, set its `status: saved` and `key: <citekey>`. If you decide against one, set `status: skipped`. The check warns you if a suggested paper appears in `references.bib` and you haven't marked it saved yet.
+
+### 8. Skim-reading tip
 
 From the research methods lecture, on reading 30 papers quickly:
 

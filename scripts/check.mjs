@@ -80,6 +80,28 @@ const DECISION_FIELDS = {
   decided_on: (v) => v === null || (isString(v) && DATE_RE.test(v)),
   readings: isStringList,
 };
+const FOLLOW_UP_PRIORITY = ["high", "medium", "low"];
+const FOLLOW_UP_STATUS = ["suggested", "saved", "skipped"];
+const FOLLOW_UP_FIELDS = {
+  title: (v) => isString(v) && v.length > 0,
+  authors: isStringList,
+  year: (v) => v === null || Number.isInteger(v),
+  venue: isString,
+  found_in: (v) => Array.isArray(v) && v.length > 0 && v.every((f) => f && isString(f.source) && isString(f.page)),
+  why: (v) => isString(v) && v.length > 0,
+  priority: (v) => FOLLOW_UP_PRIORITY.includes(v),
+  status: (v) => FOLLOW_UP_STATUS.includes(v),
+  key: isString,
+};
+const FOLLOW_UP_OPTIONAL = { notes: isString };
+const FOLLOW_UP_HINTS = {
+  authors: "a list of names",
+  year: "a whole number, or empty",
+  found_in: 'a list like [{source: citekey, page: "13"}]',
+  priority: FOLLOW_UP_PRIORITY.join(" | "),
+  status: FOLLOW_UP_STATUS.join(" | "),
+};
+
 const DECISION_HINTS = {
   group: DECISION_GROUPS.join(" | "),
   status: DECISION_STATUS.join(" | "),
@@ -247,6 +269,8 @@ for (const { rel, data } of decisions.values()) {
 
 const bibKeys = new Set();
 const bibWithoutReading = [];
+const bibTitles = new Map(); // normalised title -> key
+const normTitle = (s) => String(s ?? "").toLowerCase().replace(/[^a-z0-9]/g, "");
 if (!existsSync(join(root, "references.bib"))) {
   if (readings.size) error("references.bib", "missing; export the FYP collection from Zotero (docs/reading-workflow.md)");
 } else {
@@ -255,6 +279,7 @@ if (!existsSync(join(root, "references.bib"))) {
   for (const e of bib.entries) {
     if (bibKeys.has(e.key)) error("references.bib", `duplicate key "${e.key}"`);
     bibKeys.add(e.key);
+    if (e.fields.title) bibTitles.set(normTitle(e.fields.title), e.key);
     if (!readings.has(e.key)) {
       bibWithoutReading.push(e.key);
       warn("references.bib", `"${e.key}" is in Zotero, not summarised yet`);
@@ -267,13 +292,70 @@ for (const [key, { rel }] of readings) {
 }
 
 // ---------------------------------------------------------------------
+// 4b. readings/follow-up.yml
+// ---------------------------------------------------------------------
+
+let followUps = [];
+const FOLLOW_UP_FILE = "readings/follow-up.yml";
+if (existsSync(join(root, FOLLOW_UP_FILE))) {
+  try {
+    followUps = parseYaml(read(FOLLOW_UP_FILE)) ?? [];
+    if (!Array.isArray(followUps)) {
+      error(FOLLOW_UP_FILE, "must be a list of readings");
+      followUps = [];
+    }
+  } catch (e) {
+    error(FOLLOW_UP_FILE, `not valid YAML: ${e.message.split("\n")[0]}`);
+  }
+}
+const allFollowUpFields = { ...FOLLOW_UP_FIELDS, ...FOLLOW_UP_OPTIONAL };
+for (const [i, f] of followUps.entries()) {
+  const where = `${FOLLOW_UP_FILE} (entry ${i + 1}${isString(f?.title) ? `, "${f.title.slice(0, 40)}"` : ""})`;
+  if (!f || typeof f !== "object") {
+    error(where, "must be a set of fields");
+    continue;
+  }
+  for (const k of Object.keys(f)) {
+    if (!(k in allFollowUpFields)) error(where, `unknown field "${k}" (allowed: ${Object.keys(allFollowUpFields).join(", ")})`);
+  }
+  for (const [k, ok] of Object.entries(FOLLOW_UP_FIELDS)) {
+    if (!(k in f)) error(where, `missing field "${k}"`);
+    else if (!ok(f[k])) error(where, `"${k}" is ${JSON.stringify(f[k])}, expected ${FOLLOW_UP_HINTS[k] ?? "text"}`);
+  }
+  if ("notes" in f && !isString(f.notes)) error(where, `"notes" must be text`);
+  for (const src of Array.isArray(f.found_in) ? f.found_in : []) {
+    if (!isString(src?.source)) continue;
+    const isPath = src.source.includes("/");
+    if (isPath ? !existsSync(join(root, src.source)) : !readings.has(src.source)) {
+      error(where, `found_in source "${src.source}" is not ${isPath ? "a file in the repo" : "a reading in readings/"}`);
+    }
+  }
+  if (f.status === "saved") {
+    if (!f.key) error(where, `status is saved, so "key" needs the Zotero citekey`);
+    else if (!bibKeys.has(f.key)) error(where, `key "${f.key}" is not in references.bib`);
+  } else if (f.key) {
+    error(where, `"key" is set, so status should be "saved"`);
+  }
+  if (f.status === "suggested" && isString(f.title)) {
+    const t = normTitle(f.title);
+    for (const [bt, key] of bibTitles) {
+      if (t.length >= 8 && (bt === t || bt.includes(t) || t.includes(bt))) {
+        warn(where, `looks like it's in Zotero now as "${key}"; set status: saved and key: ${key}`);
+        break;
+      }
+    }
+  }
+}
+
+// ---------------------------------------------------------------------
 // Results
 // ---------------------------------------------------------------------
 
 for (const w of warnings) console.log(`warning  ${w}`);
 for (const e of errors) console.log(`error    ${e}`);
 console.log(
-  `\n${readings.size} readings, ${decisions.size} decisions, ${bibKeys.size} bib entries, ${tags.length} tags: ` +
+  `\n${readings.size} readings, ${decisions.size} decisions, ${bibKeys.size} bib entries, ${tags.length} tags, ` +
+    `${followUps.length} follow-ups: ` +
     `${errors.length} error${errors.length === 1 ? "" : "s"}, ${warnings.length} warning${warnings.length === 1 ? "" : "s"}`,
 );
 
@@ -322,6 +404,11 @@ const status = {
   bib: {
     total: bibKeys.size,
     withoutReading: bibWithoutReading.sort(),
+  },
+  followUp: {
+    total: followUps.length,
+    byStatus: tally(count(FOLLOW_UP_STATUS), followUps, (f) => f.status),
+    suggestedByPriority: tally(count(FOLLOW_UP_PRIORITY), followUps.filter((f) => f.status === "suggested"), (f) => f.priority),
   },
 };
 

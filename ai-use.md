@@ -43,3 +43,5 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-11-01 | `readings/caliskan2017semantics.md`, `PLAN.md` | Edited: rewrote the note in Julia's requested style (analogies, examples, Mermaid diagrams, the paper's formulas); added the style rule to PLAN.md §7 | |
 | 2026-11-01 | `readings/kumar2025detecting.md` | Drafted reading summary from the published IEEE PDF (pilot 2); added the citekey to VAL-01 | |
 | 2026-11-01 | `readings/rajawat2024investigating.md` | Drafted reading summary from the published IEEE PDF (pilot 3); no decisions linked | |
+| 2026-11-01 | `readings/follow-up.yml` | Drafted, from the reference lists of the three pilot readings and the proposal form, as printed there | |
+| 2026-11-01 | `scripts/check.mjs`, `PLAN.md`, `docs/reading-workflow.md` | Edited: follow-up list validation and Zotero matching; the app's "To read next" view in the plan; the workflow step | |

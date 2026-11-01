@@ -131,5 +131,18 @@
   "bib": {
     "total": 3,
     "withoutReading": []
+  },
+  "followUp": {
+    "total": 13,
+    "byStatus": {
+      "suggested": 13,
+      "saved": 0,
+      "skipped": 0
+    },
+    "suggestedByPriority": {
+      "high": 7,
+      "medium": 4,
+      "low": 2
+    }
   }
 }

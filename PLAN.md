@@ -74,6 +74,7 @@ One place for everything in the FYP:
 ├── readings/
 │   ├── _template.md             # reading template (§3.2)
 │   ├── <citekey>.md             # one file per reading, named by its bib key
+│   ├── follow-up.yml            # recommended follow-up readings (§7)
 │   └── pdfs/                    # git-ignored; Julia drops PDFs here as <citekey>.pdf
 ├── decisions/
 │   ├── _template.md
@@ -432,7 +433,7 @@ Reader style with a pink accent. Interface text is Inter, and reading text (summ
   Ask before adding anything else.
 - **Sign-in screen:** explains how to create a fine-grained PAT (only this repo; Contents: read and write; Metadata: read), with a field to paste it. The token is stored in `localStorage` and verified with a test API call. "Sign out" clears it. The repo owner, name and branch are set in `app/src/config.ts`.
 - **Data layer** (`app/src/data/`):
-  - On load, fetch the repo tree recursively (`git/trees/{branch}?recursive=1`), then the contents of `readings/*.md`, `decisions/*.md`, `paper/notes/*.md`, `tags.yml`, `docs/*.md` and `app/public/status.json`.
+  - On load, fetch the repo tree recursively (`git/trees/{branch}?recursive=1`), then the contents of `readings/*.md`, `readings/follow-up.yml`, `decisions/*.md`, `paper/notes/*.md`, `tags.yml`, `docs/*.md` and `app/public/status.json`.
   - Cache contents and SHAs in IndexedDB, so the next load uses the cache and only refetches files whose SHA changed.
   - Parse front matter with `yaml`, and split it from the body.
   - **Save** = `PUT /repos/{owner}/{repo}/contents/{path}` with the file's last known SHA and commit message `app: update <path>`. If the SHA is stale (409/422), show a conflict banner: "This file changed on GitHub since you opened it. Reload it to see the latest version, or copy your text first." Never overwrite silently.
@@ -506,6 +507,13 @@ The layout has three panes:
   - The body becomes a Tiptap editor, set in Literata. The toolbar has bold, italic, heading levels 2–3, bullet and numbered lists, link, table and undo/redo. Show the toolbar only in edit mode.
   - Markdown must round-trip cleanly. Write tests showing that headings, lists, bold, italic, links, tables, `(p. X)` and inline code survive load → edit → save unchanged when nothing was edited.
 - **Stars and status can also be set in view mode**, without entering edit mode. That saves straight away.
+**To read next** (from `readings/follow-up.yml`)
+
+- A "To read next" view in the Readings list pane, as a tab or toggle next to the readings list. It shows suggested follow-ups grouped by priority (high, medium, low). Each item shows the title, first author and year, the venue, the "why" line, and "found in" links to the readings that recommended it.
+- Each item has two buttons. **Saved to Zotero** asks for the citekey (from a dropdown of bib keys) and sets `status: saved` and `key`. **Skip** sets `status: skipped`. Both save to `follow-up.yml`. Saved and skipped items are hidden behind a "Show done" toggle.
+- Items whose details say `NOT FOUND IN SOURCE` show a "find this paper" hint instead of a venue.
+- A reading's reader view lists the follow-ups it recommended, under its Follow-up section.
+
 - **New reading** button: asks for a citekey from `references.bib` (searchable dropdown of keys without a note yet), prefills title, authors, year, venue and DOI from the bib entry, then creates the file from `_template.md`.
 
 ### 6.4 Stage 6: Decisions (feature 13)
@@ -539,7 +547,7 @@ The layout has three panes:
 - **Decisions:** decided / exploring / open, by group, linking to the Decisions page.
 - **Coverage:** readings per report section and per tag as a small bar chart, with sections that have fewer than 3 readings highlighted as gaps.
 - **Star distribution.**
-- **To do:** bib entries without a reading note, unverified Claude summaries, and decisions still open.
+- **To do:** bib entries without a reading note, unverified Claude summaries, decisions still open, and high-priority follow-up readings not yet saved (linking to "To read next").
 - **Recently edited:** the last 5 changes, from the commits API.
 
 **Guide page** (Julia asked for the reading workflow to be visible in the app)
@@ -581,7 +589,7 @@ When Julia says "summarise `<citekey>`" or "summarise new readings":
    - Write `NOT FOUND IN SOURCE` rather than guessing.
    - **Style.** Reading notes are for Julia only, so make them memorable. Use interesting metaphors, real-world examples and use cases, colourful Mermaid diagrams wherever they help (pastel `classDef` fills from §3.3 with black text), and the paper's formulas in LaTeX math (`$$...$$`). Label anything that isn't from the paper, such as an analogy, a made-up example or toy numbers, with **Analogy:** or **Illustrative, not from the paper:**, so it never gets cited in the report. Diagrams of the paper's results must use the paper's own numbers.
    - If the bib entry has Julia's Zotero notes (exported with "Export notes"), read them first. Use them to shape question 5 ("What do I think it means?") and the suggested tags, sections and decisions, and to decide what to emphasise. Notes are Julia's views, not the paper's: never present them as what the paper says, and say in the chat report where the draft differs from them.
-4. Add the citekey to the `readings:` list of each suggested decision file.
+4. Add the citekey to the `readings:` list of each suggested decision file. Add each paper recommended under "Follow-up" to `readings/follow-up.yml`, with the details copied exactly as printed in the reference list and the page number. If it's already listed, add this reading to its `found_in` instead.
 5. Add a row to `ai-use.md`.
 6. Run `node scripts/check.mjs` and fix any errors.
 7. Commit as `readings: add <citekey> (claude draft, unverified)`.
