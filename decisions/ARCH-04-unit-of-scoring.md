@@ -4,7 +4,7 @@ title: Unit of scoring
 group: system
 status: open
 decided_on:
-readings: []
+readings: [mendu2025safer]
 ---
 
 ## Question

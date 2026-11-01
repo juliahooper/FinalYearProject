@@ -66,13 +66,14 @@ async function render(url: string) {
 describe('Readings screens', () => {
   it('lists the readings with a count', async () => {
     const c = await render('/readings')
-    expect(c.textContent).toContain('3 readings')
-    expect(c.querySelectorAll('.list-pane .list-item').length).toBe(3)
+    expect(c.textContent).toContain(`${data.readings.length} readings`)
+    expect(c.querySelectorAll('.list-pane .list-item').length).toBe(data.readings.length)
   })
 
   it('filters by tag from the URL', async () => {
     const c = await render('/readings?tags=data-curation')
-    expect(c.textContent).toContain('1 reading · 1 filter')
+    const n = data.readings.filter((r) => r.meta.tags.includes('data-curation')).length
+    expect(c.textContent).toContain(`${n} reading${n === 1 ? '' : 's'} · 1 filter`)
   })
 
   it('searches the summaries and highlights matches', async () => {

@@ -4,7 +4,7 @@ title: Medical labelled sample
 group: validation
 status: open
 decided_on:
-readings: []
+readings: [mendu2025safer]
 ---
 
 ## Question

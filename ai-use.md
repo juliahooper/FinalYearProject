@@ -63,3 +63,5 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-11-01 | `docs/using-the-app.md` | Edited: how to use the Report notes screen | |
 | 2026-11-01 | `app/src/pages/readings/ReadingView.tsx`, `docs/using-the-app.md`, `PLAN.md` | Edited: removed the unverified banner (Julia's request); verifying moved to the status menu | |
 | 2026-11-01 | `app/src/data/repo.ts`, `ai-use.md` | Edited: fixed the app not loading ai-use.md, so verifying in the app now dates it; filled in the dates for the two readings Julia verified in the app before the fix (from her commits) | |
+| 2026-11-01 | `readings/mendu2025safer.md` | Drafted reading summary from the arXiv PDF (2505.02009v3); added the citekey to DET-01, DET-02, DET-04, DET-06, ARCH-04, MET-05, VAL-02, EVAL-01, EVAL-06 | |
+| 2026-11-01 | `readings/follow-up.yml` | Edited: marked Mendu saved; added Longpre, Gehman, Luccioni, Parmar and Jansen from its reference list | |

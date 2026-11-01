@@ -4,7 +4,7 @@ title: Detector evaluation metrics
 group: metrics
 status: open
 decided_on:
-readings: []
+readings: [mendu2025safer]
 ---
 
 ## Question

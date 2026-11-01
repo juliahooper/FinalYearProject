@@ -4,7 +4,7 @@ title: Post-implementation reflection
 group: evaluation
 status: open
 decided_on:
-readings: []
+readings: [mendu2025safer]
 ---
 
 ## Question

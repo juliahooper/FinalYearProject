@@ -91,7 +91,8 @@ describe('Report notes', () => {
     ])
     expect(items[5]).not.toContain('Marks')
     expect(items[1]).toContain('Marks 10')
-    expect(items[2]).toContain('1 reading')
+    const bg = data.readings.filter((r) => r.meta.sections.includes('background')).length
+    expect(items[2]).toContain(`${bg} reading${bg === 1 ? '' : 's'}`)
   })
 
   it('the final list has the final sections', async () => {

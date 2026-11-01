@@ -4,7 +4,7 @@ title: Labelling scheme
 group: detector
 status: open
 decided_on:
-readings: []
+readings: [mendu2025safer]
 ---
 
 ## Question

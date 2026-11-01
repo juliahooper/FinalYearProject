@@ -161,7 +161,7 @@
   priority: high
   status: suggested
   key: ""
-  notes: "No source yet. Search IEEE Xplore, ACL Anthology and arXiv for data filtering ablations and downstream bias."
+  notes: "First candidate: Longpre et al. (2024), cited by mendu2025safer (see its entry below). Also search IEEE Xplore, ACL Anthology and arXiv for data filtering ablations and downstream bias."
 
 - title: "Training-data attribution methods (linking model outputs back to training examples)"
   authors: []
@@ -178,7 +178,7 @@
   authors: ["Dodge, J.", "Sap, M.", "Marasović, A.", "Agnew, W.", "Ilharco, G.", "Groeneveld, D.", "Mitchell, M.", "Gardner, M."]
   year: 2021
   venue: "Proc. 2021 Conf. Empirical Methods in Natural Language Processing (EMNLP), pp. 1286–1305, doi: 10.18653/v1/2021.emnlp-main.98"
-  found_in: [{source: "external: ISE-XAI-Group-10 journal/sources/2026-10-16-dodge-2021.md", page: "-"}]
+  found_in: [{source: "external: ISE-XAI-Group-10 journal/sources/2026-10-16-dodge-2021.md", page: "-"}, {source: mendu2025safer, page: "8"}]
   why: "Documents what C4's filters actually removed, including text by and about minority groups; the side effect EVAL-06 must check for."
   priority: high
   status: suggested
@@ -211,9 +211,9 @@
   found_in: [{source: "external: ISE-XAI-Group-10 journal/sources/2026-10-05-mendu-2025.md", page: "-"}]
   why: "Harmful-content filtering of web-scale pretraining data; a close comparison point for the tool and for EVAL-03 baselines."
   priority: medium
-  status: suggested
-  key: ""
-  notes: "The earlier review says the link and DOI (10.24963/ijcai.2025/53) were inferred and need confirming."
+  status: saved
+  key: "mendu2025safer"
+  notes: "The earlier review says the link and DOI (10.24963/ijcai.2025/53) were inferred and need confirming. Saved to Zotero as the arXiv version (2505.02009v3)."
 
 - title: "A unified approach to interpreting model predictions"
   authors: ["Lundberg, S. M.", "Lee, S.-I."]
@@ -305,3 +305,55 @@
   status: suggested
   key: ""
   notes: "The earlier review says the DOI (10.18653/v1/2025.findings-emnlp.2) is inferred and needs confirming."
+
+# --- From mendu2025safer's reference list (pp. 8–9), as printed there.
+
+- title: "A pretrainer's guide to training data: Measuring the effects of data age, domain coverage, quality, & toxicity"
+  authors: ["Longpre, S.", "Yauney, G.", "Reif, E.", "Lee, K.", "Roberts, A.", "Zoph, B.", "Zhou, D.", "Wei, J.", "Robinson, K.", "Mimno, D.", "Ippolito, D."]
+  year: 2024
+  venue: "Proceedings of the 2024 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 1: Long Papers), pp. 3245–3276"
+  found_in: [{source: mendu2025safer, page: "8"}]
+  why: "Measures how filtering pretraining data (including for toxicity) changes the trained model; the closest precedent for EVAL-01 and EVAL-03 so far, and the source of the over-filtering warning for EVAL-06."
+  priority: high
+  status: suggested
+  key: ""
+
+- title: "RealToxicityPrompts: Evaluating neural toxic degeneration in language models"
+  authors: ["Gehman, S.", "Gururangan, S.", "Sap, M.", "Choi, Y.", "Smith, N. A."]
+  year: 2020
+  venue: "Findings of the Association for Computational Linguistics: EMNLP 2020, pp. 3356–3369"
+  found_in: [{source: mendu2025safer, page: "8"}]
+  why: "The standard output-side toxicity benchmark; a candidate measure for EVAL-02, and the benchmark HAVOC is compared against."
+  priority: medium
+  status: suggested
+  key: ""
+
+- title: "What's in the box? an analysis of undesirable content in the Common Crawl corpus"
+  authors: ["Luccioni, A.", "Viviano, J."]
+  year: 2021
+  venue: "Proceedings of the 59th Annual Meeting of the ACL and the 11th IJCNLP (Volume 2: Short Papers), pp. 182–189"
+  found_in: [{source: mendu2025safer, page: "9"}]
+  why: "Background evidence of undesirable content in Common Crawl, the corpus most LLM pretraining starts from."
+  priority: medium
+  status: suggested
+  key: ""
+
+- title: "Data, data everywhere: A guide for pretraining dataset construction"
+  authors: ["Parmar, J.", "Prabhumoye, S.", "Jennings, J.", "Liu, B.", "Jhunjhunwala, A.", "Wang, Z.", "Patwary, M.", "Shoeybi, M.", "Catanzaro, B."]
+  year: 2024
+  venue: "Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing, pp. 10671–10695"
+  found_in: [{source: mendu2025safer, page: "9"}]
+  why: "How real pretraining pipelines are built; where a per-source gate would sit (ARCH-02)."
+  priority: low
+  status: suggested
+  key: ""
+
+- title: "Perplexed by quality: A perplexity-based method for adult and harmful content detection in multilingual heterogeneous web data"
+  authors: ["Jansen, T.", "Tong, Y.", "Zevallos, V.", "Ortiz Suarez, P."]
+  year: 2022
+  venue: "NOT FOUND IN SOURCE (listed without a venue)"
+  found_in: [{source: mendu2025safer, page: "8"}]
+  why: "An alternative, perplexity-based way to filter harmful web content; a possible baseline for EVAL-03."
+  priority: low
+  status: suggested
+  key: ""
