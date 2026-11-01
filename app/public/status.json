@@ -1,16 +1,16 @@
 {
   "readings": {
-    "total": 2,
+    "total": 3,
     "target": 30,
     "verified": 0,
     "byStatus": {
       "to-read": 0,
       "skimmed": 0,
-      "summarised": 2,
+      "summarised": 3,
       "verified": 0
     },
     "byStars": {
-      "0": 2,
+      "0": 3,
       "1": 0,
       "2": 0,
       "3": 0,
@@ -24,7 +24,7 @@
       "ci-cd": 0,
       "medical": 0,
       "benchmarks": 1,
-      "governance": 0,
+      "governance": 1,
       "usability": 0,
       "ethics": 0,
       "data-curation": 1
@@ -72,7 +72,8 @@
     },
     "unverifiedClaude": [
       "caliskan2017semantics",
-      "kumar2025detecting"
+      "kumar2025detecting",
+      "rajawat2024investigating"
     ]
   },
   "decisions": {
@@ -129,8 +130,6 @@
   },
   "bib": {
     "total": 3,
-    "withoutReading": [
-      "rajawatInvestigatingMethodsIdentify2024"
-    ]
+    "withoutReading": []
   }
 }

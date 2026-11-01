@@ -42,3 +42,4 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-11-01 | `readings/caliskan2017semantics.md` | Drafted reading summary from the arXiv preprint PDF (pilot 1); added the citekey to DET-01 and MET-01 | |
 | 2026-11-01 | `readings/caliskan2017semantics.md`, `PLAN.md` | Edited: rewrote the note in Julia's requested style (analogies, examples, Mermaid diagrams, the paper's formulas); added the style rule to PLAN.md §7 | |
 | 2026-11-01 | `readings/kumar2025detecting.md` | Drafted reading summary from the published IEEE PDF (pilot 2); added the citekey to VAL-01 | |
+| 2026-11-01 | `readings/rajawat2024investigating.md` | Drafted reading summary from the published IEEE PDF (pilot 3); no decisions linked | |
