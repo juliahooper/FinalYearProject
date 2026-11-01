@@ -24,7 +24,7 @@ export function newReadingText(template: string, entry: BibEntry): string {
   }
   const doc = new Document(meta)
   for (const k of ['authors', 'tags', 'sections', 'decisions'] as const) doc.set(k, doc.createNode(meta[k], { flow: true }))
-  return joinFrontMatter(doc.toString({ lineWidth: 0, flowCollectionPadding: false }), splitFrontMatter(template).body)
+  return joinFrontMatter(doc.toString({ lineWidth: 0, flowCollectionPadding: false, nullStr: '' }), splitFrontMatter(template).body)
 }
 
 export function NewReading({ onCreated, onCancel }: { onCreated: (key: string) => void; onCancel: () => void }) {

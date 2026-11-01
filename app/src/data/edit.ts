@@ -6,7 +6,7 @@ import { joinFrontMatter, splitFrontMatter } from './frontmatter'
 import type { Tag } from './types'
 
 // Never re-wrap long lines, and write lists as [a, b] like the repo's files.
-const YAML_OUT = { lineWidth: 0, minContentWidth: 0, flowCollectionPadding: false }
+const YAML_OUT = { lineWidth: 0, minContentWidth: 0, flowCollectionPadding: false, nullStr: '' }
 
 function setValue(doc: Document, path: (string | number)[], value: unknown) {
   // Lists are written in flow style, [a, b], like the rest of the repo's front matter.

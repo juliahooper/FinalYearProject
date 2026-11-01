@@ -34,7 +34,10 @@ export default function App() {
             <Route path="readings/:key" element={<Readings />} />
             <Route path="readings/:key/edit" element={<Readings />} />
             <Route path="notes/:section?" element={<Notes />} />
-            <Route path="decisions/:id?" element={<Decisions />} />
+            <Route path="decisions" element={<Decisions />} />
+            <Route path="decisions/new" element={<Decisions />} />
+            <Route path="decisions/:id" element={<Decisions />} />
+            <Route path="decisions/:id/edit" element={<Decisions />} />
             <Route path="guide" element={<Guide />} />
             <Route path="*" element={<div className="page-pad">Page not found.</div>} />
           </Route>
