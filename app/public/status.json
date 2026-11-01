@@ -1,16 +1,16 @@
 {
   "readings": {
-    "total": 1,
+    "total": 2,
     "target": 30,
     "verified": 0,
     "byStatus": {
       "to-read": 0,
       "skimmed": 0,
-      "summarised": 1,
+      "summarised": 2,
       "verified": 0
     },
     "byStars": {
-      "0": 1,
+      "0": 2,
       "1": 0,
       "2": 0,
       "3": 0,
@@ -19,11 +19,11 @@
     },
     "byTag": {
       "architecture": 0,
-      "metrics": 1,
+      "metrics": 2,
       "detector-model": 0,
       "ci-cd": 0,
       "medical": 0,
-      "benchmarks": 0,
+      "benchmarks": 1,
       "governance": 0,
       "usability": 0,
       "ethics": 0,
@@ -33,7 +33,7 @@
       "abstract": 0,
       "introduction": 1,
       "background": 1,
-      "related-work": 1,
+      "related-work": 2,
       "methodology": 0,
       "deliverable": 0,
       "analysis": 0,
@@ -66,12 +66,13 @@
       "MET-06": 0,
       "UI-01": 0,
       "UI-02": 0,
-      "VAL-01": 0,
+      "VAL-01": 1,
       "VAL-02": 0,
       "VAL-03": 0
     },
     "unverifiedClaude": [
-      "caliskan2017semantics"
+      "caliskan2017semantics",
+      "kumar2025detecting"
     ]
   },
   "decisions": {
@@ -129,7 +130,6 @@
   "bib": {
     "total": 3,
     "withoutReading": [
-      "kumar2025detecting",
       "rajawatInvestigatingMethodsIdentify2024"
     ]
   }

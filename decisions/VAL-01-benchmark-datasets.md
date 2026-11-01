@@ -4,7 +4,7 @@ title: Benchmark datasets
 group: validation
 status: open
 decided_on:
-readings: []
+readings: [kumar2025detecting]
 ---
 
 ## Question
