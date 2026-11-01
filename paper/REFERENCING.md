@@ -1,6 +1,6 @@
 # Referencing: UL Cite It Right in biblatex
 
-The FYP spec asks for the IEEE conference template **and** UL Cite It Right (Harvard) referencing. So the paper uses the IEEEtran layout but replaces IEEE numbered references with biblatex `authoryear`, adjusted towards Cite It Right in `main.tex`.
+The FYP spec asks for the IEEE conference template **and** UL Cite It Right (Harvard) referencing. So the paper uses the IEEEtran layout but replaces IEEE numbered references with biblatex `authoryear`, adjusted towards Cite It Right in `shared/preamble.tex`, which both the interim and final reports use.
 
 The model for the reference format is the reference on the signed proposal form:
 
@@ -37,5 +37,5 @@ These are places where I'm not sure biblatex matches the official UL guide, or w
 
 ## Files
 
-- The bibliography is `../references.bib`, exported automatically from Zotero (see `docs/reading-workflow.md`). Don't edit it by hand, because Zotero overwrites it.
+- The bibliography is `references.bib` in the repo root (`../../references.bib` from each report's `main.tex`), exported automatically from Zotero (see `docs/reading-workflow.md`). Don't edit it by hand, because Zotero overwrites it.
 - Citation keys are the Better BibTeX keys, which are also the reading filenames in `readings/`.

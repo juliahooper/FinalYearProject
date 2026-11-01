@@ -1,0 +1,45 @@
+% =====================================================================
+%  INTERIM REPORT (due 06/11/2026)
+%  Same structure as the final report, without the results sections
+%  (deliverable, analysis, conclusion), plus work to date and a project plan.
+%  Each section lives in its own file in sections/. Rough notes live in ../notes/.
+%  Word limit: to be confirmed with the supervisor (see ../README.md).
+% =====================================================================
+\input{../shared/preamble}
+\input{../shared/metadata}
+\addbibresource{../../references.bib}
+
+\begin{document}
+
+\title{\reporttitle\\[0.4em]{\large Interim report}}
+
+\author{
+\IEEEauthorblockN{\studentname\ (\studentid)}
+\IEEEauthorblockA{\textit{\institution}\\
+Supervisor: \supervisorname}
+}
+
+\maketitle
+
+\begin{abstract}
+\input{sections/abstract}
+\end{abstract}
+
+\begin{IEEEkeywords}
+\todo{keywords}
+\end{IEEEkeywords}
+
+\input{sections/introduction}
+\input{sections/background}
+\input{sections/related-work}
+\input{sections/methodology}
+\input{sections/work-to-date}
+\input{sections/project-plan}
+
+\printbibliography[title={References}]
+
+%TC:ignore   (the declarations are left out of the word count; confirm with the supervisor)
+\input{sections/declarations}
+%TC:endignore
+
+\end{document}

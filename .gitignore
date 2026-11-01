@@ -2,19 +2,20 @@
 readings/pdfs/*
 !readings/pdfs/README.md
 
-# LaTeX build output (the PDF is built by the Action; dated snapshots go in paper/drafts/)
-paper/*.aux
-paper/*.bbl
-paper/*.bcf
-paper/*.blg
-paper/*.fdb_latexmk
-paper/*.fls
-paper/*.log
-paper/*.out
-paper/*.run.xml
-paper/*.synctex.gz
-paper/*.toc
-paper/main.pdf
+# LaTeX build output (the PDFs are built by the Action; dated snapshots go in paper/drafts/)
+paper/*/*.aux
+paper/*/*.bbl
+paper/*/*.bcf
+paper/*/*.blg
+paper/*/*.fdb_latexmk
+paper/*/*.fls
+paper/*/*.log
+paper/*/*.out
+paper/*/*.run.xml
+paper/*/*.synctex.gz
+paper/*/*.toc
+paper/*/main.pdf
+paper/*/wordcount-body.txt
 
 # App
 node_modules/

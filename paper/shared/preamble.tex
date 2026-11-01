@@ -1,8 +1,8 @@
 % =====================================================================
-%  FYP report (IEEE two-column conference format, UL Cite It Right referencing)
-%  Each section lives in its own file in sections/. Rough notes live in notes/.
-%  Referencing set-up and its known gaps: REFERENCING.md
-%  Limit: 10,000 words maximum, including the reference list (FYP spec).
+%  Shared preamble for the interim and final reports.
+%  IEEE two-column conference format with UL Cite It Right referencing.
+%  Referencing set-up and its known gaps: ../REFERENCING.md
+%  Each report's main.tex inputs this file first, then ../shared/metadata.
 % =====================================================================
 \documentclass[conference]{IEEEtran}
 \IEEEoverridecommandlockouts
@@ -16,7 +16,7 @@
 \usepackage{xcolor}
 \usepackage{url}
 \usepackage{flafter}   % a figure/table never appears before its place in the text
-\graphicspath{{figures/}}
+\graphicspath{{../shared/figures/}}
 
 \DeclareRobustCommand{\todo}[1]{\textcolor{magenta}{[TODO: #1]}}   % robust so it also works inside captions
 
@@ -24,6 +24,7 @@
 %  Referencing: UL Cite It Right (Harvard) approximated with biblatex.
 %  In text: (Author Year), (Author Year, p. X), "et al." for 3+ authors.
 %  Online sources end with "available: URL [accessed DD Mon YYYY]".
+%  The bibliography file is added in each main.tex (../../references.bib).
 % ---------------------------------------------------------------------
 \usepackage[
   backend=biber,
@@ -35,7 +36,6 @@
   dashed=false,
   url=true, doi=true, eprint=true
 ]{biblatex}
-\addbibresource{../references.bib}
 
 % Names: "Surname, I." for every author; "and" before the last.
 \DeclareNameAlias{sortname}{family-given}
@@ -82,36 +82,3 @@
       \mkdayzeros{\thefield{urlday}}\space
       \ulmonth{\thefield{urlmonth}}\space
       \thefield{urlyear}}}}
-
-\begin{document}
-
-\title{Screening Training Data for Representational Bias Before LLM Training:\\[0.2em]
-{\Large A CI-Integrated, Self-Hostable Tool}}
-
-\author{
-\IEEEauthorblockN{Julia Hooper (24430706)}
-\IEEEauthorblockA{\textit{ISE Final Year Project, University of Limerick}\\
-Supervisor: Colin Venters}
-}
-
-\maketitle
-
-\begin{abstract}
-\input{sections/abstract}
-\end{abstract}
-
-\begin{IEEEkeywords}
-\todo{keywords}
-\end{IEEEkeywords}
-
-\input{sections/introduction}
-\input{sections/background}
-\input{sections/related-work}
-\input{sections/methodology}
-\input{sections/deliverable}
-\input{sections/analysis}
-\input{sections/conclusion}
-
-\printbibliography[title={References}]
-
-\end{document}

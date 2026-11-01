@@ -1,0 +1,46 @@
+% =====================================================================
+%  FINAL REPORT (due 07/04/2027)
+%  Each section lives in its own file in sections/. Rough notes live in ../notes/.
+%  Limit: 10,000 words maximum, including the reference list (FYP spec).
+%  These sections are separate from the interim report's: after the interim is
+%  submitted, its sections are copied here as a starting point (see ../README.md).
+% =====================================================================
+\input{../shared/preamble}
+\input{../shared/metadata}
+\addbibresource{../../references.bib}
+
+\begin{document}
+
+\title{\reporttitle}
+
+\author{
+\IEEEauthorblockN{\studentname\ (\studentid)}
+\IEEEauthorblockA{\textit{\institution}\\
+Supervisor: \supervisorname}
+}
+
+\maketitle
+
+\begin{abstract}
+\input{sections/abstract}
+\end{abstract}
+
+\begin{IEEEkeywords}
+\todo{keywords}
+\end{IEEEkeywords}
+
+\input{sections/introduction}
+\input{sections/background}
+\input{sections/related-work}
+\input{sections/methodology}
+\input{sections/deliverable}
+\input{sections/analysis}
+\input{sections/conclusion}
+
+\printbibliography[title={References}]
+
+%TC:ignore   (the declarations are left out of the word count; confirm with the supervisor)
+\input{sections/declarations}
+%TC:endignore
+
+\end{document}
