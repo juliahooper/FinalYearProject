@@ -16,6 +16,15 @@ const add = (p: string) => files.set(p, { path: p, sha: 'sha-' + p, text: readFi
 for (const f of readdirSync(join(repo, 'readings')).filter((x) => x.endsWith('.md'))) add(`readings/${f}`)
 for (const f of readdirSync(join(repo, 'decisions')).filter((x) => x.endsWith('.md'))) add(`decisions/${f}`)
 ;['tags.yml', 'readings/follow-up.yml', 'references.bib', 'ai-use.md'].forEach(add)
+// The verify test needs one unverified reading with an undated ai-use.md row, whatever the
+// repo's current state, so rajawat2024investigating is reset to that here.
+const rajawat = 'readings/rajawat2024investigating.md'
+files.get(rajawat)!.text = files.get(rajawat)!.text.replace(/^verified: true$/m, 'verified: false').replace(/^status: verified$/m, 'status: summarised')
+files.get('ai-use.md')!.text = files
+  .get('ai-use.md')!
+  .text.split('\n')
+  .map((l) => (l.includes(rajawat) ? l.replace(/\|\s*[\d-]+\s*\|\s*$/, '| |') : l))
+  .join('\n')
 const data = build(files)
 const save = vi.fn(async () => {})
 
@@ -130,8 +139,11 @@ describe('Readings screens', () => {
     expect(row.trim().endsWith(`| ${today} |`)).toBe(true)
   })
 
-  it('New reading explains when every paper already has a note', async () => {
+  it('New reading offers exactly the papers without a note', async () => {
     const c = await render('/readings/new')
-    expect(c.textContent).toContain('Every paper in references.bib already has a note')
+    const have = new Set(data.readings.map((r) => r.meta.key))
+    const without = [...(files.get('references.bib')!.text.matchAll(/^@\w+\{([^,]+),/gm))].map((m) => m[1]).filter((k) => !have.has(k))
+    if (without.length === 0) expect(c.textContent).toContain('Every paper in references.bib already has a note')
+    else expect([...c.querySelectorAll('.pick-list code')].map((e) => e.textContent).sort()).toEqual(without.sort())
   })
 })

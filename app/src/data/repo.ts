@@ -12,10 +12,14 @@ const WANTED = [
   /^paper\/notes\/[^/]+\.md$/,
   /^paper\/(interim|final)\/sections\/[^/]+\.tex$/, // for each section's "What this section needs" comment block
   /^tags\.yml$/,
+  /^ai-use\.md$/, // verifying a reading fills in its date here
   /^docs\/[^/]+\.md$/,
   /^app\/public\/status\.json$/,
   /^references\.bib$/,
 ]
+
+// Whether the app loads this repo file.
+export const isWanted = (path: string) => WANTED.some((re) => re.test(path))
 
 export interface RepoData {
   files: Map<string, RawFile>
@@ -39,7 +43,7 @@ export interface Progress {
 const isTemplate = (path: string) => /\/_[^/]*$/.test(path)
 
 export async function loadRepo(token: string, onProgress?: (p: Progress) => void): Promise<RepoData> {
-  const tree = (await fetchTree(token)).filter((f) => WANTED.some((re) => re.test(f.path)))
+  const tree = (await fetchTree(token)).filter((f) => isWanted(f.path))
   const files = new Map<string, RawFile>()
   let done = 0
   onProgress?.({ done, total: tree.length })

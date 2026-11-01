@@ -39,10 +39,10 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-10-31 | `readings/_template.md`, `PLAN.md`, `docs/reading-workflow.md`, `README.md` | Edited: note questions switched to the lecture's per-paper list; framing questions added to the README (Julia's request) | |
 | 2026-10-31 | `scripts/check.mjs`, `package.json`, `app/public/status.json` | Drafted; tested on the clean repo and on a deliberately broken copy | |
 | 2026-10-31 | `.github/workflows/check.yml` | Drafted | |
-| 2026-11-01 | `readings/caliskan2017semantics.md` | Drafted reading summary from the arXiv preprint PDF (pilot 1); added the citekey to DET-01 and MET-01 | |
-| 2026-11-01 | `readings/caliskan2017semantics.md`, `PLAN.md` | Edited: rewrote the note in Julia's requested style (analogies, examples, Mermaid diagrams, the paper's formulas); added the style rule to PLAN.md §7 | |
+| 2026-11-01 | `readings/caliskan2017semantics.md` | Drafted reading summary from the arXiv preprint PDF (pilot 1); added the citekey to DET-01 and MET-01 | 2026-11-01 |
+| 2026-11-01 | `readings/caliskan2017semantics.md`, `PLAN.md` | Edited: rewrote the note in Julia's requested style (analogies, examples, Mermaid diagrams, the paper's formulas); added the style rule to PLAN.md §7 | 2026-11-01 |
 | 2026-11-01 | `readings/kumar2025detecting.md` | Drafted reading summary from the published IEEE PDF (pilot 2); added the citekey to VAL-01 | |
-| 2026-11-01 | `readings/rajawat2024investigating.md` | Drafted reading summary from the published IEEE PDF (pilot 3); no decisions linked | |
+| 2026-11-01 | `readings/rajawat2024investigating.md` | Drafted reading summary from the published IEEE PDF (pilot 3); no decisions linked | 2026-11-01 |
 | 2026-11-01 | `readings/follow-up.yml` | Drafted, from the reference lists of the three pilot readings and the proposal form, as printed there | |
 | 2026-11-01 | `scripts/check.mjs`, `PLAN.md`, `docs/reading-workflow.md` | Edited: follow-up list validation and Zotero matching; the app's "To read next" view in the plan; the workflow step | |
 | 2026-11-01 | `paper/shared/*`, `paper/interim/*`, `paper/final/*` | Edited: split the report into interim and final documents with a shared preamble and metadata; drafted section comment blocks from the FYP spec (no report text) | |
@@ -62,3 +62,4 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-11-01 | `app/src/pages/Notes.tsx`, `app/src/pages/notes/*`, `app/src/data/sectionNeeds.ts`, `app/src/data/repo.ts`, `app/src/editor/*` | Drafted stage 7 (Report notes: interim/final switch, notes editor, What this section needs, readings panel with Cite/Copy cite/Open), plus editor fixes for level-1 headings and LaTeX citations, with tests | |
 | 2026-11-01 | `docs/using-the-app.md` | Edited: how to use the Report notes screen | |
 | 2026-11-01 | `app/src/pages/readings/ReadingView.tsx`, `docs/using-the-app.md`, `PLAN.md` | Edited: removed the unverified banner (Julia's request); verifying moved to the status menu | |
+| 2026-11-01 | `app/src/data/repo.ts`, `ai-use.md` | Edited: fixed the app not loading ai-use.md, so verifying in the app now dates it; filled in the dates for the two readings Julia verified in the app before the fix (from her commits) | |

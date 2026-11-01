@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { parse } from 'yaml'
 import { describe, expect, it } from 'vitest'
@@ -68,11 +68,13 @@ describe('references.bib', () => {
   const entries = parseBib(read('references.bib'))
 
   it('finds every entry', () => {
-    expect(entries.map((e) => e.key).sort()).toEqual(['caliskan2017semantics', 'kumar2025detecting', 'rajawat2024investigating'])
+    const src = read('references.bib')
+    expect(entries.length).toBe(src.match(/^@\w+\{/gm)?.length)
+    expect(entries.map((e) => e.key)).toEqual(expect.arrayContaining(['caliskan2017semantics', 'kumar2025detecting', 'rajawat2024investigating']))
   })
 
   it('prefills the same metadata as the existing notes', () => {
-    for (const e of entries) {
+    for (const e of entries.filter((x) => existsSync(join(repo, `readings/${x.key}.md`)))) {
       const note = splitFrontMatter<{ title: string; authors: string[]; year: number; doi: string }>(read(`readings/${e.key}.md`)).data!
       const f = readingFieldsFromBib(e)
       expect(f.authors).toEqual(note.authors)
