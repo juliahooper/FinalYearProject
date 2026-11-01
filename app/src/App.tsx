@@ -33,7 +33,9 @@ export default function App() {
             <Route path="readings/new" element={<Readings />} />
             <Route path="readings/:key" element={<Readings />} />
             <Route path="readings/:key/edit" element={<Readings />} />
-            <Route path="notes/:section?" element={<Notes />} />
+            <Route path="notes" element={<Notes />} />
+            <Route path="notes/:report" element={<Notes />} />
+            <Route path="notes/:report/:section" element={<Notes />} />
             <Route path="decisions" element={<Decisions />} />
             <Route path="decisions/new" element={<Decisions />} />
             <Route path="decisions/:id" element={<Decisions />} />

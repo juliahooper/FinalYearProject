@@ -10,6 +10,7 @@ const WANTED = [
   /^readings\/follow-up\.yml$/,
   /^decisions\/[^/]+\.md$/,
   /^paper\/notes\/[^/]+\.md$/,
+  /^paper\/(interim|final)\/sections\/[^/]+\.tex$/, // for each section's "What this section needs" comment block
   /^tags\.yml$/,
   /^docs\/[^/]+\.md$/,
   /^app\/public\/status\.json$/,

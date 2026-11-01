@@ -995,6 +995,74 @@ mark {
   flex-wrap: wrap;
 }
 
+/* Report notes */
+.notes-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 24px;
+  align-items: start;
+}
+.notes-layout.panel-closed {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+.notes-main .reading {
+  max-width: none;
+}
+.needs {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 8px 14px;
+  margin: 8px 0 14px;
+  background: var(--side);
+}
+.needs summary {
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--acc-text);
+}
+.needs-source {
+  font-size: 12px;
+  margin: 8px 0 0;
+}
+.needs-body {
+  font: 13px/1.5 var(--font-ui);
+}
+.needs-body p,
+.needs-body li {
+  margin: 0 0 6px;
+}
+.cite-panel {
+  position: sticky;
+  top: 0;
+  border-left: 1px solid var(--line);
+  padding-left: 16px;
+}
+.panel-closed .cite-panel {
+  border-left: 0;
+  padding-left: 0;
+}
+.panel-toggle {
+  padding-left: 0;
+}
+.cite-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.cite-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+.cite-title {
+  font-weight: 500;
+}
+.cite-actions {
+  display: flex;
+  gap: 4px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+
 .back-link {
   display: none;
   margin-right: auto;
@@ -1009,5 +1077,15 @@ mark {
   .reading-title-row,
   .editor-head {
     flex-direction: column;
+  }
+  .notes-layout,
+  .notes-layout.panel-closed {
+    grid-template-columns: 1fr;
+  }
+  .cite-panel {
+    position: static;
+    border-left: 0;
+    padding-left: 0;
+    border-top: 1px solid var(--line);
   }
 }
