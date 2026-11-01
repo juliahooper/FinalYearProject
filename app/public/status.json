@@ -2,12 +2,12 @@
   "readings": {
     "total": 3,
     "target": 30,
-    "verified": 0,
+    "verified": 2,
     "byStatus": {
       "to-read": 0,
       "skimmed": 0,
-      "summarised": 3,
-      "verified": 0
+      "summarised": 1,
+      "verified": 2
     },
     "byStars": {
       "0": 3,
@@ -81,9 +81,7 @@
       "VAL-03": 0
     },
     "unverifiedClaude": [
-      "caliskan2017semantics",
-      "kumar2025detecting",
-      "rajawat2024investigating"
+      "kumar2025detecting"
     ]
   },
   "decisions": {
