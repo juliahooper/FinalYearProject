@@ -25,12 +25,12 @@ const root = rootArg >= 0 ? resolve(args[rootArg + 1]) : resolve(dirname(fileURL
 const READING_STATUS = ["to-read", "skimmed", "summarised", "verified"];
 const SUMMARISED_BY = ["claude", "julia"];
 const DECISION_STATUS = ["open", "exploring", "decided"];
-const DECISION_GROUPS = ["system", "detector", "metrics", "ci-cd", "reporting", "validation", "governance"];
+const DECISION_GROUPS = ["system", "detector", "metrics", "ci-cd", "reporting", "validation", "evaluation", "governance"];
 // Report section IDs (PLAN.md §3.5). work-to-date and project-plan are interim only;
-// deliverable, analysis and conclusion are final only.
+// deliverable, evaluation, analysis and conclusion are final only.
 const SECTIONS = [
   "abstract", "introduction", "background", "related-work", "methodology",
-  "work-to-date", "project-plan", "deliverable", "analysis", "conclusion",
+  "work-to-date", "project-plan", "deliverable", "evaluation", "analysis", "conclusion",
 ];
 const TAG_FIELDS = ["id", "label", "group", "bg"];
 const TAG_FG = "#1F1B1E";
@@ -330,6 +330,8 @@ for (const [i, f] of followUps.entries()) {
   if ("notes" in f && !isString(f.notes)) error(where, `"notes" must be text`);
   for (const src of Array.isArray(f.found_in) ? f.found_in : []) {
     if (!isString(src?.source)) continue;
+    // "external: ..." points outside this repo (e.g. a source review in an earlier project); not checked.
+    if (src.source.startsWith("external:")) continue;
     const isPath = src.source.includes("/");
     if (isPath ? !existsSync(join(root, src.source)) : !readings.has(src.source)) {
       error(where, `found_in source "${src.source}" is not ${isPath ? "a file in the repo" : "a reading in readings/"}`);

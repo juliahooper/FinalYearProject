@@ -4,6 +4,7 @@
 #
 # Palette for tags added later (the app takes the next unused one and cycles):
 #   "#F3E5FC", "#E3F4F8", "#FDEBD5", "#E8EEFC", "#FCE7E2", "#E5F5E0"
+#   (#F3E5FC is now used by impact-evaluation, so the next new tag gets #E3F4F8.)
 
 - id: architecture
   label: Architecture
@@ -45,3 +46,7 @@
   label: Data curation
   group: project area
   bg: "#EAF0DC"
+- id: impact-evaluation
+  label: Impact evaluation
+  group: project area
+  bg: "#F3E5FC"
