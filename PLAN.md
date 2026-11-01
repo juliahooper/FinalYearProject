@@ -579,6 +579,7 @@ When Julia says "summarise `<citekey>`" or "summarise new readings":
    - Answer the five questions **about the paper**, in plain language, in your own words. Use at most one direct quote per reading, under 15 words, with a page number.
    - Under "Key numbers", give every figure with its page number. If you can't find a page number, write `(p. ?)`.
    - Write `NOT FOUND IN SOURCE` rather than guessing.
+   - If the bib entry has Julia's Zotero notes (exported with "Export notes"), read them first. Use them to shape question 5 ("What do I think it means?") and the suggested tags, sections and decisions, and to decide what to emphasise. Notes are Julia's views, not the paper's: never present them as what the paper says, and say in the chat report where the draft differs from them.
 4. Add the citekey to the `readings:` list of each suggested decision file.
 5. Add a row to `ai-use.md`.
 6. Run `node scripts/check.mjs` and fix any errors.
