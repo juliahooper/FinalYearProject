@@ -1,0 +1,133 @@
+// @vitest-environment jsdom
+// Smoke test: render the Readings screens with the repo's real files (no GitHub calls).
+import { readFileSync, readdirSync } from 'node:fs'
+import { join } from 'node:path'
+import { act } from 'react'
+import { createRoot } from 'react-dom/client'
+import { MemoryRouter, Route, Routes } from 'react-router-dom'
+import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest'
+import { build } from '../data/repo'
+import type { RawFile } from '../data/types'
+import { Readings } from './Readings'
+
+const repo = join(__dirname, '../../..')
+const files = new Map<string, RawFile>()
+const add = (p: string) => files.set(p, { path: p, sha: 'sha-' + p, text: readFileSync(join(repo, p), 'utf8') })
+for (const f of readdirSync(join(repo, 'readings')).filter((x) => x.endsWith('.md'))) add(`readings/${f}`)
+for (const f of readdirSync(join(repo, 'decisions')).filter((x) => x.endsWith('.md'))) add(`decisions/${f}`)
+;['tags.yml', 'readings/follow-up.yml', 'references.bib', 'ai-use.md'].forEach(add)
+const data = build(files)
+const save = vi.fn(async () => {})
+
+vi.mock('../data/RepoContext', () => ({
+  useRepo: () => ({ data, loading: false, progress: null, error: null, reload: async () => {}, save }),
+}))
+vi.mock('mermaid', () => ({ default: { initialize: () => {}, render: async () => ({ svg: '<svg data-test="diagram"></svg>' }) } }))
+vi.mock('../data/cache', () => ({ getDraft: async () => undefined, setDraft: async () => {}, clearDraft: async () => {} }))
+
+beforeAll(() => {
+  // jsdom lacks matchMedia, which the theme detection uses.
+  window.matchMedia = ((q: string) => ({ matches: false, media: q, addEventListener() {}, removeEventListener() {} })) as never
+})
+
+let container: HTMLDivElement
+afterEach(() => container?.remove())
+
+async function render(url: string) {
+  container = document.createElement('div')
+  document.body.append(container)
+  const root = createRoot(container)
+  await act(async () => {
+    root.render(
+      <MemoryRouter initialEntries={[url]}>
+        <Routes>
+          <Route path="readings" element={<Readings />} />
+          <Route path="readings/new" element={<Readings />} />
+          <Route path="readings/:key" element={<Readings />} />
+          <Route path="readings/:key/edit" element={<Readings />} />
+        </Routes>
+      </MemoryRouter>,
+    )
+  })
+  // Let lazy imports, effects and diagram rendering settle.
+  for (let i = 0; i < 20; i++) await act(async () => new Promise((r) => setTimeout(r, 25)))
+  return container
+}
+
+describe('Readings screens', () => {
+  it('lists the readings with a count', async () => {
+    const c = await render('/readings')
+    expect(c.textContent).toContain('3 readings')
+    expect(c.querySelectorAll('.list-pane .list-item').length).toBe(3)
+  })
+
+  it('filters by tag from the URL', async () => {
+    const c = await render('/readings?tags=data-curation')
+    expect(c.textContent).toContain('1 reading · 1 filter')
+  })
+
+  it('searches the summaries and highlights matches', async () => {
+    const c = await render('/readings?q=GloVe')
+    expect(c.textContent).toContain('1 reading')
+    expect(c.querySelector('.list-pane mark, .list-pane .item-title')).toBeTruthy()
+  })
+
+  it('shows a reading with maths, diagrams, chips and the unverified banner', async () => {
+    const c = await render('/readings/caliskan2017semantics')
+    expect(c.querySelector('.reading-title')?.textContent).toContain('Semantics Derived Automatically')
+    expect(c.textContent).toContain('Unverified: drafted by Claude.')
+    expect(c.querySelectorAll('.markdown h2').length).toBeGreaterThan(5)
+    expect(c.querySelectorAll('.katex').length).toBeGreaterThan(5)
+    expect(c.querySelector('[data-test="diagram"]')).toBeTruthy()
+    expect(c.querySelector('a.chip[href="/decisions/DET-01"]')).toBeTruthy()
+    expect(c.textContent).toContain('Follow-up readings recommended here')
+  })
+
+  it('opens the editor with metadata controls and the toolbar', async () => {
+    const c = await render('/readings/kumar2025detecting/edit')
+    expect(c.querySelector('.toolbar')).toBeTruthy()
+    expect(c.querySelector('.ProseMirror')?.textContent).toContain('Knowledge Graph-Augmented Training')
+    expect(c.querySelector('#found-via')).toBeTruthy()
+    expect(c.textContent).toContain('Save')
+  })
+
+  it('shows To read next grouped by priority', async () => {
+    const c = await render('/readings?view=next')
+    expect(c.textContent).toContain('High priority')
+    expect(c.textContent).toContain('Bias in bios')
+    expect(c.textContent).toContain('Find this paper')
+  })
+
+  it('clicking a star saves just that change', async () => {
+    save.mockClear()
+    const c = await render('/readings/caliskan2017semantics')
+    const star4 = c.querySelector<HTMLButtonElement>('.reading-controls button[aria-label="4 stars"]')!
+    await act(async () => star4.click())
+    expect(save).toHaveBeenCalledTimes(1)
+    const [path, text] = save.mock.calls[0] as unknown as [string, string]
+    expect(path).toBe('readings/caliskan2017semantics.md')
+    const before = files.get(path)!.text.split('\n')
+    const changed = text.split('\n').filter((l, i) => l !== before[i])
+    expect(changed).toEqual(['stars: 4'])
+  })
+
+  it('Mark as verified saves the reading and dates ai-use.md', async () => {
+    save.mockClear()
+    const c = await render('/readings/rajawat2024investigating')
+    const button = [...c.querySelectorAll('button')].find((b) => b.textContent === 'Mark as verified')!
+    await act(async () => button.click())
+    for (let i = 0; i < 5; i++) await act(async () => new Promise((r) => setTimeout(r, 10)))
+    const calls = save.mock.calls as unknown as [string, string][]
+    expect(calls.map((x) => x[0])).toEqual(['readings/rajawat2024investigating.md', 'ai-use.md'])
+    expect(calls[0][1]).toMatch(/^verified: true$/m)
+    expect(calls[0][1]).toMatch(/^status: verified$/m)
+    const today = new Date().toISOString().slice(0, 10)
+    const row = calls[1][1].split('\n').find((l) => l.includes('readings/rajawat2024investigating.md'))!
+    expect(row.trim().endsWith(`| ${today} |`)).toBe(true)
+  })
+
+  it('New reading explains when every paper already has a note', async () => {
+    const c = await render('/readings/new')
+    expect(c.textContent).toContain('Every paper in references.bib already has a note')
+  })
+})

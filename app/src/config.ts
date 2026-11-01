@@ -12,6 +12,9 @@ export const DEADLINES = [
 
 export const READINGS_TARGET = 30
 
+// Pastels for tags added in the app, in order (PLAN.md §3.3). All pass WCAG AA with black text.
+export const TAG_PALETTE = ['#F3E5FC', '#E3F4F8', '#FDEBD5', '#E8EEFC', '#FCE7E2', '#E5F5E0']
+
 export type Report = 'interim' | 'final'
 
 // Report sections, in report order (PLAN.md §3.5). marks is null for interim-only sections.

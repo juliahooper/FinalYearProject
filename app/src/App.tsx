@@ -29,7 +29,10 @@ export default function App() {
         <Routes>
           <Route element={<Shell onSignOut={() => signOut()} />}>
             <Route index element={<Dashboard />} />
-            <Route path="readings/:key?" element={<Readings />} />
+            <Route path="readings" element={<Readings />} />
+            <Route path="readings/new" element={<Readings />} />
+            <Route path="readings/:key" element={<Readings />} />
+            <Route path="readings/:key/edit" element={<Readings />} />
             <Route path="notes/:section?" element={<Notes />} />
             <Route path="decisions/:id?" element={<Decisions />} />
             <Route path="guide" element={<Guide />} />
