@@ -70,5 +70,5 @@ From the proposal form, with the interim date corrected to the current deadline.
 
 ## Links
 
-- App: not deployed yet (stage 4).
+- App: https://app-five-phi-36.vercel.app (sign in with your GitHub token; see [docs/using-the-app.md](docs/using-the-app.md))
 - Latest paper PDFs: built by the **Build paper** action (Actions tab → latest run → Artifacts → `interim-pdf` and `final-pdf`), with word counts on the run's Summary page. Dated snapshots go in [`paper/drafts/`](paper/drafts/).
