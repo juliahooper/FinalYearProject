@@ -79,4 +79,13 @@ Click **New reading**, pick a paper from `references.bib` that doesn't have a no
 
 The **To read next** tab lists the follow-up papers from `readings/follow-up.yml`, grouped by priority, with why each one is worth reading and where it was recommended. When you've saved one to Zotero, click **Saved to Zotero** and pick its citekey. If you decide against one, click **Skip**. **Show done** brings back the saved and skipped ones.
 
-The decisions and report notes screens arrive in stages 6 and 7. This page will grow with them.
+## Decisions
+
+- The list shows every decision grouped by area (System design, Detector, Metrics, CI/CD, Reporting, Validation, Impact evaluation, Governance), with how many in each group are decided. The bar at the top shows progress across all of them.
+- Click a decision to open it. The reader shows its whole group as collapsible sections, with the one you picked open: its question, options, decision, why and consequences, then the readings behind it. Click the open heading again to collapse it.
+- **Status** saves straight away. Choosing **Decided** fills in `decided_on` with today's date; moving a decision back to Open or Exploring clears it.
+- **Edit** opens the title, status and the five sections in the rich text editor. Save with the button or Ctrl+S, as with readings. Changing the title doesn't rename the file, so links keep working.
+- **Readings panel:** lists every reading that informs the decision, with stars and the start of its TL;DR. **Link a reading** adds the decision to the reading's `decisions:` and the reading to the decision's `readings:`, as two commits. **Unlink** removes both.
+- **New decision:** pick a group and the next free ID is assigned (for example MET-07), then give it a title and, optionally, its question.
+
+The report notes screen arrives in stage 7. This page will grow with it.

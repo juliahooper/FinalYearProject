@@ -57,3 +57,5 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-11-01 | `docs/using-the-app.md` | Drafted: sign-in, running locally, Vercel deployment | |
 | 2026-11-01 | `app/src/editor/*`, `app/src/render/*`, `app/src/data/{edit,bib,readingText,useSave}.ts`, `app/src/components/*`, `app/src/pages/Readings.tsx`, `app/src/pages/readings/*` | Drafted stage 5 (readings: search, filters, reader, rich text editing, To read next, New reading) with unit, round-trip and smoke tests | |
 | 2026-11-01 | `docs/using-the-app.md`, `PLAN.md` | Edited: how to use the Readings screens; packages list | |
+| 2026-11-01 | `app/src/editor/useDocEditor.ts`, `app/src/components/DocEditorFrame.tsx`, `app/src/data/decisions.ts`, `app/src/pages/Decisions.tsx`, `app/src/pages/decisions/*`, `app/src/pages/readings/ReadingEditor.tsx` | Drafted stage 6 (Decisions: grouped list, progress, accordion, status, editing, readings panel with link/unlink, new decision) and refactored the shared editor logic, with tests | |
+| 2026-11-01 | `docs/using-the-app.md` | Edited: how to use the Decisions screens | |
