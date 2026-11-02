@@ -32,6 +32,7 @@ const cases: Record<string, string> = {
   'label then list, no blank line': '**Real-world use cases (p. 11):**\n- one\n- two',
   link: 'See [the paper](https://doi.org/10.1126/science.aal4230).',
   table: '| Parameter | Value |\n| --- | --- |\n| Input | 1 |\n| Output | 2 |\n',
+  'compact table': '| Use | Who |\n|---|---|\n| Remove | People |\n| Sort | Others |',
   'page reference': 'The effect size is 1.50 (p. 3), and 0.90 (pp. 6–7).',
   'inline code': 'Run `node scripts/check.mjs` first.',
   'square-bracket citations': 'Reducing bias in diagnostic suggestions [13] and a broken "[?]" citation.',

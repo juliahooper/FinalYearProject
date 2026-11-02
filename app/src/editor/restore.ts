@@ -5,6 +5,16 @@
 
 // What a line means, ignoring markdown escapes, HTML entities and trailing spaces.
 function meaning(line: string): string {
+  // Table rows: compare cell by cell, ignoring padding; any separator row (|---|, | :--- |) is the same.
+  if (/^\s*\|/.test(line)) {
+    const cells = line
+      .trim()
+      .replace(/^\||\|$/g, '')
+      .split(/(?<!\\)\|/)
+      .map((c) => c.trim())
+    if (cells.every((c) => /^:?-+:?$/.test(c))) return `|sep:${cells.length}|`
+    line = '|' + cells.join('|') + '|'
+  }
   return line
     .replace(/\\([\\`*_{}[\]()#+\-.!|<>~])/g, '$1')
     .replace(/&lt;/g, '<')
@@ -26,6 +36,7 @@ function tidy(line: string): string {
     .replace(/\\\\(?=[A-Za-z])/g, '\\')
     .replace(/(?<!~)\\~(?!~)/g, '~') // a single ~ (e.g. LaTeX p.~4) isn't strikethrough
     .replace(/\\\[([^\]\\]*)\\\](?![([:])/g, '[$1]')
+    .trimEnd() // the editor writes hard line breaks as "\", so trailing spaces carry no meaning
 }
 
 interface Line {

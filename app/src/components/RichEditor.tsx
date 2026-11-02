@@ -1,13 +1,24 @@
 import type { Editor } from '@tiptap/core'
 import { EditorContent, useEditor, useEditorState } from '@tiptap/react'
+import { useRef, useState } from 'react'
+import { authorLine, shortTitle } from '../data/readingText'
+import { useRepo } from '../data/RepoContext'
 import { editorExtensions } from '../editor/extensions'
 import { toEditor } from '../editor/markdown'
+import type { MentionItem, MentionMenu } from '../editor/mentions'
 
 // The rich text editor (PLAN.md §6.3): markdown in, Tiptap document out. The caller turns the
 // document back into markdown with fromEditor(editor, original) when saving.
+// Typing @ offers readings to mention.
 export function RichEditor({ markdown, onReady, onChange }: { markdown: string; onReady: (e: Editor) => void; onChange: () => void }) {
+  const { data } = useRepo()
+  const [menu, setMenu] = useState<MentionMenu | null>(null)
+  // The extension reads the latest readings through this ref, so it never needs rebuilding.
+  const items = useRef<MentionItem[]>([])
+  items.current = (data?.readings ?? []).map((r) => ({ key: r.meta.key, label: `${shortTitle(r.meta.title)} · ${authorLine(r.meta)} ${r.meta.year ?? ''}` }))
+
   const editor = useEditor({
-    extensions: editorExtensions(),
+    extensions: editorExtensions({ items: () => items.current, onMenu: setMenu }),
     content: toEditor(markdown),
     editorProps: { attributes: { class: 'markdown reading-text editor-body', 'aria-label': 'Note text' } },
     onCreate: ({ editor }) => onReady(editor),
@@ -18,6 +29,25 @@ export function RichEditor({ markdown, onReady, onChange }: { markdown: string; 
     <div className="editor">
       <Toolbar editor={editor} />
       <EditorContent editor={editor} />
+      {menu && (
+        <ul className="mention-menu" role="listbox" aria-label="Mention a reading" style={{ left: menu.left, top: menu.top + 4 }}>
+          {menu.items.map((item, i) => (
+            <li
+              key={item.key}
+              role="option"
+              aria-selected={i === menu.index}
+              className={i === menu.index ? 'active' : ''}
+              onMouseDown={(e) => {
+                e.preventDefault()
+                menu.choose(item)
+              }}
+            >
+              <code>@{item.key}</code>
+              <span className="muted">{item.label}</span>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   )
 }

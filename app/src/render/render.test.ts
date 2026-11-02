@@ -22,6 +22,18 @@ describe('view-mode rendering', () => {
     expect(html).not.toContain('href="javascript:')
   })
 
+  it('turns @mentions of real readings into links, and nothing else', () => {
+    const mentions = new Map([['caliskan2017semantics', 'Semantics Derived Automatically']])
+    const html = renderMarkdown(
+      'See @caliskan2017semantics, not @nobody2020x or me@caliskan2017semantics.com. `@caliskan2017semantics` in code, [@caliskan2017semantics](https://x.org) as a link.',
+      mentions,
+    )
+    expect(html.match(/class="mention"/g)?.length).toBe(1)
+    expect(html).toContain('<a href="/readings/caliskan2017semantics" class="mention" title="Semantics Derived Automatically" data-internal="">@caliskan2017semantics</a>,')
+    expect(html).toContain('@nobody2020x')
+    expect(html).toContain('me@caliskan2017semantics.com')
+  })
+
   it('opens external links in a new tab', () => {
     expect(renderMarkdown('[doi](https://doi.org/10.1/x)')).toContain('target="_blank"')
   })

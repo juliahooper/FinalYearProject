@@ -42,8 +42,51 @@ md.renderer.rules.link_open = (tokens, idx, options, _env, self) => {
   return self.renderToken(tokens, idx, options)
 }
 
-export function renderMarkdown(source: string): string {
-  return md.render(toEditorMarkdown(source))
+// @mentions: "@caliskan2017semantics" becomes a link to that reading. Only keys of real readings
+// are linked; an @ straight after a letter or digit (an email address) is left alone.
+export const MENTION = /(^|[^\w@.])@([A-Za-z][A-Za-z0-9_-]*[A-Za-z0-9])/g
+
+md.core.ruler.push('mentions', (state) => {
+  const mentions = (state.env as { mentions?: Map<string, string> }).mentions
+  if (!mentions?.size) return
+  for (const block of state.tokens) {
+    if (block.type !== 'inline' || !block.children) continue
+    const out: typeof block.children = []
+    let inLink = 0
+    for (const tok of block.children) {
+      if (tok.type === 'link_open') inLink++
+      if (tok.type === 'link_close') inLink--
+      if (tok.type !== 'text' || inLink > 0 || !tok.content.includes('@')) {
+        out.push(tok)
+        continue
+      }
+      let last = 0
+      for (const m of tok.content.matchAll(MENTION)) {
+        const key = m[2]
+        const title = mentions.get(key)
+        if (!title) continue
+        const at = m.index! + m[1].length
+        if (at > last) out.push(Object.assign(new state.Token('text', '', 0), { content: tok.content.slice(last, at) }))
+        const open = new state.Token('link_open', 'a', 1)
+        open.attrs = [
+          ['href', `/readings/${key}`],
+          ['class', 'mention'],
+          ['title', title],
+          ['data-internal', ''],
+        ]
+        out.push(open, Object.assign(new state.Token('text', '', 0), { content: `@${key}` }), new state.Token('link_close', 'a', -1))
+        last = at + 1 + key.length
+      }
+      if (last === 0) out.push(tok)
+      else if (last < tok.content.length) out.push(Object.assign(new state.Token('text', '', 0), { content: tok.content.slice(last) }))
+    }
+    block.children = out
+  }
+})
+
+// mentions: reading key -> title, for linking @mentions.
+export function renderMarkdown(source: string, mentions?: Map<string, string>): string {
+  return md.render(toEditorMarkdown(source), { mentions })
 }
 
 let mermaidReady: Promise<typeof import('mermaid').default> | null = null
