@@ -7,7 +7,7 @@ venue: "arXiv preprint arXiv:2505.02009 (accepted at IJCAI 2025)"
 doi: "10.48550/arXiv.2505.02009"
 url: "http://arxiv.org/abs/2505.02009"
 stars: 0
-status: summarised
+status: to-read
 tags: [data-curation, detector-model, benchmarks, impact-evaluation]
 sections: [background, related-work, methodology]
 decisions: [DET-01, DET-02, DET-04, DET-06, ARCH-04, MET-05, VAL-02, EVAL-01, EVAL-06]

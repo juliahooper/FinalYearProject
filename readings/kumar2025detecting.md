@@ -7,7 +7,7 @@ venue: "2025 International Conference on Artificial Intelligence and Data Engine
 doi: "10.1109/AIDE64228.2025.10987418"
 url: "https://ieeexplore.ieee.org/document/10987418"
 stars: 0
-status: summarised
+status: to-read
 tags: [metrics, benchmarks]
 sections: [related-work]
 decisions: [VAL-01]

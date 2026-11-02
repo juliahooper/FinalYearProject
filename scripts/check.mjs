@@ -22,7 +22,7 @@ const root = rootArg >= 0 ? resolve(args[rootArg + 1]) : resolve(dirname(fileURL
 // Schema (PLAN.md §3.2–§3.5)
 // ---------------------------------------------------------------------
 
-const READING_STATUS = ["to-read", "skimmed", "summarised", "verified"];
+const READING_STATUS = ["to-read", "in-progress", "done"];
 const SUMMARISED_BY = ["claude", "julia"];
 const DECISION_STATUS = ["open", "exploring", "decided"];
 const DECISION_GROUPS = ["system", "detector", "metrics", "ci-cd", "reporting", "validation", "evaluation", "governance"];
@@ -248,8 +248,8 @@ for (const f of mdFiles("readings")) {
   const key = basename(f, ".md");
   if (r.key !== key) error(rel, `"key" is ${JSON.stringify(r.key)} but the filename says "${key}"; they must match`);
   if (r.year === null) warn(rel, `"year" is empty`);
-  if (r.verified === true && r.status !== "verified") error(rel, `verified is true, so status must be "verified"`);
-  if (r.status === "verified" && r.verified !== true) error(rel, `status is "verified" but verified is not true`);
+  if (r.verified === true && r.status !== "done") error(rel, `verified is true, so status must be "done"`);
+  if (r.status === "done" && r.verified !== true) error(rel, `status is "done" but verified is not true`);
   for (const t of isStringList(r.tags) ? r.tags : []) {
     if (!tagIds.has(t)) error(rel, `tag "${t}" is not in tags.yml (tags: ${[...tagIds].join(", ")})`);
   }

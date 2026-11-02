@@ -7,7 +7,7 @@ venue: "Proceedings of the Conference on Fairness, Accountability, and Transpare
 doi: "10.1145/3287560.3287572"
 url: "http://arxiv.org/abs/1901.09451"
 stars: 0
-status: summarised
+status: to-read
 tags: [benchmarks, metrics, data-curation, impact-evaluation]
 sections: [background, related-work, methodology, evaluation]
 decisions: [DET-01, MET-01, MET-05, VAL-01, EVAL-02, EVAL-04, UI-02]
@@ -17,7 +17,7 @@ added: 2026-11-02
 found_via: "Cited in kumar2025detecting (p. 613), via readings/follow-up.yml"
 ---
 
-> **Source note:** drafted from the arXiv preprint (arXiv:1901.09451v1, 27 Jan 2019, 12 pages), which says it was accepted at ACM FAT* 2019. Its printed page numbers run 2–12 and match the PDF pages (page 1 has no number), so page numbers below are **arXiv pages 1–12**. The published version is pp. 120–128 and will paginate differently, so check against it before citing.
+> **Source note:** drafted from the arXiv preprint (arXiv:1901.09451v1, 27 Jan 2019, 12 pages), which says it was accepted at ACM FAT\* 2019. Its printed page numbers run 2–12 and match the PDF pages (page 1 has no number), so page numbers below are **arXiv pages 1–12**. The published version is pp. 120–128 and will paginate differently, so check against it before citing.
 
 ## TL;DR
 The authors built **Bias in Bios**: 397,340 English online biographies from Common Crawl, each labelled with one of 28 occupations and a (binary, pronoun-inferred) gender. Occupation classifiers trained on it were more accurate for the majority gender in each job, and the size of that gap tracked how gender-imbalanced the job already was, so using the classifier for recruiting would **make the imbalance worse**. Deleting names and pronouns ("scrubbing") shrank the gaps but didn't remove them, because other words ("women", "husband", "mother") act as proxies for gender. For this project it's a ready-made benchmark for the downstream evaluation, and strong evidence that **removing obvious identity markers is not the same as removing bias**.
@@ -216,7 +216,7 @@ All page numbers are **arXiv pages** of 1901.09451v1.
 Quote (p. 1): scrubbing "is like introducing a curtain—the sounds made by the candidates' shoes remain."
 
 ## Concerns
-- **arXiv preprint, not the FAT* published version.** Page numbers and wording may differ from pp. 120–128.
+- **arXiv preprint, not the FAT\* published version.** Page numbers and wording may differ from pp. 120–128.
 - **Binary gender inferred from pronouns** (p. 1). The authors flag this themselves; it excludes non-binary people and misgenders anyone whose bio doesn't match.
 - **Gender only.** No race, age or other groups (p. 8), so on its own it can't cover MET-01.
 - **Not representative.** People with online bios differ from the workforce, and the dataset isn't all bios online (p. 3). Bios may not be self-written (p. 2), so "how women present themselves" is uncertain.

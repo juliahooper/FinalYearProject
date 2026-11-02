@@ -146,7 +146,7 @@ venue: ""
 doi: ""
 url: ""
 stars: 0                      # 0 = not rated, 1–5 = usefulness to this project
-status: to-read               # to-read | skimmed | summarised | verified
+status: to-read               # to-read | in-progress | done
 tags: []                      # must exist in tags.yml
 sections: []                  # report sections this feeds (§3.5)
 decisions: []                 # decision IDs this informs, e.g. [MET-02, VAL-01]
@@ -442,7 +442,7 @@ Reader style with a pink accent. Interface text is Inter, and reading text (summ
 - Base size 14px for the interface and 15px/1.6 for reading text. Keep reading lines around 65–70 characters wide.
 - Radius 8–10px. Use hairline borders, not shadows. Pink appears only on the primary button, selected markers, progress bars, question labels and links. Use `--acc` for pink fills and `--acc-text` whenever pink is used as text.
 - Stars are ★ glyphs, filled in pastel yellow (`--star`) and unfilled in `--star-off`. Give filled stars a 1px `--line`-coloured outline (via `-webkit-text-stroke` or an SVG star) so pastel yellow still reads on white.
-- Status is shown as a small pill: to-read (grey), skimmed (amber), summarised (lavender), verified (green, with a tick).
+- Status is shown as a small pill and, in the readings list, a heart: to-read (light pink), in-progress (light yellow), done (light green, with a tick on the pill). Choosing done marks the reading as verified.
 - Sentence case everywhere. No emoji.
 
 ---
@@ -577,7 +577,7 @@ The layout has three panes:
 **Dashboard** (built from `status.json`, recomputed in the browser when the live data is newer)
 
 - **Countdown** to the next deadline. It shows the interim report (06/11/2026) up to and including 06/11/2026 ("due today" on the day), then switches to the final report and video (07/04/2027). The README status block (§4) follows the same rule.
-- **Sources:** a progress bar toward 30, showing verified / summarised / to-read.
+- **Sources:** a progress bar toward 30, showing done / in progress / to read.
 - **Decisions:** decided / exploring / open, by group, linking to the Decisions page.
 - **Coverage:** readings per report section and per tag as a small bar chart, with sections that have fewer than 3 readings highlighted as gaps.
 - **Star distribution.**
@@ -616,7 +616,7 @@ When Julia says "summarise `<citekey>`" or "summarise new readings":
 1. Find `readings/pdfs/<citekey>.pdf` and its entry in `references.bib`. If either is missing, stop and say which.
 2. Read the whole PDF.
 3. Create `readings/<citekey>.md` from `_template.md`:
-   - Front matter: copy title, authors, year, venue and DOI from the bib entry, not from memory. Set `summarised_by: claude`, `verified: false`, `status: summarised`, `stars: 0` and `added: today`.
+   - Front matter: copy title, authors, year, venue and DOI from the bib entry, not from memory. Set `summarised_by: claude`, `verified: false`, `status: to-read`, `stars: 0` and `added: today`.
    - Suggest `tags`, `sections` and `decisions` using only values that exist in `tags.yml`, §3.5 and `decisions/`. Explain each suggestion in one line under "5. What do I think it means?".
    - Answer the five questions **about the paper**, in plain language, in your own words. Use at most one direct quote per reading, under 15 words, with a page number.
    - Under "Key numbers", give every figure with its page number. If you can't find a page number, write `(p. ?)`.

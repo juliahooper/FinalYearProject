@@ -7,7 +7,7 @@ venue: ""
 doi: ""
 url: ""
 stars: 0                      # 0 = not rated, 1–5 = usefulness to this project
-status: to-read               # to-read | skimmed | summarised | verified
+status: to-read               # to-read | in-progress | done
 tags: []                      # must exist in tags.yml
 sections: []                  # report sections this feeds (PLAN.md §3.5)
 decisions: []                 # decision IDs this informs, e.g. [MET-02, VAL-01]

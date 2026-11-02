@@ -7,7 +7,7 @@ venue: "Proceedings of the 2018 AAAI/ACM Conference on AI, Ethics, and Society (
 doi: "10.1145/3278721.3278729"
 url: "https://dl.acm.org/doi/10.1145/3278721.3278729"
 stars: 0
-status: summarised
+status: to-read
 tags: [metrics, benchmarks, detector-model, data-curation, impact-evaluation]
 sections: [background, related-work, methodology, evaluation]
 decisions: [DET-01, DET-03, MET-04, MET-05, EVAL-02, EVAL-03, EVAL-05, EVAL-06, CI-02]

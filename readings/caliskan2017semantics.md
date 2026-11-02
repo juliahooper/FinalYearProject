@@ -7,7 +7,7 @@ venue: "Science"
 doi: "10.1126/science.aal4230"
 url: "https://www.science.org/doi/abs/10.1126/science.aal4230"
 stars: 0
-status: verified
+status: done
 tags: [data-curation, metrics]
 sections: [introduction, background, related-work]
 decisions: [DET-01, MET-01]
