@@ -145,7 +145,7 @@
   authors: ["Mandhala, V. N.", "Bhattacharyya, D.", "Midhunchakkaravarthy, D."]
   year: 2022
   venue: "2022 International Conference on Advances in Computing, Communication and Applied Informatics (ACCAI), pp. 1–7"
-  found_in: [{source: rajawat2024investigating, page: "8"}]
+  found_in: [{source: "external: rajawat2024investigating (deleted reading)", page: "8"}]
   why: "On dataset bias, which is on topic, but cited by a weak paper; check its quality before saving."
   priority: low
   status: suggested
