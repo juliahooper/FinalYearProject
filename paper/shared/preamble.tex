@@ -34,8 +34,23 @@
   giveninits=true,                  % "Pikuliak, M."
   uniquename=false, uniquelist=false,
   dashed=false,
+  date=year,                        % "(2017)", not "(14th Apr. 2017)": Zotero exports full dates
   url=true, doi=true, eprint=true
 ]{biblatex}
+
+% Zotero marks arXiv papers pubstate=prepublished, which would print "pre-published".
+\AtEveryBibitem{\clearfield{pubstate}}
+
+% Zotero exports arXiv's "Comment: ..." line (page counts, acceptance notes) as a note field,
+% which biblatex would print in the reference list. Drop only those notes.
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map{
+      \step[fieldsource=note, match=\regexp{\A\s*Comment:}, final]
+      \step[fieldset=note, null]
+    }
+  }
+}
 
 % Names: "Surname, I." for every author; "and" before the last.
 \DeclareNameAlias{sortname}{family-given}

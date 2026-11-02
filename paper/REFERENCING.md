@@ -22,6 +22,8 @@ A test build with that entry produced exactly this line.
 | Article and paper titles in single quotes | `\mkbibquote` with British `csquotes` |
 | Journal, volume(issue), pages | e.g. Test Journal, 27(3), pp. 1–10 |
 | available: URL [accessed DD Mon YYYY] | custom `url+urldate` macro |
+| Year only, e.g. (2017) | `date=year`; Zotero exports full dates such as 2017-04-14 |
+| No arXiv clutter | arXiv's "Comment: …" note and the "pre-published" label from Zotero are dropped |
 
 ## Differences that remain, to check with Colin
 
