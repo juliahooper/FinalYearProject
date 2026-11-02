@@ -18,7 +18,7 @@
   authors: ["De-Arteaga, M.", "Romanov, A.", "Wallach, H.", "Chayes, J.", "Borgs, C.", "Chouldechova, A.", "Geyik, S.", "Kenthapadi, K.", "Kalai, A."]
   year: 2019
   venue: "Proceedings of the ACM on Human-Computer Interaction, vol. 3, no. CSCW, pp. 1–30"
-  found_in: [{source: kumar2025detecting, page: "613"}]
+  found_in: [{source: "external: kumar2025detecting (deleted reading)", page: "613"}]
   why: "The original Bias in Bios gender and occupation dataset; a candidate benchmark for VAL-01."
   priority: high
   status: saved
@@ -29,7 +29,7 @@
   authors: ["Bolukbasi, T.", "Chang, K.-W.", "Zou, J. Y.", "Saligrama, V.", "Kalai, A. T."]
   year: 2016
   venue: "Advances in Neural Information Processing Systems, pp. 4349–4357"
-  found_in: [{source: caliskan2017semantics, page: "13"}, {source: kumar2025detecting, page: "613"}, {source: dixon2018measuring, page: "7"}, {source: de-arteaga2019bias, page: "12"}]
+  found_in: [{source: caliskan2017semantics, page: "13"}, {source: "external: kumar2025detecting (deleted reading)", page: "613"}, {source: dixon2018measuring, page: "7"}, {source: de-arteaga2019bias, page: "12"}]
   why: "The classic paper on gender bias in word embeddings and how to debias them; Caliskan et al. argue against its approach."
   priority: high
   status: suggested
@@ -40,7 +40,7 @@
   authors: ["Hardt, M.", "Price, E.", "Srebro, N."]
   year: 2016
   venue: "Advances in Neural Information Processing Systems (NeurIPS), pp. 3325–3333"
-  found_in: [{source: kumar2025detecting, page: "613"}, {source: dixon2018measuring, page: "7"}, {source: de-arteaga2019bias, page: "12"}]
+  found_in: [{source: "external: kumar2025detecting (deleted reading)", page: "613"}, {source: dixon2018measuring, page: "7"}, {source: de-arteaga2019bias, page: "12"}]
   why: "The source of the equal opportunity fairness metric; useful when defining MET-05 and explaining why classifier metrics differ from text scoring."
   priority: high
   status: suggested
@@ -104,7 +104,7 @@
   authors: ["Zhao, J.", "Wang, T.", "Yatskar, M.", "Ordonez, V.", "Chang, K.-W."]
   year: 2017
   venue: "arXiv preprint arXiv:1707.09457"
-  found_in: [{source: kumar2025detecting, page: "613"}]
+  found_in: [{source: "external: kumar2025detecting (deleted reading)", page: "613"}]
   why: "Shows models can amplify bias beyond what is in the training data; background on why data-side screening alone has limits."
   priority: medium
   status: suggested
@@ -134,7 +134,7 @@
   authors: ["Ravfogel, S.", "Shwartz, A.", "Goldberg, Y.", "Shwartz, A."]
   year: 2020
   venue: "Proceedings of the 37th International Conference on Machine Learning (ICML), PMLR, pp. 15661–15671"
-  found_in: [{source: kumar2025detecting, page: "613"}]
+  found_in: [{source: "external: kumar2025detecting (deleted reading)", page: "613"}]
   why: "Adversarial removal of protected attributes; background on model-side mitigation."
   priority: low
   status: suggested
