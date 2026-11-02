@@ -1,6 +1,6 @@
 import type { Editor } from '@tiptap/core'
 import { EditorContent, useEditor, useEditorState } from '@tiptap/react'
-import { useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { authorLine, shortTitle } from '../data/readingText'
 import { useRepo } from '../data/RepoContext'
 import { editorExtensions } from '../editor/extensions'
@@ -14,8 +14,14 @@ export function RichEditor({ markdown, onReady, onChange }: { markdown: string; 
   const { data } = useRepo()
   const [menu, setMenu] = useState<MentionMenu | null>(null)
   // The extension reads the latest readings through this ref, so it never needs rebuilding.
-  const items = useRef<MentionItem[]>([])
-  items.current = (data?.readings ?? []).map((r) => ({ key: r.meta.key, label: `${shortTitle(r.meta.title)} · ${authorLine(r.meta)} ${r.meta.year ?? ''}` }))
+  const readingItems = useMemo<MentionItem[]>(
+    () => (data?.readings ?? []).map((r) => ({ key: r.meta.key, label: `${shortTitle(r.meta.title)} · ${authorLine(r.meta)} ${r.meta.year ?? ''}` })),
+    [data?.readings],
+  )
+  const items = useRef<MentionItem[]>(readingItems)
+  useEffect(() => {
+    items.current = readingItems
+  }, [readingItems])
 
   const editor = useEditor({
     extensions: editorExtensions({ items: () => items.current, onMenu: setMenu }),

@@ -65,6 +65,8 @@ async function render(url: string) {
     )
   })
   await settle()
+  // Editors load on demand; under a full parallel test run that can take longer than the fixed wait.
+  for (let i = 0; i < 100 && container.textContent?.includes('Opening the editor'); i++) await settle(1)
   return container
 }
 
