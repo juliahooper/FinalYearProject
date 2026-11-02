@@ -68,3 +68,5 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-11-02 | `paper/shared/preamble.tex`, `paper/REFERENCING.md` | Edited: year-only dates, dropped arXiv comment notes and the pre-published label (found while test-building with real Zotero entries) | |
 | 2026-11-02 | `readings/dixon2018measuring.md` | Drafted reading summary from the Google-hosted author PDF (renamed from 4578.pdf); added the citekey to DET-01, DET-03, MET-04, MET-05, EVAL-02, EVAL-03, EVAL-05, EVAL-06, CI-02 | |
 | 2026-11-02 | `readings/follow-up.yml` | Edited: marked Dixon saved; added Blodgett, Beutel and Wulczyn from its reference list; added it to Hardt and Bolukbasi's sources | |
+| 2026-11-02 | `readings/de-arteaga2019bias.md` | Drafted reading summary from the arXiv preprint PDF (1901.09451v1, renamed to the citekey); added the citekey to DET-01, MET-01, MET-05, VAL-01, EVAL-02, EVAL-04, UI-02 | |
+| 2026-11-02 | `readings/follow-up.yml` | Edited: marked Bias in Bios saved; added Zhao (2018), Rudinger, Garg and Dwork & Ilvento from its reference list; added it to five existing entries' sources | |

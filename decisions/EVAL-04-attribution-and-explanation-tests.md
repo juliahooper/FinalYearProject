@@ -4,7 +4,7 @@ title: Attribution and explanation tests
 group: evaluation
 status: open
 decided_on:
-readings: []
+readings: [de-arteaga2019bias]
 ---
 
 ## Question

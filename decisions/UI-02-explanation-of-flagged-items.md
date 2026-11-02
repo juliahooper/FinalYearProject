@@ -4,7 +4,7 @@ title: Explanation of flagged items
 group: reporting
 status: open
 decided_on:
-readings: []
+readings: [de-arteaga2019bias]
 ---
 
 ## Question

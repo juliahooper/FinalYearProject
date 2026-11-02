@@ -4,7 +4,7 @@ title: Detector evaluation metrics
 group: metrics
 status: open
 decided_on:
-readings: [mendu2025safer, dixon2018measuring]
+readings: [mendu2025safer, dixon2018measuring, de-arteaga2019bias]
 ---
 
 ## Question

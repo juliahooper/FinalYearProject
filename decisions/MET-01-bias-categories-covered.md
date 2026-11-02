@@ -4,7 +4,7 @@ title: Bias categories covered
 group: metrics
 status: open
 decided_on:
-readings: [caliskan2017semantics]
+readings: [caliskan2017semantics, de-arteaga2019bias]
 ---
 
 ## Question

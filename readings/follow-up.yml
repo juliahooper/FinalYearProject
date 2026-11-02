@@ -21,14 +21,15 @@
   found_in: [{source: kumar2025detecting, page: "613"}]
   why: "The original Bias in Bios gender and occupation dataset; a candidate benchmark for VAL-01."
   priority: high
-  status: suggested
-  key: ""
+  status: saved
+  key: "de-arteaga2019bias"
+  notes: "kumar2025detecting gives the venue as CSCW; it was actually published at ACM FAT* 2019, pp. 120–128 (per the Zotero entry and the arXiv preprint). Summarised from arXiv:1901.09451v1."
 
 - title: "Man is to computer programmer as woman is to homemaker? debiasing word embeddings"
   authors: ["Bolukbasi, T.", "Chang, K.-W.", "Zou, J. Y.", "Saligrama, V.", "Kalai, A. T."]
   year: 2016
   venue: "Advances in Neural Information Processing Systems, pp. 4349–4357"
-  found_in: [{source: caliskan2017semantics, page: "13"}, {source: kumar2025detecting, page: "613"}, {source: dixon2018measuring, page: "7"}]
+  found_in: [{source: caliskan2017semantics, page: "13"}, {source: kumar2025detecting, page: "613"}, {source: dixon2018measuring, page: "7"}, {source: de-arteaga2019bias, page: "12"}]
   why: "The classic paper on gender bias in word embeddings and how to debias them; Caliskan et al. argue against its approach."
   priority: high
   status: suggested
@@ -39,7 +40,7 @@
   authors: ["Hardt, M.", "Price, E.", "Srebro, N."]
   year: 2016
   venue: "Advances in Neural Information Processing Systems (NeurIPS), pp. 3325–3333"
-  found_in: [{source: kumar2025detecting, page: "613"}, {source: dixon2018measuring, page: "7"}]
+  found_in: [{source: kumar2025detecting, page: "613"}, {source: dixon2018measuring, page: "7"}, {source: de-arteaga2019bias, page: "12"}]
   why: "The source of the equal opportunity fairness metric; useful when defining MET-05 and explaining why classifier metrics differ from text scoring."
   priority: high
   status: suggested
@@ -92,11 +93,12 @@
   authors: ["Barocas, S.", "Selbst, A. D."]
   year: 2014
   venue: "California Law Review, 104"
-  found_in: [{source: caliskan2017semantics, page: "13"}]
+  found_in: [{source: caliskan2017semantics, page: "13"}, {source: de-arteaga2019bias, page: "12"}]
   why: "How bias gets in indirectly through proxies; relevant to DET-01 and to why removing names alone isn't enough."
-  priority: medium
+  priority: high
   status: suggested
   key: ""
+  notes: "Caliskan et al. print the year as 2014; De-Arteaga et al. print 2016 (Cal. L. Rev. 104, 671). Check the real year."
 
 - title: "Men also like shopping: Reducing gender bias amplification using corpus-level constraints"
   authors: ["Zhao, J.", "Wang, T.", "Yatskar, M.", "Ordonez, V.", "Chang, K.-W."]
@@ -122,7 +124,7 @@
   authors: ["Dwork, C.", "Hardt, M.", "Pitassi, T.", "Reingold, O.", "Zemel, R."]
   year: 2012
   venue: "Proceedings of the 3rd Innovations in Theoretical Computer Science Conference, pp. 214–226, ACM"
-  found_in: [{source: caliskan2017semantics, page: "13"}]
+  found_in: [{source: caliskan2017semantics, page: "13"}, {source: de-arteaga2019bias, page: "12"}]
   why: "A foundational fairness paper; the source of the 'fairness through blindness' framing in Caliskan et al."
   priority: medium
   status: suggested
@@ -269,7 +271,7 @@
   authors: ["Dixon, L.", "Li, J.", "Sorensen, J.", "Thain, N.", "Vasserman, L."]
   year: 2018
   venue: "Proc. 2018 AAAI/ACM Conf. AI, Ethics, and Society (AIES), pp. 67–73, doi: 10.1145/3278721.3278729"
-  found_in: [{source: "external: ISE-XAI-Group-10 journal/sources/2026-10-05-dixon-2018.md", page: "-"}]
+  found_in: [{source: "external: ISE-XAI-Group-10 journal/sources/2026-10-05-dixon-2018.md", page: "-"}, {source: de-arteaga2019bias, page: "12"}]
   why: "Template-based identity-term tests; a cheap output-side bias measure for EVAL-02 and a regression set for EVAL-05."
   priority: medium
   status: saved
@@ -365,7 +367,7 @@
   authors: ["Blodgett, S. L.", "O'Connor, B."]
   year: 2017
   venue: "CoRR abs/1707.00061"
-  found_in: [{source: dixon2018measuring, page: "7"}]
+  found_in: [{source: dixon2018measuring, page: "7"}, {source: de-arteaga2019bias, page: "12"}]
   why: "Dialect bias: a detector could over-flag text written by a group, not just text about it; a risk for the gate itself (EVAL-06, DET-01)."
   priority: high
   status: suggested
@@ -387,6 +389,48 @@
   venue: "Proceedings of the 26th International Conference on World Wide Web, WWW '17, pp. 1391–1399"
   found_in: [{source: dixon2018measuring, page: "7"}]
   why: "The source of the Wikipedia Talk toxicity dataset; only needed if that data is used."
+  priority: low
+  status: suggested
+  key: ""
+
+# --- From de-arteaga2019bias's reference list (p. 12 of arXiv:1901.09451v1), as printed there.
+
+- title: "Gender bias in coreference resolution: Evaluation and debiasing methods"
+  authors: ["Zhao, J.", "Wang, T.", "Yatskar, M.", "Ordonez, V.", "Chang, K.-W."]
+  year: 2018
+  venue: "arXiv preprint arXiv:1804.06876"
+  found_in: [{source: de-arteaga2019bias, page: "12"}]
+  why: "WinoBias, an output-side gender bias test based on occupations; a candidate for EVAL-02."
+  priority: medium
+  status: suggested
+  key: ""
+
+- title: "Gender bias in coreference resolution"
+  authors: ["Rudinger, R.", "Naradowsky, J.", "Leonard, B.", "Van Durme, B."]
+  year: 2018
+  venue: "arXiv preprint arXiv:1804.09301"
+  found_in: [{source: de-arteaga2019bias, page: "12"}]
+  why: "Winogender, another occupation-based gender test; a candidate for EVAL-02."
+  priority: medium
+  status: suggested
+  key: ""
+
+- title: "Word embeddings quantify 100 years of gender and ethnic stereotypes"
+  authors: ["Garg, N.", "Schiebinger, L.", "Jurafsky, D.", "Zou, J."]
+  year: 2018
+  venue: "Proceedings of the National Academy of Sciences 115, 16 (2018), E3635–E3644"
+  found_in: [{source: de-arteaga2019bias, page: "12"}]
+  why: "Shows stereotypes in text track real-world occupational statistics over time, including ethnicity; background for MET-01."
+  priority: medium
+  status: suggested
+  key: ""
+
+- title: "Fairness Under Composition"
+  authors: ["Dwork, C.", "Ilvento, C."]
+  year: 2018
+  venue: "arXiv preprint arXiv:1806.06122"
+  found_in: [{source: de-arteaga2019bias, page: "12"}]
+  why: "Fair components don't make a fair pipeline; relevant to chaining a data filter with a trained model (EVAL-06)."
   priority: low
   status: suggested
   key: ""
