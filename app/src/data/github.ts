@@ -65,6 +65,19 @@ export async function saveFile(token: string, path: string, text: string, sha: s
   }
 }
 
+// Deletes one file as one commit. Fails with ConflictError if it changed on GitHub since `sha`.
+export async function deleteFile(token: string, path: string, sha: string): Promise<void> {
+  try {
+    await client(token).repos.deleteFile({ ...repoParams, path, branch: REPO.branch, message: `app: delete ${path}`, sha })
+  } catch (e) {
+    if (status(e) === 409 || status(e) === 422) {
+      throw new ConflictError('This file changed on GitHub since you opened it. Reload, check it, and try again.')
+    }
+    if (status(e) === 401) throw new AuthError('Your GitHub token has expired. Create a new one and paste it here.')
+    throw e
+  }
+}
+
 export async function recentCommits(token: string, count = 5) {
   const { data } = await client(token).repos.listCommits({ ...repoParams, sha: REPO.branch, per_page: count })
   return data.map((c) => ({ sha: c.sha, message: c.commit.message.split('\n')[0], date: c.commit.author?.date ?? '' }))

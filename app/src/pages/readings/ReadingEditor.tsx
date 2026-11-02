@@ -1,5 +1,9 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { Banner } from '../../components/Banner'
 import { DocEditorFrame } from '../../components/DocEditorFrame'
+import { describeDelete, planDeleteReading } from '../../data/deleteReading'
+import { ConflictError } from '../../data/github'
 import { MultiSelect } from '../../components/MultiSelect'
 import { READING_STATUSES, statusLabel, TagPill } from '../../components/Pills'
 import { Stars } from '../../components/Stars'
@@ -14,8 +18,33 @@ type EditableMeta = Pick<ReadingMeta, 'stars' | 'status' | 'tags' | 'decisions' 
 const pickMeta = (m: ReadingMeta): EditableMeta => ({ stars: m.stars, status: m.status, tags: m.tags, decisions: m.decisions, sections: m.sections, found_via: m.found_via })
 
 export function ReadingEditor({ reading, onDone }: { reading: Doc<ReadingMeta>; onDone: () => void }) {
-  const { data } = useRepo()
+  const { data, save, remove } = useRepo()
+  const navigate = useNavigate()
   const ed = useDocEditor(reading, pickMeta, onDone)
+  const [deleting, setDeleting] = useState(false)
+  const [deleteError, setDeleteError] = useState<string | null>(null)
+
+  // Saves the files that point at the reading first, then deletes it, so nothing is left dangling.
+  async function deleteReading() {
+    if (!data) return
+    setDeleteError(null)
+    const plan = planDeleteReading(data, reading.meta.key)
+    if (!window.confirm(describeDelete(reading.meta.title, plan))) return
+    setDeleting(true)
+    try {
+      for (const u of plan.updates) await save(u.path, u.text)
+      await remove(plan.path)
+      navigate('/readings')
+    } catch (e) {
+      setDeleteError(
+        e instanceof ConflictError
+          ? 'Something this reading is linked to changed on GitHub meanwhile, so it wasn’t deleted. Reload and try again.'
+          : `The reading wasn’t deleted (${(e as Error).message}). Anything already unlinked is saved; try again.`,
+      )
+    } finally {
+      setDeleting(false)
+    }
+  }
   const tagSave = useSave()
   const [newTag, setNewTag] = useState('')
   const [tagError, setTagError] = useState<string | null>(null)
@@ -109,6 +138,16 @@ export function ReadingEditor({ reading, onDone }: { reading: Doc<ReadingMeta>; 
             Found via
           </label>
           <input id="found-via" type="text" value={meta.found_via} placeholder='e.g. IEEE Xplore search "representational bias dataset"' onChange={(e) => changeMeta({ found_via: e.target.value })} />
+        </div>
+        <div className="field field-wide danger-zone">
+          <span className="field-label">Delete this reading</span>
+          <p className="muted">For papers you won’t use, such as ones that aren’t citable. It stops counting towards your progress, and is unlinked from decisions and notes.</p>
+          {deleteError && <Banner kind="err">{deleteError}</Banner>}
+          <div>
+            <button type="button" className="btn btn-danger" disabled={deleting || ed.saving} onClick={() => void deleteReading()}>
+              {deleting ? 'Deleting…' : 'Delete reading'}
+            </button>
+          </div>
         </div>
       </div>
     </DocEditorFrame>

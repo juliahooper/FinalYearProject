@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from 'react'
-import { clearDraft, setCachedFile } from './cache'
-import { AuthError, saveFile } from './github'
+import { clearCachedFile, clearDraft, setCachedFile } from './cache'
+import { AuthError, deleteFile, recentCommits, saveFile } from './github'
 import { build, loadRepo, type Progress, type RepoData } from './repo'
 
 interface RepoState {
@@ -12,6 +12,10 @@ interface RepoState {
   // Saves one file as one commit. Throws ConflictError if it changed on GitHub; the caller shows the banner.
   // baseSha: the version the edit started from (e.g. a restored draft). Defaults to the latest loaded version.
   save: (path: string, text: string, baseSha?: string | null) => Promise<void>
+  // Deletes one file as one commit. Throws ConflictError if it changed on GitHub.
+  remove: (path: string) => Promise<void>
+  // The latest commits on the branch, newest first (the dashboard's "Recently edited").
+  recent: (count?: number) => Promise<{ sha: string; message: string; date: string }[]>
 }
 
 const RepoContext = createContext<RepoState | null>(null)
@@ -68,7 +72,26 @@ export function RepoProvider({ token, onAuthFailed, children }: { token: string;
     [token, setData],
   )
 
-  return <RepoContext.Provider value={{ data, loading, progress, error, reload, save }}>{children}</RepoContext.Provider>
+  const remove = useCallback(
+    async (path: string) => {
+      const current = latest.current?.files.get(path)
+      if (!current) return
+      await deleteFile(token, path, current.sha)
+      await clearCachedFile(path)
+      await clearDraft(path)
+      const d = latest.current
+      if (d) {
+        const files = new Map(d.files)
+        files.delete(path)
+        setData(build(files))
+      }
+    },
+    [token, setData],
+  )
+
+  const recent = useCallback((count = 5) => recentCommits(token, count), [token])
+
+  return <RepoContext.Provider value={{ data, loading, progress, error, reload, save, remove, recent }}>{children}</RepoContext.Provider>
 }
 
 export function useRepo() {

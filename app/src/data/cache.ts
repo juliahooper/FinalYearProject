@@ -39,6 +39,8 @@ export const getCachedFile = (path: string) =>
 export const setCachedFile = (path: string, file: CachedFile) =>
   safe(async () => void (files && (await set(prefix + path, file, files))), undefined)
 
+export const clearCachedFile = (path: string) => safe(async () => void (files && (await del(prefix + path, files))), undefined)
+
 export const getDraft = (path: string) =>
   safe(async () => (drafts ? ((await get(prefix + path, drafts)) as Draft | undefined) : undefined), undefined)
 
