@@ -7,12 +7,12 @@ venue: "2024 International Conference on Augmented Reality, Intelligent Systems,
 doi: "10.1109/ARIIA63345.2024.11051905"
 url: "https://ieeexplore.ieee.org/document/11051905"
 stars: 0
-status: verified
+status: to-read
 tags: [governance]
 sections: []
 decisions: []
 summarised_by: claude
-verified: true
+verified: false
 added: 2026-11-01
 found_via: ""
 ---
