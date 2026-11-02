@@ -28,7 +28,7 @@
   authors: ["Bolukbasi, T.", "Chang, K.-W.", "Zou, J. Y.", "Saligrama, V.", "Kalai, A. T."]
   year: 2016
   venue: "Advances in Neural Information Processing Systems, pp. 4349–4357"
-  found_in: [{source: caliskan2017semantics, page: "13"}, {source: kumar2025detecting, page: "613"}]
+  found_in: [{source: caliskan2017semantics, page: "13"}, {source: kumar2025detecting, page: "613"}, {source: dixon2018measuring, page: "7"}]
   why: "The classic paper on gender bias in word embeddings and how to debias them; Caliskan et al. argue against its approach."
   priority: high
   status: suggested
@@ -39,7 +39,7 @@
   authors: ["Hardt, M.", "Price, E.", "Srebro, N."]
   year: 2016
   venue: "Advances in Neural Information Processing Systems (NeurIPS), pp. 3325–3333"
-  found_in: [{source: kumar2025detecting, page: "613"}]
+  found_in: [{source: kumar2025detecting, page: "613"}, {source: dixon2018measuring, page: "7"}]
   why: "The source of the equal opportunity fairness metric; useful when defining MET-05 and explaining why classifier metrics differ from text scoring."
   priority: high
   status: suggested
@@ -272,8 +272,9 @@
   found_in: [{source: "external: ISE-XAI-Group-10 journal/sources/2026-10-05-dixon-2018.md", page: "-"}]
   why: "Template-based identity-term tests; a cheap output-side bias measure for EVAL-02 and a regression set for EVAL-05."
   priority: medium
-  status: suggested
-  key: ""
+  status: saved
+  key: "dixon2018measuring"
+  notes: "Summarised from the Google-hosted author version (PDF pages 1–7), not the ACM version."
 
 - title: "Nuanced metrics for measuring unintended bias with real data for text classification"
   authors: ["Borkan, D.", "Dixon, L.", "Sorensen, J.", "Thain, N.", "Vasserman, L."]
@@ -354,6 +355,38 @@
   venue: "NOT FOUND IN SOURCE (listed without a venue)"
   found_in: [{source: mendu2025safer, page: "8"}]
   why: "An alternative, perplexity-based way to filter harmful web content; a possible baseline for EVAL-03."
+  priority: low
+  status: suggested
+  key: ""
+
+# --- From dixon2018measuring's reference list (p. 7, PDF page of the author version), as printed there.
+
+- title: "Racial disparity in natural language processing: A case study of social media african-american english"
+  authors: ["Blodgett, S. L.", "O'Connor, B."]
+  year: 2017
+  venue: "CoRR abs/1707.00061"
+  found_in: [{source: dixon2018measuring, page: "7"}]
+  why: "Dialect bias: a detector could over-flag text written by a group, not just text about it; a risk for the gate itself (EVAL-06, DET-01)."
+  priority: high
+  status: suggested
+  key: ""
+
+- title: "Data decisions and theoretical implications when adversarially learning fair representations"
+  authors: ["Beutel, A.", "Chen, J.", "Zhao, Z.", "Chi, E. H."]
+  year: 2017
+  venue: "CoRR abs/1707.00075"
+  found_in: [{source: dixon2018measuring, page: "7"}]
+  why: "The equality gap metric that Dixon et al.'s equality difference is modelled on (MET-05)."
+  priority: low
+  status: suggested
+  key: ""
+
+- title: "Ex machina: Personal attacks seen at scale"
+  authors: ["Wulczyn, E.", "Thain, N.", "Dixon, L."]
+  year: 2017
+  venue: "Proceedings of the 26th International Conference on World Wide Web, WWW '17, pp. 1391–1399"
+  found_in: [{source: dixon2018measuring, page: "7"}]
+  why: "The source of the Wikipedia Talk toxicity dataset; only needed if that data is used."
   priority: low
   status: suggested
   key: ""

@@ -4,7 +4,7 @@ title: Output bias measures
 group: evaluation
 status: open
 decided_on:
-readings: []
+readings: [dixon2018measuring]
 ---
 
 ## Question

@@ -1,16 +1,16 @@
 {
   "readings": {
-    "total": 4,
+    "total": 5,
     "target": 30,
     "verified": 2,
     "byStatus": {
       "to-read": 0,
       "skimmed": 0,
-      "summarised": 2,
+      "summarised": 3,
       "verified": 2
     },
     "byStars": {
-      "0": 4,
+      "0": 5,
       "1": 0,
       "2": 0,
       "3": 0,
@@ -19,27 +19,27 @@
     },
     "byTag": {
       "architecture": 0,
-      "metrics": 2,
-      "detector-model": 1,
+      "metrics": 3,
+      "detector-model": 2,
       "ci-cd": 0,
       "medical": 0,
-      "benchmarks": 2,
+      "benchmarks": 3,
       "governance": 1,
       "usability": 0,
       "ethics": 0,
-      "data-curation": 2,
-      "impact-evaluation": 1
+      "data-curation": 3,
+      "impact-evaluation": 2
     },
     "bySection": {
       "abstract": 0,
       "introduction": 1,
-      "background": 2,
-      "related-work": 3,
-      "methodology": 1,
+      "background": 3,
+      "related-work": 4,
+      "methodology": 2,
       "work-to-date": 0,
       "project-plan": 0,
       "deliverable": 0,
-      "evaluation": 0,
+      "evaluation": 1,
       "analysis": 0,
       "conclusion": 0
     },
@@ -52,27 +52,27 @@
       "ARCH-06": 0,
       "ARCH-07": 0,
       "CI-01": 0,
-      "CI-02": 0,
+      "CI-02": 1,
       "CI-03": 0,
-      "DET-01": 2,
+      "DET-01": 3,
       "DET-02": 1,
-      "DET-03": 0,
+      "DET-03": 1,
       "DET-04": 1,
       "DET-05": 0,
       "DET-06": 1,
       "ETH-01": 0,
       "ETH-02": 0,
       "EVAL-01": 1,
-      "EVAL-02": 0,
-      "EVAL-03": 0,
+      "EVAL-02": 1,
+      "EVAL-03": 1,
       "EVAL-04": 0,
-      "EVAL-05": 0,
-      "EVAL-06": 1,
+      "EVAL-05": 1,
+      "EVAL-06": 2,
       "MET-01": 1,
       "MET-02": 0,
       "MET-03": 0,
-      "MET-04": 0,
-      "MET-05": 1,
+      "MET-04": 1,
+      "MET-05": 2,
       "MET-06": 0,
       "UI-01": 0,
       "UI-02": 0,
@@ -81,6 +81,7 @@
       "VAL-03": 0
     },
     "unverifiedClaude": [
+      "dixon2018measuring",
       "kumar2025detecting",
       "mendu2025safer"
     ]
@@ -144,20 +145,20 @@
     }
   },
   "bib": {
-    "total": 4,
+    "total": 5,
     "withoutReading": []
   },
   "followUp": {
-    "total": 33,
+    "total": 36,
     "byStatus": {
-      "suggested": 32,
-      "saved": 1,
+      "suggested": 34,
+      "saved": 2,
       "skipped": 0
     },
     "suggestedByPriority": {
-      "high": 11,
-      "medium": 15,
-      "low": 6
+      "high": 12,
+      "medium": 14,
+      "low": 8
     }
   }
 }

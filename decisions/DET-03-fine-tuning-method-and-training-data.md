@@ -4,7 +4,7 @@ title: Fine-tuning method and training data
 group: detector
 status: open
 decided_on:
-readings: []
+readings: [dixon2018measuring]
 ---
 
 ## Question
