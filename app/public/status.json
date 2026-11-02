@@ -2,11 +2,11 @@
   "readings": {
     "total": 6,
     "target": 30,
-    "verified": 2,
+    "verified": 1,
     "byStatus": {
-      "to-read": 4,
+      "to-read": 5,
       "in-progress": 0,
-      "done": 2
+      "done": 1
     },
     "byStars": {
       "0": 6,
@@ -83,7 +83,8 @@
       "de-arteaga2019bias",
       "dixon2018measuring",
       "kumar2025detecting",
-      "mendu2025safer"
+      "mendu2025safer",
+      "rajawat2024investigating"
     ]
   },
   "decisions": {
