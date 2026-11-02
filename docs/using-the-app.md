@@ -78,6 +78,21 @@ After that, every push to `main` redeploys the site automatically.
 - Save with the **Save** button or Ctrl+S (Cmd+S on a Mac). Only the lines you changed are rewritten, so the commit on GitHub shows just your edits.
 - Unsaved changes are kept in the browser as you type. If you close the tab, they're offered back next time you open the editor.
 
+**Mentioning a reading (@)**
+
+In any editor (readings, decisions, report notes), type `@` and a list of readings appears. Keep typing to narrow it down, by citekey, title or author. Use the arrow keys and Enter, or click, to insert it; Escape closes the list. The mention is saved as plain text, e.g. `@caliskan2017semantics`, so it reads clearly on GitHub too. In the app it's shown as a link to that reading, with its title when you hover over it. A mention of a reading that's been deleted shows as plain text.
+
+**Deleting a reading**
+
+For a paper you won't use (for example, one that isn't citable), open it, click **Edit**, and use **Delete reading** at the bottom of the details. The app tells you what will change and asks you to confirm. Then it:
+
+- unlinks the reading from any decisions that list it
+- removes highlights made in it, and the notes made from them
+- keeps the follow-up papers it recommended, marked as coming from a deleted reading, and marks the follow-up that led to it as skipped
+- deletes the note, so it stops counting towards your progress
+
+The note can still be recovered from the repo's history on GitHub. Also remove the paper from your Zotero FYP collection; otherwise it shows on the dashboard as a paper "without a note".
+
 **New reading**
 
 Click **New reading**, pick a paper from `references.bib` that doesn't have a note yet, and click **Create**. The title, authors, year, venue and DOI are copied from Zotero, and the note starts from the template. You need to push `references.bib` to GitHub first, so the app can see the new paper.
@@ -111,4 +126,17 @@ Rough working notes for each report section, kept in `paper/notes/` and never us
   - **Open** opens the reading.
   - **Hide readings** collapses the panel for more writing space.
 
-The dashboard and guide arrive in stage 8. This page will grow with them.
+## Dashboard
+
+The first page, worked out from the repo as it is now:
+
+- **Cards:** days until the next deadline (the interim report up to and including 06/11/2026, then the final report), readings out of 30, decisions decided, and high-priority papers still to find. The last three open their page.
+- **Sources:** one bar towards the target of 30 readings, split into Done, In progress and To read, with each count in the legend.
+- **Decisions by area:** decided, exploring and open for each group; the group name opens it.
+- **Readings per report section** and **per tag**, and **star ratings**. Sections of the next report with fewer than 3 readings are marked **Gap**.
+- **To do:** papers in Zotero without a note, Claude summaries you haven't checked yet, decisions not decided, and high-priority papers to find.
+- **Recently edited:** the last five commits to the repo, from the app, Claude Code or GitHub.
+
+## Guide
+
+The **Guide** page shows the guides in `docs/`: the reading workflow and this page. Each has a contents list on the left, and every code box has a **Copy** button, including the prompt for asking Claude Code to summarise a reading.
