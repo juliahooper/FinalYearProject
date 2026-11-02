@@ -34,7 +34,7 @@ export function SignIn({ message, onSignedIn }: { message?: string | null; onSig
 
   return (
     <main className="signin">
-      <h1>Sign in with a GitHub token</h1>
+      <h1 className="page-title">Sign in with a GitHub token</h1>
       <p className="muted">
         The app reads and saves files in <strong>{REPO.owner}/{REPO.name}</strong> using a token that only works for that repo. The token stays in this browser.
       </p>

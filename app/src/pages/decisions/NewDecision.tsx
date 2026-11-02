@@ -22,7 +22,7 @@ export function NewDecision({ onCreated, onCancel }: { onCreated: (id: string) =
 
   return (
     <article className="reading">
-      <h1>New decision</h1>
+      <h1 className="page-title">New decision</h1>
       <form
         className="meta-form"
         onSubmit={(e) => {

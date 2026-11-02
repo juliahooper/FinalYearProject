@@ -110,7 +110,9 @@ export function ToReadNext() {
         return group.length ? (
           <section key={p}>
             <div className="list-group">
-              {p[0].toUpperCase() + p.slice(1)} priority · {group.length}
+              <span>{p[0].toUpperCase() + p.slice(1)} priority</span>
+              <span className="sr-only"> · </span>
+              <span className="list-group-count">{group.length}</span>
             </div>
             <ul className="next-list">{group.map(card)}</ul>
           </section>

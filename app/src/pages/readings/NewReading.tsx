@@ -49,7 +49,7 @@ export function NewReading({ onCreated, onCancel }: { onCreated: (key: string) =
 
   return (
     <article className="reading">
-      <h1>New reading</h1>
+      <h1 className="page-title">New reading</h1>
       {!data.readingTemplate && <Banner kind="err">readings/_template.md is missing from the repo, so a new reading can’t be created.</Banner>}
       {available.length === 0 ? (
         <p className="muted">

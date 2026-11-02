@@ -58,7 +58,11 @@ export function Decisions() {
         return (
           <div key={g.id}>
             <div className="list-group">
-              {g.label} · {done} / {inGroup.length} decided
+              <span>{g.label}</span>
+              <span className="sr-only"> · </span>
+              <span className="list-group-count">
+                {done} / {inGroup.length} decided
+              </span>
             </div>
             {inGroup.map((d) => (
               <Link key={d.meta.id} to={`/decisions/${d.meta.id}`} className={`list-item${d.meta.id === id ? ' active' : ''}`}>

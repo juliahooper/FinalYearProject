@@ -438,9 +438,30 @@ Reader style with a pink accent. Interface text is Inter, and reading text (summ
 --star: #F7DC7A; --star-off: #3A3440;
 ```
 
+**Final UI pass (2026-11-02):** the look stays simple, but it is slightly more colourful. The sidebar background becomes `#FAF5F8` (pink-tinted), and these tokens are added:
+
+```css
+--pastel-pink: #FCE4EE; --pastel-lavender: #ECE6FB; --pastel-mint: #DFF4EA;
+--pastel-peach: #FDE8D8; --pastel-butter: #FBF3CF; --pastel-sky: #E1EFFB;  /* same as tags.yml */
+--edge-*: deeper tone of each pastel, for borders and left edges
+--shadow-soft: 0 1px 2px rgba(31,27,30,.04), 0 4px 14px rgba(31,27,30,.06);
+--radius-lg: 12px;
+/* dark mode: each pastel becomes a muted dark tint, e.g. lavender #2E2638 */
+```
+
 - Tag pills use their pastel from `tags.yml` with black text, in both light and dark mode, so tags look the same everywhere.
 - Base size 14px for the interface and 15px/1.6 for reading text. Keep reading lines around 65–70 characters wide.
-- Radius 8–10px. Use hairline borders, not shadows. Pink appears only on the primary button, selected markers, progress bars, question labels and links. Use `--acc` for pink fills and `--acc-text` whenever pink is used as text.
+- Radius 8–12px: 12px for cards, menus and dialogs, and 10px for buttons, inputs and list rows.
+- Borders are mostly hairlines. A very soft shadow (`--shadow-soft`) is allowed only on raised things: the selected nav and list item, the active tab, open accordion items, dropdowns, menus, dialogs and the sign-in card.
+- Pink is the main accent. Use it on primary buttons, selected markers (a 3px left bar), progress bars, question labels (pink text with a small pink square) and links. Use `--acc` for pink fills and `--acc-text` whenever pink is used as text.
+- The supporting pastels add colour without carrying meaning:
+  - Dashboard stat cards each get a pastel background with a darker left edge.
+  - List group headings are lavender chips, with their count on the right.
+  - The "What this section needs" box is a butter callout.
+  - Table header rows are lavender.
+  - Sidebar nav icons sit in small pastel tiles.
+  Text on a pastel is always `--fg`.
+- Page titles (`.page-title`) have a short pink-to-lavender bar underneath. Tabs are a segmented control.
 - Stars are ★ glyphs, filled in pastel yellow (`--star`) and unfilled in `--star-off`. Give filled stars a 1px `--line`-coloured outline (via `-webkit-text-stroke` or an SVG star) so pastel yellow still reads on white.
 - Status is shown as a small pill and, in the readings list, a heart: to-read (light pink), in-progress (light yellow), done (light green, with a tick on the pill). Choosing done marks the reading as verified.
 - Sentence case everywhere. No emoji.
