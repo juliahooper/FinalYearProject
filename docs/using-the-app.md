@@ -64,6 +64,13 @@ After that, every push to `main` redeploys the site automatically.
 - When you've checked a note against the PDF, choose **Verified** in the status menu. That sets `verified: true` and `status: verified`, and fills in today's date in the "Verified by Julia" column of `ai-use.md`. Choosing any other status afterwards un-verifies it. The orange dot in the list shows which readings aren't verified yet.
 - **Expand** hides the list for a wider reading view.
 
+**Highlighting a passage**
+
+- Select some text in a note. A small box offers the reading's tags (**More tags** shows the rest); click one to highlight the passage in that tag's colour.
+- A popup then asks whether to add it as a note. It lists the decision groups and report sections, with the ones this reading is already linked to ticked. **Add note** saves it there; **Just highlight** keeps the highlight without making it a note; **Cancel** drops it.
+- Click a highlight to see its tag and where it's a note, add it to more places (**Add to notes…**), or **Remove highlight**, which also takes it off every notes page.
+- Highlights are saved in `highlights.yml`, as the exact words plus a little of the text either side. If a note is edited so the words are no longer there, the highlight is listed under the note, so you can remove it.
+
 **Editing a note**
 
 - Click **Edit**. The top of the page has stars, status, tags (with **Add new tag**, which adds it to `tags.yml` in the next pastel colour), decisions, report sections and "Found via".
@@ -86,6 +93,7 @@ The **To read next** tab lists the follow-up papers from `readings/follow-up.yml
 - **Status** saves straight away. Choosing **Decided** fills in `decided_on` with today's date; moving a decision back to Open or Exploring clears it.
 - **Edit** opens the title, status and the five sections in the rich text editor. Save with the button or Ctrl+S, as with readings. Changing the title doesn't rename the file, so links keep working.
 - **Readings panel:** lists every reading that informs the decision, with stars and the start of its TL;DR. **Link a reading** adds the decision to the reading's `decisions:` and the reading to the decision's `readings:`, as two commits. **Unlink** removes both.
+- **Notes:** the last row of each group, **Notes (n)**, opens to show the passages highlighted in readings and added to that group, each in its tag's colour with a link to its reading. **Remove from here** takes a note off this group only; the highlight stays on the reading.
 - **New decision:** pick a group and the next free ID is assigned (for example MET-07), then give it a title and, optionally, its question.
 
 ## Report notes
@@ -96,6 +104,7 @@ Rough working notes for each report section, kept in `paper/notes/` and never us
 - The notes are shared between the reports. "Methodology" is the same notes file whether Interim or Final is selected, so notes written for the interim carry over.
 - **What this section needs** (click to open) summarises what the marking guide and rubric expect from that section. It's read from the comment block at the top of the section's `.tex` file, so it always matches the report.
 - The notes are always in the rich text editor. Save with the **Save** button or Ctrl+S; **Cancel** discards unsaved changes. Unsaved changes are kept in the browser, as with readings.
+- **Notes (n)** under the editor opens to show the passages highlighted in readings and added to this section, as on the Decisions page.
 - The **readings panel** on the right lists readings tagged with this section, best first:
   - **Cite** inserts `\parencite{key}` at the cursor (or at the end, if you haven't clicked into the notes yet).
   - **Copy cite** copies `\textcite{key}` to paste into a `.tex` file.

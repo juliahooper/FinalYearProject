@@ -8,6 +8,7 @@ import { MemoryRouter, Route, Routes, useLocation } from 'react-router-dom'
 import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest'
 import { build } from '../data/repo'
 import type { RawFile } from '../data/types'
+import { highlightsFile } from './highlights.fixture'
 import { defaultReport, Notes, notesWordCount } from './Notes'
 
 const repo = join(__dirname, '../../..')
@@ -17,6 +18,7 @@ for (const f of readdirSync(join(repo, 'readings')).filter((x) => x.endsWith('.m
 for (const f of readdirSync(join(repo, 'paper/notes'))) add(`paper/notes/${f}`)
 for (const r of ['interim', 'final']) for (const f of readdirSync(join(repo, `paper/${r}/sections`))) add(`paper/${r}/sections/${f}`)
 add('tags.yml')
+files.set('highlights.yml', highlightsFile)
 const data = build(files)
 const save = vi.fn(async () => {})
 
@@ -125,6 +127,16 @@ describe('Report notes', () => {
     expect(text).toContain('\\parencite{caliskan2017semantics}')
     expect(text).not.toContain('\\\\parencite')
     expect(text.startsWith('# Notes: background\n')).toBe(true)
+  })
+
+  it('a section has a Notes row under the editor with its highlighted passages', async () => {
+    const c = await render('/notes/interim/methodology')
+    const notes = c.querySelector('.notes-main .notes-accordion')!
+    expect(notes.textContent).toContain('Notes (1)')
+    await act(async () => notes.querySelector<HTMLButtonElement>('.accordion-toggle')!.click())
+    expect(notes.querySelector('.note-card')?.textContent).toContain('the closest existing tool')
+    const other = await render('/notes/interim/background')
+    expect(other.querySelector('.notes-accordion')?.textContent).toContain('Notes (0)')
   })
 
   it('switching report keeps a section both reports share', async () => {

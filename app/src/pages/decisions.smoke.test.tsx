@@ -9,6 +9,7 @@ import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest'
 import { build } from '../data/repo'
 import type { RawFile } from '../data/types'
 import { Decisions } from './Decisions'
+import { highlightsFile } from './highlights.fixture'
 
 const repo = join(__dirname, '../../..')
 const files = new Map<string, RawFile>()
@@ -16,6 +17,7 @@ const add = (p: string) => files.set(p, { path: p, sha: 'sha-' + p, text: readFi
 for (const f of readdirSync(join(repo, 'readings')).filter((x) => x.endsWith('.md'))) add(`readings/${f}`)
 for (const f of readdirSync(join(repo, 'decisions')).filter((x) => x.endsWith('.md'))) add(`decisions/${f}`)
 ;['tags.yml', 'readings/follow-up.yml'].forEach(add)
+files.set('highlights.yml', highlightsFile)
 const data = build(files)
 const save = vi.fn(async () => {})
 
@@ -90,7 +92,7 @@ describe('Decisions screens', () => {
   it('opens a decision inside its group, with its readings', async () => {
     const c = await render('/decisions/DET-01')
     expect(c.querySelector('.accordion-group')?.textContent).toBe('Detector')
-    expect(c.querySelectorAll('.accordion-item').length).toBe(6)
+    expect(c.querySelectorAll('.accordion-item:not(.notes-accordion)').length).toBe(6)
     expect(c.querySelectorAll('.accordion-item.open').length).toBe(1)
     expect(c.querySelector('.accordion-item.open')?.textContent).toContain('The working definition and taxonomy')
     expect(c.querySelector('.decision-readings')?.textContent).toContain('Semantics Derived Automatically')
@@ -139,12 +141,30 @@ describe('Decisions screens', () => {
     expect(c.querySelector('.ProseMirror')?.textContent).toContain('accept/reject decisions')
   })
 
+  it('a group ends with its Notes row, which opens to show highlighted passages', async () => {
+    save.mockClear()
+    const c = await render('/decisions/DET-01')
+    const notes = c.querySelector('.notes-accordion')!
+    expect(notes.textContent).toContain('Notes (1)')
+    expect(notes.querySelector('.note-card')).toBeNull()
+    await act(async () => notes.querySelector<HTMLButtonElement>('.accordion-toggle')!.click())
+    const card = notes.querySelector<HTMLElement>('.note-card')!
+    expect(card.textContent).toContain('the closest existing tool')
+    expect(card.style.background).toBeTruthy()
+    expect(card.querySelector('a[href="/readings/mendu2025safer"]')).toBeTruthy()
+    const remove = [...card.querySelectorAll('button')].find((b) => b.textContent === 'Remove from here')!
+    await act(async () => remove.click())
+    const [path, text] = save.mock.calls[0] as unknown as [string, string]
+    expect(path).toBe('highlights.yml')
+    expect(text).toContain('groups: []\n  sections: [methodology]')
+  })
+
   it('collapsing keeps the group on screen', async () => {
     const c = await render('/decisions/DET-01')
     await act(async () => c.querySelector<HTMLButtonElement>('.accordion-item.open .accordion-toggle')!.click())
     await settle(3)
     expect(location).toBe('/decisions?group=detector')
-    expect(c.querySelectorAll('.accordion-item').length).toBe(6)
+    expect(c.querySelectorAll('.accordion-item:not(.notes-accordion)').length).toBe(6)
     expect(c.querySelectorAll('.accordion-item.open').length).toBe(0)
   })
 })

@@ -2,7 +2,7 @@ import { lazy, Suspense } from 'react'
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { Highlight } from '../components/Highlight'
 import { MultiSelect } from '../components/MultiSelect'
-import { READING_STATUSES, statusLabel, TagPill } from '../components/Pills'
+import { READING_STATUSES, StatusHeart, statusLabel, TagPill } from '../components/Pills'
 import { SplitPage } from '../components/SplitPage'
 import { Stars } from '../components/Stars'
 import { SECTIONS } from '../config'
@@ -72,15 +72,17 @@ export function Readings() {
           {data.readings.length > 0 && results.length === 0 && <p className="muted list-head">No readings match. Try fewer filters or a different search.</p>}
           {results.map(({ reading: r, terms }) => (
             <Link key={r.meta.key} to={`/readings/${r.meta.key}${qs}`} className={`list-item${r.meta.key === key ? ' active' : ''}`}>
-              <div className="item-title">
-                <Highlight text={shortTitle(r.meta.title)} terms={terms} />
+              <div className="item-title item-title-heart">
+                <StatusHeart status={r.meta.status} />
+                <span>
+                  <Highlight text={shortTitle(r.meta.title)} terms={terms} />
+                </span>
               </div>
               <div className="sub item-meta">
                 <Stars value={r.meta.stars} />
                 <span>
                   <Highlight text={authorLine(r.meta)} terms={terms} /> {r.meta.year}
                 </span>
-                {!r.meta.verified && <span className="unverified-dot" title="Not verified yet" aria-label="Not verified yet" />}
               </div>
               {r.meta.tags.length > 0 && (
                 <div className="pill-row pill-row-small">

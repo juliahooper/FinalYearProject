@@ -4,10 +4,9 @@
     "target": 30,
     "verified": 2,
     "byStatus": {
-      "to-read": 0,
-      "skimmed": 0,
-      "summarised": 4,
-      "verified": 2
+      "to-read": 4,
+      "in-progress": 0,
+      "done": 2
     },
     "byStars": {
       "0": 6,

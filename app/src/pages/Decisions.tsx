@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react'
 import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { Banner } from '../components/Banner'
 import { MarkdownView } from '../components/MarkdownView'
+import { NotesAccordion } from '../components/NotesAccordion'
 import { SplitPage } from '../components/SplitPage'
 import { DECISION_GROUPS } from '../config'
 import { DECISION_STATUSES, groupLabel, statusChange } from '../data/decisions'
@@ -131,6 +132,7 @@ function GroupAccordion({ decisions, openId }: { decisions: Doc<DecisionMeta>[];
           </section>
         )
       })}
+      {decisions[0] && <NotesAccordion list="groups" id={decisions[0].meta.group} />}
     </div>
   )
 }

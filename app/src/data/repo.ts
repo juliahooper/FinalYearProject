@@ -3,7 +3,7 @@ import { parse } from 'yaml'
 import { getCachedFile, setCachedFile } from './cache'
 import { splitFrontMatter } from './frontmatter'
 import { fetchBlob, fetchTree, type TreeFile } from './github'
-import type { DecisionMeta, Doc, FollowUp, RawFile, ReadingMeta, Tag } from './types'
+import type { DecisionMeta, Doc, FollowUp, Highlight, RawFile, ReadingMeta, Tag } from './types'
 
 const WANTED = [
   /^readings\/[^/]+\.md$/,
@@ -12,6 +12,7 @@ const WANTED = [
   /^paper\/notes\/[^/]+\.md$/,
   /^paper\/(interim|final)\/sections\/[^/]+\.tex$/, // for each section's "What this section needs" comment block
   /^tags\.yml$/,
+  /^highlights\.yml$/,
   /^ai-use\.md$/, // verifying a reading fills in its date here
   /^docs\/[^/]+\.md$/,
   /^app\/public\/status\.json$/,
@@ -29,6 +30,7 @@ export interface RepoData {
   notes: RawFile[]
   docs: RawFile[]
   tags: Tag[]
+  highlights: Highlight[]
   followUps: FollowUp[]
   status: unknown
   bib: RawFile | null
@@ -105,6 +107,7 @@ export function build(files: Map<string, RawFile>): RepoData {
     notes: under(/^paper\/notes\/[^/]+\.md$/),
     docs: under(/^docs\/[^/]+\.md$/),
     tags: yamlOf<Tag[]>('tags.yml', []),
+    highlights: yamlOf<Highlight[]>('highlights.yml', []).map((h) => ({ ...h, groups: h.groups ?? [], sections: h.sections ?? [] })),
     followUps: yamlOf<FollowUp[]>('readings/follow-up.yml', []),
     status,
     bib: files.get('references.bib') ?? null,

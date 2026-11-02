@@ -1,6 +1,7 @@
 import { lazy, Suspense, useState } from 'react'
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom'
 import { MarkdownView } from '../components/MarkdownView'
+import { NotesAccordion } from '../components/NotesAccordion'
 import { SplitPage } from '../components/SplitPage'
 import { Stars } from '../components/Stars'
 import { DEADLINES, SECTIONS, type Report } from '../config'
@@ -132,6 +133,9 @@ function SectionNotes({ report, sectionId, label }: { report: Report; sectionId:
             }
           />
         </Suspense>
+        <div className="accordion section-notes">
+          <NotesAccordion list="sections" id={sectionId} />
+        </div>
       </div>
       <aside className="cite-panel" aria-label="Readings for this section">
         <button className="btn btn-quiet panel-toggle" aria-expanded={panelOpen} onClick={() => setPanelOpen(!panelOpen)}>

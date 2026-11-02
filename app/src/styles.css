@@ -496,23 +496,27 @@ a.chip:hover {
   color: #1f1b1e;
 }
 .status-to-read {
-  background: #ece6ea;
+  --status-fill: #fbdbe7;
+  --status-edge: #e28fae;
 }
-.status-skimmed {
-  background: #fbe7c2;
+.status-in-progress {
+  --status-fill: #fdf1b8;
+  --status-edge: #d9b53c;
 }
-.status-summarised {
-  background: #ece6fb;
+.status-done {
+  --status-fill: #d6f2df;
+  --status-edge: #6fbf8a;
 }
-.status-verified {
-  background: #dff4ea;
+.status-pill {
+  background: var(--status-fill);
 }
-.unverified-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--warn);
-  display: inline-block;
+.status-heart {
+  width: 13px;
+  height: 13px;
+  flex: none;
+  fill: var(--status-fill);
+  stroke: var(--status-edge);
+  stroke-width: 2;
 }
 
 /* Dropdown filter chips */
@@ -622,6 +626,11 @@ a.chip:hover {
 }
 .item-title {
   font-weight: 500;
+}
+.item-title-heart {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 .item-meta {
   display: flex;
@@ -1130,5 +1139,135 @@ a.mention:hover {
     border-left: 0;
     padding-left: 0;
     border-top: 1px solid var(--line);
+  }
+}
+
+/* Highlights and notes: highlighted passages of readings, and the Notes row they appear in. */
+.highlightable {
+  position: relative;
+}
+mark.hl {
+  color: var(--tag-fg);
+  border-radius: 2px;
+  padding: 0 1px;
+  cursor: pointer;
+}
+.hl-toolbar {
+  position: absolute;
+  z-index: 20;
+  width: 280px;
+  padding: 10px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  font: 13px var(--font-ui);
+}
+.hl-toolbar-label {
+  font-size: 12px;
+  color: var(--mut);
+  margin-bottom: 6px;
+}
+.hl-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+.hl-tag-btn {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  border-radius: 999px;
+}
+.hl-tag-btn:hover .tag-pill,
+.hl-tag-btn:focus-visible .tag-pill {
+  outline: 2px solid var(--acc);
+}
+.hl-places {
+  margin: 8px 0;
+}
+.hl-actions {
+  display: flex;
+  gap: 6px;
+}
+.hl-lost {
+  margin: 6px 0 0;
+  padding-left: 18px;
+}
+.note-card {
+  margin: 12px 0;
+  padding: 8px 14px;
+  color: var(--tag-fg);
+  border-left: 3px solid rgba(0, 0, 0, 0.25);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background: var(--sel);
+}
+.note-card blockquote {
+  margin: 0;
+  font-family: var(--font-read);
+  white-space: pre-line;
+}
+.note-card-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+  font: 12px var(--font-ui);
+}
+.note-card-foot a {
+  color: var(--tag-fg);
+}
+.note-card-foot .btn {
+  margin-left: auto;
+  color: var(--tag-fg);
+}
+.section-notes {
+  margin-top: 16px;
+}
+.dialog {
+  width: min(560px, calc(100vw - 32px));
+  max-height: calc(100vh - 48px);
+  padding: 20px;
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font: 14px var(--font-ui);
+}
+.dialog::backdrop {
+  background: rgba(0, 0, 0, 0.35);
+}
+.dialog-title {
+  font-size: 17px;
+  margin: 0 0 12px;
+}
+.dialog-quote {
+  font-family: var(--font-read);
+  white-space: pre-line;
+  max-height: 160px;
+  overflow: auto;
+}
+.dialog-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.dialog-columns fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+@media (max-width: 560px) {
+  .dialog-columns {
+    grid-template-columns: 1fr;
   }
 }

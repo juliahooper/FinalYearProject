@@ -3,9 +3,9 @@ import { join } from 'node:path'
 import { parse } from 'yaml'
 import { describe, expect, it } from 'vitest'
 import { parseBib, readingFieldsFromBib } from './bib'
-import { addTag, updateListEntry, updateMarkdownFile } from './edit'
+import { addHighlight, addTag, removeHighlight, updateHighlight, updateListEntry, updateMarkdownFile } from './edit'
 import { splitFrontMatter } from './frontmatter'
-import type { Tag } from './types'
+import type { Highlight, Tag } from './types'
 
 const repo = join(__dirname, '../../..')
 const read = (p: string) => readFileSync(join(repo, p), 'utf8')
@@ -29,10 +29,10 @@ describe('front matter edits', () => {
 
   it('verifying sets both fields and keeps the body', () => {
     const before = read('readings/kumar2025detecting.md')
-    const after = updateMarkdownFile(before, { verified: true, status: 'verified' })
+    const after = updateMarkdownFile(before, { verified: true, status: 'done' })
     expect(splitFrontMatter(after).body).toBe(splitFrontMatter(before).body)
     expect(after).toMatch(/^verified: true$/m)
-    expect(after).toMatch(/^status: verified$/m)
+    expect(after).toMatch(/^status: done$/m)
   })
 })
 
@@ -61,6 +61,26 @@ describe('tags', () => {
   it('rejects duplicates', () => {
     const text = read('tags.yml')
     expect(() => addTag(text, parse(text) as Tag[], 'Metrics')).toThrow()
+  })
+})
+
+describe('highlights', () => {
+  const h = (id: string): Highlight => ({ id, reading: 'mendu2025safer', tag: 'metrics', text: 'a "quoted"\npassage', prefix: 'before ', suffix: ' after', created: '2026-11-02', groups: ['metrics'], sections: [] })
+
+  it('starts the file, then appends, updates and removes entries, keeping comments', () => {
+    const first = addHighlight(undefined, h('h-1'))
+    expect(parse(first)).toEqual([h('h-1')])
+    expect(first).toContain('groups: [metrics]')
+    expect(first.startsWith('# Passages highlighted')).toBe(true)
+    const two = addHighlight(first, h('h-2'))
+    expect((parse(two) as Highlight[]).map((x) => x.id)).toEqual(['h-1', 'h-2'])
+    const updated = updateHighlight(two, 'h-2', { sections: ['evaluation', 'analysis'] })
+    expect((parse(updated) as Highlight[])[1].sections).toEqual(['evaluation', 'analysis'])
+    expect(updated).toContain('sections: [evaluation, analysis]')
+    const removed = removeHighlight(updated, 'h-1')
+    expect(removed.startsWith('# Passages highlighted')).toBe(true)
+    expect((parse(removed) as Highlight[]).map((x) => x.id)).toEqual(['h-2'])
+    expect(() => removeHighlight(removed, 'h-1')).toThrow()
   })
 })
 

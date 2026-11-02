@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Banner } from '../../components/Banner'
-import { MarkdownView } from '../../components/MarkdownView'
 import { Chip, READING_STATUSES, statusLabel, StatusPill, TagPill } from '../../components/Pills'
 import { Stars } from '../../components/Stars'
 import { SECTIONS } from '../../config'
@@ -11,6 +10,7 @@ import { authorLine } from '../../data/readingText'
 import { useRepo } from '../../data/RepoContext'
 import type { Doc, ReadingMeta, ReadingStatus } from '../../data/types'
 import { useSave } from '../../data/useSave'
+import { HighlightableReading } from './HighlightableReading'
 
 const today = () => new Date().toISOString().slice(0, 10)
 
@@ -50,7 +50,7 @@ export function ReadingView({ reading, onEdit }: { reading: Doc<ReadingMeta>; on
 
   async function markVerified() {
     setNote(null)
-    if (!(await save(reading.path, updateMarkdownFile(reading.text, { verified: true, status: 'verified' })))) return
+    if (!(await save(reading.path, updateMarkdownFile(reading.text, { verified: true, status: 'done' })))) return
     const log = data?.files.get('ai-use.md')
     if (!log) {
       setNote('Marked as verified. Add today’s date to this reading’s row in ai-use.md.')
@@ -86,7 +86,7 @@ export function ReadingView({ reading, onEdit }: { reading: Doc<ReadingMeta>; on
         <label className="sr-only" htmlFor="status">
           Status
         </label>
-        {/* Choosing Verified marks the reading as checked against the PDF and dates it in ai-use.md. */}
+        {/* Choosing Done marks the reading as checked against the PDF and dates it in ai-use.md. */}
         <select
           id="status"
           className="select"
@@ -94,7 +94,7 @@ export function ReadingView({ reading, onEdit }: { reading: Doc<ReadingMeta>; on
           disabled={saving}
           onChange={(e) => {
             const status = e.target.value as ReadingStatus
-            if (status === 'verified') void markVerified()
+            if (status === 'done') void markVerified()
             else void setMeta({ status, verified: false })
           }}
         >
@@ -136,7 +136,7 @@ export function ReadingView({ reading, onEdit }: { reading: Doc<ReadingMeta>; on
         </Banner>
       )}
 
-      <MarkdownView source={reading.body} />
+      <HighlightableReading reading={reading} />
 
       {recommended.length > 0 && (
         <section className="recommended">

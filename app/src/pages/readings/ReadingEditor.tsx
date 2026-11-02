@@ -51,7 +51,7 @@ export function ReadingEditor({ reading, onDone }: { reading: Doc<ReadingMeta>; 
           </label>
           <select id="edit-status" className="select" value={meta.status} onChange={(e) => changeMeta({ status: e.target.value as ReadingStatus })}>
             {READING_STATUSES.map((s) => (
-              <option key={s} value={s} disabled={s === 'verified' && !reading.meta.verified}>
+              <option key={s} value={s} disabled={s === 'done' && !reading.meta.verified}>
                 {statusLabel(s)}
               </option>
             ))}
