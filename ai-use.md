@@ -108,3 +108,4 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-11-03 | `readings/follow-up.yml` | Edited: added 2 from zafrir2019q8bert's reference list | |
 | 2026-11-03 | `readings/esri2017who.md` | Drafted reading summary from the ESRI PDF (saved as BKMNEXT342 (1).pdf); added the citekey to MET-01, VAL-01, DET-01, EVAL-06 | |
 | 2026-11-03 | `readings/follow-up.yml` | Edited: added 3 from esri2017who's reference list | |
+| 2026-11-03 | `readings/follow-up.yml` | Edited: marked Hardt (2016) and Dodge (2021) saved now they are in Zotero | |

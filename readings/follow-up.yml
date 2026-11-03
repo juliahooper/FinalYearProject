@@ -43,8 +43,8 @@
   found_in: [{source: kumar2025detecting, page: "613"}, {source: dixon2018measuring, page: "7"}, {source: de-arteaga2019bias, page: "12"}, {source: borkan2019nuanced, page: "500"}]
   why: "The source of the equal opportunity fairness metric; useful when defining MET-05 and explaining why classifier metrics differ from text scoring."
   priority: high
-  status: suggested
-  key: ""
+  status: saved
+  key: "hardt2016equality"
 
 - title: "GenderBench: evaluation suite for gender biases in LLMs"
   authors: ["Pikuliak, M."]
@@ -183,8 +183,8 @@
   found_in: [{source: "external: ISE-XAI-Group-10 journal/sources/2026-10-16-dodge-2021.md", page: "-"}, {source: mendu2025safer, page: "8"}]
   why: "Documents what C4's filters actually removed, including text by and about minority groups; the side effect EVAL-06 must check for."
   priority: high
-  status: suggested
-  key: ""
+  status: saved
+  key: "dodge2021documenting"
 
 - title: "Whose language counts as high quality? Measuring language ideologies in text data selection"
   authors: ["Gururangan, S.", "Card, D.", "Dreier, S. K.", "Gade, E. K.", "Wang, L. Z.", "Wang, Z.", "Zettlemoyer, L.", "Smith, N. A."]
