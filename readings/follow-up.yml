@@ -63,8 +63,8 @@
   found_in: [{source: course-materials/forms/fyp-proposal-form-signed-2026-10-08.pdf, page: "2"}]
   why: "Named in the proposal as a benchmark to review for validation (VAL-01)."
   priority: high
-  status: suggested
-  key: ""
+  status: saved
+  key: "nadeem2021stereoset"
   notes: "The proposal only names the benchmark. Find the original paper and save it to Zotero."
 
 - title: "CrowS-Pairs"
@@ -642,5 +642,25 @@
   found_in: [{source: gebru2021datasheets, page: "93"}]
   why: "What practitioners need from fairness tooling; evidence for the ML engineer and data reviewer personas (ARCH-01) and VAL-03."
   priority: medium
+  status: suggested
+  key: ""
+
+- title: "The woman worked as a babysitter: On biases in language generation"
+  authors: ["Sheng, E.", "Chang, K.-W.", "Natarajan, P.", "Peng, N."]
+  year: 2019
+  venue: "Proceedings of EMNLP-IJCNLP 2019, pp. 3407–3412"
+  found_in: [{source: nadeem2021stereoset, page: "5367"}]
+  why: "Regard: bias measured in generated text; a candidate EVAL-02 measure if EVAL-01 uses a generative model."
+  priority: high
+  status: suggested
+  key: ""
+
+- title: "On measuring social biases in sentence encoders"
+  authors: ["May, C.", "Wang, A.", "Bordia, S.", "Bowman, S. R.", "Rudinger, R."]
+  year: 2019
+  venue: "Proceedings of NAACL 2019, pp. 622–628"
+  found_in: [{source: nadeem2021stereoset, page: "5366"}]
+  why: "SEAT, the sentence-level extension of WEAT; another intrinsic bias test for EVAL-02."
+  priority: low
   status: suggested
   key: ""
