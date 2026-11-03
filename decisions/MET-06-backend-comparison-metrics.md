@@ -4,7 +4,7 @@ title: Backend comparison metrics
 group: metrics
 status: decided
 decided_on: 2026-11-03
-readings: [saito2015precisionrecall]
+readings: [saito2015precisionrecall, dror2018hitchhikers]
 ---
 
 ## Question

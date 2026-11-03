@@ -704,3 +704,33 @@
   priority: low
   status: suggested
   key: ""
+
+- title: "An empirical investigation of statistical significance in NLP"
+  authors: ["Berg-Kirkpatrick, T.", "Burkett, D.", "Klein, D."]
+  year: 2012
+  venue: "Proceedings of EMNLP-CoNLL"
+  found_in: [{source: dror2018hitchhikers, page: "1391"}]
+  why: "How significance relates to effect size and test-set size in NLP; useful for the small gap-set cells (MET-05)."
+  priority: low
+  status: suggested
+  key: ""
+
+- title: "Statistical significance tests for machine translation evaluation"
+  authors: ["Koehn, P."]
+  year: 2004
+  venue: "Proceedings of EMNLP"
+  found_in: [{source: dror2018hitchhikers, page: "1391"}]
+  why: "The classic NLP paired-bootstrap paper, behind MET-05's paired bootstrap."
+  priority: low
+  status: suggested
+  key: ""
+
+- title: "An introduction to the bootstrap"
+  authors: ["Efron, B.", "Tibshirani, R. J."]
+  year: 1994
+  venue: "CRC Press"
+  found_in: [{source: dror2018hitchhikers, page: "1391"}]
+  why: "The standard reference for MET-05's bootstrap 95% confidence intervals."
+  priority: medium
+  status: suggested
+  key: ""

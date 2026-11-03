@@ -102,3 +102,5 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-11-03 | `readings/follow-up.yml` | Edited: added 2 from ribeiro2020accuracy's reference list | |
 | 2026-11-03 | `readings/saito2015precisionrecall.md` | Drafted reading summary from the PLOS ONE PDF (saved as file.pdf); added the citekey to MET-05, MET-06, MET-04 | |
 | 2026-11-03 | `readings/follow-up.yml` | Edited: added 2 from saito2015precisionrecall's reference list | |
+| 2026-11-03 | `readings/dror2018hitchhikers.md` | Drafted reading summary from the ACL Anthology PDF (P18-1128); added the citekey to MET-05, MET-06, EVAL-03, DET-03 | |
+| 2026-11-03 | `readings/follow-up.yml` | Edited: added 3 from dror2018hitchhikers's reference list | |
