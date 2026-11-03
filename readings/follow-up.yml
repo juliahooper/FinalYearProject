@@ -684,3 +684,23 @@
   priority: low
   status: suggested
   key: ""
+
+- title: "The relationship between Precision-Recall and ROC curves"
+  authors: ["Davis, J.", "Goadrich, M."]
+  year: 2006
+  venue: "Proceedings of the 23rd International Conference on Machine Learning, pp. 233–240"
+  found_in: [{source: saito2015precisionrecall, page: "20"}]
+  why: "The formal link between PR and ROC space and how to interpolate PR curves correctly (MET-05)."
+  priority: low
+  status: suggested
+  key: ""
+
+- title: "An introduction to ROC analysis"
+  authors: ["Fawcett, T."]
+  year: 2006
+  venue: "Pattern Recognition Letters, 27, pp. 861–874"
+  found_in: [{source: saito2015precisionrecall, page: "20"}]
+  why: "The standard ROC reference, if MET-05 needs to explain why ROC is set aside."
+  priority: low
+  status: suggested
+  key: ""
