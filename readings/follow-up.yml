@@ -74,8 +74,8 @@
   found_in: [{source: course-materials/forms/fyp-proposal-form-signed-2026-10-08.pdf, page: "2"}]
   why: "Named in the proposal as a benchmark to review for validation (VAL-01)."
   priority: high
-  status: suggested
-  key: ""
+  status: saved
+  key: "nangia2020crowspairs"
   notes: "The proposal only names the benchmark. Find the original paper and save it to Zotero."
 
 - title: "Studies reporting gender-dependent urgency in medical LLM responses"
@@ -502,5 +502,15 @@
   found_in: [{source: borkan2019nuanced, page: "500"}]
   why: "Cited in DET-03: every detector checkpoint ships with a model card."
   priority: high
+  status: suggested
+  key: ""
+
+- title: "Masked language model scoring"
+  authors: ["Salazar, J.", "Liang, D.", "Nguyen, T. Q.", "Kirchhoff, K."]
+  year: 2020
+  venue: "NOT FOUND IN SOURCE"
+  found_in: [{source: nangia2020crowspairs, page: "1962"}]
+  why: "The pseudo-log-likelihood scoring behind the CrowS-Pairs metric; needed if EVAL-02 scores your own masked LM on CrowS-Pairs."
+  priority: low
   status: suggested
   key: ""
