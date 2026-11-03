@@ -4,7 +4,7 @@ title: Definition of representational bias
 group: detector
 status: decided
 decided_on: 2026-11-02
-readings: [caliskan2017semantics, mendu2025safer, dixon2018measuring, de-arteaga2019bias, rottger2021hatecheck, sap2020social, blodgett2020language]
+readings: [caliskan2017semantics, mendu2025safer, dixon2018measuring, de-arteaga2019bias, rottger2021hatecheck, sap2020social, blodgett2020language, esri2017who]
 ---
 
 ## Question

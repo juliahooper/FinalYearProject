@@ -754,3 +754,33 @@
   priority: low
   status: suggested
   key: ""
+
+- title: "A social portrait of Travellers in Ireland"
+  authors: ["Watson, D.", "Kenny, O.", "McGinnity, F."]
+  year: 2017
+  venue: "Dublin: ESRI"
+  found_in: [{source: esri2017who, page: "52"}]
+  why: "Outcomes for Travellers in education, health and employment; a likely documented source for Traveller stereotypes in the gap set (VAL-01)."
+  priority: high
+  status: suggested
+  key: ""
+
+- title: "All Ireland Traveller Health Study. Our Geels. Summary of findings"
+  authors: ["All Ireland Traveller Health Study Team"]
+  year: 2010
+  venue: "Dublin: UCD School of Public Health and Population Science"
+  found_in: [{source: esri2017who, page: "47"}]
+  why: "Large Traveller sample (1,604) reporting discrimination by domain; evidence for the Traveller ground beyond the 55 in the QNHS (MET-01, VAL-01)."
+  priority: high
+  status: suggested
+  key: ""
+
+- title: "Measuring discrimination facing ethnic minority job applicants: an Irish experiment"
+  authors: ["McGinnity, F.", "Lunn, P."]
+  year: 2011
+  venue: "Work, Employment and Society, 25(4), pp. 693–708"
+  found_in: [{source: esri2017who, page: "51"}]
+  why: "An Irish field experiment on recruitment discrimination; objective evidence to pair with self-reports (MET-01)."
+  priority: low
+  status: suggested
+  key: ""

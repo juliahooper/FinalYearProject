@@ -106,3 +106,5 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-11-03 | `readings/follow-up.yml` | Edited: added 3 from dror2018hitchhikers's reference list | |
 | 2026-11-03 | `readings/zafrir2019q8bert.md` | Drafted reading summary from the arXiv preprint PDF (1910.06188v2); added the citekey to ARCH-05, ARCH-06, CI-03, MET-06, DET-02 | |
 | 2026-11-03 | `readings/follow-up.yml` | Edited: added 2 from zafrir2019q8bert's reference list | |
+| 2026-11-03 | `readings/esri2017who.md` | Drafted reading summary from the ESRI PDF (saved as BKMNEXT342 (1).pdf); added the citekey to MET-01, VAL-01, DET-01, EVAL-06 | |
+| 2026-11-03 | `readings/follow-up.yml` | Edited: added 3 from esri2017who's reference list | |

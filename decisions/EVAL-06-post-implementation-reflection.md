@@ -4,7 +4,7 @@ title: Post-implementation reflection
 group: evaluation
 status: open
 decided_on:
-readings: [mendu2025safer, dixon2018measuring, blodgett2020language, blodgett2021stereotyping]
+readings: [mendu2025safer, dixon2018measuring, blodgett2020language, blodgett2021stereotyping, esri2017who]
 ---
 
 ## Question
