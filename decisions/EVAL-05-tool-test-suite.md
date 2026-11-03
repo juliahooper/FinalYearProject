@@ -4,7 +4,7 @@ title: Tool test suite
 group: evaluation
 status: open
 decided_on:
-readings: [dixon2018measuring]
+readings: [dixon2018measuring, rottger2021hatecheck]
 ---
 
 ## Question

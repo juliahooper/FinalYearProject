@@ -434,3 +434,23 @@
   priority: low
   status: suggested
   key: ""
+
+- title: "Evaluating models' local decision boundaries via contrast sets"
+  authors: ["Gardner, M.", "Artzi, Y.", "Basmov, V.", "Berant, J.", "Bogin, B.", "Chen, S.", "Dasigi, P.", "Dua, D.", "Elazar, Y.", "Gottumukkala, A.", "Gupta, N.", "Hajishirzi, H.", "Ilharco, G.", "Khashabi, D.", "Lin, K.", "Liu, J.", "Liu, N. F.", "Mulcaire, P.", "Ning, Q.", "Singh, S.", "Smith, N. A.", "Subramanian, S.", "Tsarfaty, R.", "Wallace, E.", "Zhang, A.", "Zhou, B."]
+  year: 2020
+  venue: "Findings of the Association for Computational Linguistics: EMNLP 2020, pp. 1307–1323"
+  found_in: [{source: rottger2021hatecheck, page: "50"}]
+  why: "Minimal-contrast test cases, the idea behind HateCheck's non-hateful tests and the gap set's invariance tests (VAL-01)."
+  priority: low
+  status: suggested
+  key: ""
+
+- title: "Learning the difference that makes a difference with counterfactually-augmented data"
+  authors: ["Kaushik, D.", "Hovy, E.", "Lipton, Z. C."]
+  year: 2020
+  venue: "Proceedings of the 8th International Conference on Learning Representations"
+  found_in: [{source: rottger2021hatecheck, page: "51"}]
+  why: "Training on counterfactual pairs; background for DET-03's generated hard negatives."
+  priority: medium
+  status: suggested
+  key: ""

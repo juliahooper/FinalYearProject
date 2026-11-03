@@ -4,7 +4,7 @@ title: Bias categories covered
 group: metrics
 status: decided
 decided_on: 2026-11-02
-readings: [caliskan2017semantics, de-arteaga2019bias]
+readings: [caliskan2017semantics, de-arteaga2019bias, rottger2021hatecheck]
 ---
 
 ## Question
