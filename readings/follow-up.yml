@@ -292,7 +292,7 @@
   authors: ["Sap, M.", "Card, D.", "Gabriel, S.", "Choi, Y.", "Smith, N. A."]
   year: 2019
   venue: "Proc. 57th Annu. Meeting Assoc. Computational Linguistics (ACL), pp. 1668–1678, doi: 10.18653/v1/P19-1163"
-  found_in: [{source: "external: ISE-XAI-Group-10 journal/sources/2026-10-17-sap-2019.md", page: "-"}]
+  found_in: [{source: "external: ISE-XAI-Group-10 journal/sources/2026-10-17-sap-2019.md", page: "-"}, {source: sap2020social, page: "5488"}]
   why: "Detectors that over-flag some dialects would remove that text if used as a filter; a risk for the tool itself (EVAL-06, DET-01)."
   priority: medium
   status: suggested
@@ -452,5 +452,25 @@
   found_in: [{source: rottger2021hatecheck, page: "51"}]
   why: "Training on counterfactual pairs; background for DET-03's generated hard negatives."
   priority: medium
+  status: suggested
+  key: ""
+
+- title: "Finding microaggressions in the wild: a case for locating elusive phenomena in social media posts"
+  authors: ["Breitfeller, L. M.", "Ahn, E.", "Jurgens, D.", "Tsvetkov, Y."]
+  year: 2019
+  venue: "EMNLP"
+  found_in: [{source: sap2020social, page: "5486"}]
+  why: "Subtle, implied bias in text: the kind of stereotyping a toxicity filter misses (DET-01, DET-06)."
+  priority: medium
+  status: suggested
+  key: ""
+
+- title: "Racial bias in hate speech and abusive language detection datasets"
+  authors: ["Davidson, T.", "Bhattacharya, D.", "Weber, I."]
+  year: 2019
+  venue: "Abusive Language Workshop"
+  found_in: [{source: sap2020social, page: "5486"}]
+  why: "Dialect bias in abuse labels; threats to validity for training on labelled abuse datasets (DET-03, EVAL-06)."
+  priority: low
   status: suggested
   key: ""

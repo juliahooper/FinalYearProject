@@ -78,3 +78,5 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-11-02 | `app/src/styles.css`, `app/src/components/SignIn.tsx`, `app/src/pages/{Decisions,decisions/NewDecision,readings/NewReading,readings/ToReadNext}.tsx`, `PLAN.md` | Edited (by another Claude Code session; reviewed and committed by this one): final UI pass with pastel accents, page titles, segmented tabs and soft shadows on raised elements | |
 | 2026-11-03 | `readings/rottger2021hatecheck.md` | Drafted reading summary from the ACL Anthology PDF (2021.acl-long.4); added the citekey to DET-01, MET-01, VAL-01, MET-05, DET-06, EVAL-05 | |
 | 2026-11-03 | `readings/follow-up.yml` | Edited: added 2 from rottger2021hatecheck's reference list | |
+| 2026-11-03 | `readings/sap2020social.md` | Drafted reading summary from the ACL Anthology PDF (2020.acl-main.486); added the citekey to DET-01, DET-03, DET-06, MET-01, VAL-01, UI-02 | |
+| 2026-11-03 | `readings/follow-up.yml` | Edited: added 2 from sap2020social's reference list; added sap2020social to the sources of 1 existing entries | |
