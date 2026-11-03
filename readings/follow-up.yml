@@ -544,3 +544,23 @@
   priority: medium
   status: suggested
   key: ""
+
+- title: "The problem with bias: allocative versus representational harms in machine learning"
+  authors: ["Barocas, S.", "Crawford, K.", "Shapiro, A.", "Wallach, H."]
+  year: 2017
+  venue: "Proceedings of SIGCIS, Philadelphia, PA"
+  found_in: [{source: blodgett2020language, page: "5463"}]
+  why: "The origin of the allocational vs representational harms distinction behind DET-01's definition."
+  priority: medium
+  status: suggested
+  key: ""
+
+- title: "The trouble with bias"
+  authors: ["Crawford, K."]
+  year: 2017
+  venue: "Keynote at NeurIPS"
+  found_in: [{source: blodgett2020language, page: "5465"}]
+  why: "The other origin of the representational-harms taxonomy; a talk, so cite carefully (DET-01)."
+  priority: low
+  status: suggested
+  key: ""

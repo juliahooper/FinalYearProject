@@ -4,7 +4,7 @@ title: Usability evaluation method
 group: validation
 status: open
 decided_on:
-readings: []
+readings: [blodgett2020language]
 ---
 
 ## Question
