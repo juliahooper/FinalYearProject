@@ -4,7 +4,7 @@ title: Data licensing and use
 group: governance
 status: decided
 decided_on: 2026-11-02
-readings: []
+readings: [vidgen2021introducing]
 ---
 
 ## Question

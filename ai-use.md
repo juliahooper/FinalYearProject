@@ -84,3 +84,5 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-11-03 | `readings/follow-up.yml` | Edited: added 3 from borkan2019nuanced's reference list; added borkan2019nuanced to the sources of 3 existing entries | |
 | 2026-11-03 | `readings/nangia2020crowspairs.md` | Drafted reading summary from the ACL Anthology PDF (2020.emnlp-main.154); added the citekey to MET-01, VAL-01, EVAL-02, DET-06 | |
 | 2026-11-03 | `readings/follow-up.yml` | Edited: added 1 from nangia2020crowspairs's reference list | |
+| 2026-11-03 | `readings/vidgen2021introducing.md` | Drafted reading summary from the ACL Anthology PDF (2021.naacl-main.182); added the citekey to DET-03, DET-06, ARCH-04, MET-05, ETH-02 | |
+| 2026-11-03 | `readings/follow-up.yml` | Edited: added 3 from vidgen2021introducing's reference list | |

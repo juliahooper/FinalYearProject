@@ -514,3 +514,33 @@
   priority: low
   status: suggested
   key: ""
+
+- title: "A benchmark dataset for learning to intervene in online hate speech"
+  authors: ["Qian, J.", "Bethke, A.", "Liu, Y.", "Belding, E.", "Wang, W. Y."]
+  year: 2019
+  venue: "Proceedings of EMNLP-IJCNLP 2019, pp. 4757–4766"
+  found_in: [{source: vidgen2021introducing, page: "2300"}]
+  why: "Labelled counter speech; a possible extra counter-speech source for DET-03, since CAD has only 220 examples."
+  priority: medium
+  status: suggested
+  key: ""
+
+- title: "Thou shalt not hate: Countering online hate speech"
+  authors: ["Mathew, B.", "Saha, P.", "Tharad, H.", "Rajgaria, S.", "Singhania, P.", "Maity, S. K.", "Goyal, P.", "Mukherjee, A."]
+  year: 2019
+  venue: "Proceedings of the 13th International Conference on Web and Social Media (ICWSM 2019), pp. 369–380"
+  found_in: [{source: vidgen2021introducing, page: "2300"}]
+  why: "A counter-speech dataset; a possible extra source for the context head in DET-03."
+  priority: low
+  status: suggested
+  key: ""
+
+- title: "Detection of abusive language: the problem of biased datasets"
+  authors: ["Wiegand, M.", "Ruppenhofer, J.", "Kleinbauer, T."]
+  year: 2019
+  venue: "NAACL-HLT, pp. 602–608"
+  found_in: [{source: vidgen2021introducing, page: "2301"}]
+  why: "Keyword sampling causes topic and author bias in abuse datasets; a threat to validity for DET-03's training data."
+  priority: medium
+  status: suggested
+  key: ""
