@@ -4,7 +4,7 @@ title: Thresholds and gate logic
 group: metrics
 status: open
 decided_on:
-readings: [dixon2018measuring, borkan2019nuanced]
+readings: [dixon2018measuring, borkan2019nuanced, guo2017calibration]
 ---
 
 ## Question

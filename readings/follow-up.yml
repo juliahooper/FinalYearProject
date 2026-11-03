@@ -604,3 +604,33 @@
   priority: medium
   status: suggested
   key: ""
+
+- title: "Probabilistic outputs for support vector machines and comparisons to regularized likelihood methods"
+  authors: ["Platt, J."]
+  year: 1999
+  venue: "Advances in Large Margin Classifiers, 10(3), pp. 61–74"
+  found_in: [{source: guo2017calibration, page: "PDF 10"}]
+  why: "The original Platt scaling, used to recalibrate the API backend's verbalised confidence (DET-04)."
+  priority: medium
+  status: suggested
+  key: ""
+
+- title: "Predicting good probabilities with supervised learning"
+  authors: ["Niculescu-Mizil, A.", "Caruana, R."]
+  year: 2005
+  venue: "ICML, pp. 625–632"
+  found_in: [{source: guo2017calibration, page: "PDF 10"}]
+  why: "Reliability diagrams for classifiers and evidence that older networks were well calibrated (MET-05)."
+  priority: low
+  status: suggested
+  key: ""
+
+- title: "Obtaining well calibrated probabilities using Bayesian binning"
+  authors: ["Naeini, M. P.", "Cooper, G. F.", "Hauskrecht, M."]
+  year: 2015
+  venue: "AAAI, p. 2901"
+  found_in: [{source: guo2017calibration, page: "PDF 10"}]
+  why: "The source of expected and maximum calibration error, reported in MET-05."
+  priority: medium
+  status: suggested
+  key: ""

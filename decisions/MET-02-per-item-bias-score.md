@@ -4,7 +4,7 @@ title: Per-item bias score
 group: metrics
 status: decided
 decided_on: 2026-11-02
-readings: []
+readings: [guo2017calibration]
 ---
 
 ## Question

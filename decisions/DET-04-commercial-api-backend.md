@@ -4,7 +4,7 @@ title: Commercial API backend
 group: detector
 status: decided
 decided_on: 2026-11-03
-readings: [mendu2025safer]
+readings: [mendu2025safer, guo2017calibration]
 ---
 
 ## Question
