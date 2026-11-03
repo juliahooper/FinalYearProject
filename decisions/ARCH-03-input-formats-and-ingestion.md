@@ -4,7 +4,7 @@ title: Input formats and ingestion
 group: system
 status: decided
 decided_on: 2026-11-03
-readings: []
+readings: [gebru2021datasheets]
 ---
 
 ## Question

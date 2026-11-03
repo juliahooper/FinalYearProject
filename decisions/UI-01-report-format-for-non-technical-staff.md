@@ -4,7 +4,7 @@ title: Report format for non-technical staff
 group: reporting
 status: open
 decided_on:
-readings: []
+readings: [gebru2021datasheets]
 ---
 
 ## Question

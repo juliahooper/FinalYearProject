@@ -94,3 +94,5 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-11-03 | `readings/follow-up.yml` | Edited: added 3 from antoniak2021bad's reference list | |
 | 2026-11-03 | `readings/guo2017calibration.md` | Drafted reading summary from the PMLR PDF (guo17a); added the citekey to MET-02, MET-05, MET-04, DET-04, DET-05, DET-03 | |
 | 2026-11-03 | `readings/follow-up.yml` | Edited: added 3 from guo2017calibration's reference list | |
+| 2026-11-03 | `readings/gebru2021datasheets.md` | Drafted reading summary from the CACM PDF (3458723); added the citekey to ETH-02, DET-03, VAL-01, UI-01, ARCH-03 | |
+| 2026-11-03 | `readings/follow-up.yml` | Edited: added 1 from gebru2021datasheets's reference list; added gebru2021datasheets to the sources of 2 existing entries | |

@@ -4,7 +4,7 @@ title: Benchmark datasets
 group: validation
 status: decided
 decided_on: 2026-11-02
-readings: [kumar2025detecting, de-arteaga2019bias, rottger2021hatecheck, sap2020social, borkan2019nuanced, nangia2020crowspairs, blodgett2021stereotyping]
+readings: [kumar2025detecting, de-arteaga2019bias, rottger2021hatecheck, sap2020social, borkan2019nuanced, nangia2020crowspairs, blodgett2021stereotyping, gebru2021datasheets]
 ---
 
 ## Question

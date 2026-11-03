@@ -499,7 +499,7 @@
   authors: ["Mitchell, M.", "Wu, S.", "Zaldivar, A.", "Barnes, P.", "Vasserman, L.", "Hutchinson, B.", "Spitzer, E.", "Raji, I. D.", "Gebru, T."]
   year: 2019
   venue: "Proceedings of the Conference on Fairness, Accountability, and Transparency (FAT* '19), pp. 220–229"
-  found_in: [{source: borkan2019nuanced, page: "500"}]
+  found_in: [{source: borkan2019nuanced, page: "500"}, {source: gebru2021datasheets, page: "93"}]
   why: "Cited in DET-03: every detector checkpoint ships with a model card."
   priority: high
   status: suggested
@@ -599,7 +599,7 @@
   authors: ["Bender, E. M.", "Friedman, B."]
   year: 2018
   venue: "Transactions of the Association for Computational Linguistics, 6, pp. 587–604"
-  found_in: [{source: antoniak2021bad, page: "1897"}]
+  found_in: [{source: antoniak2021bad, page: "1897"}, {source: gebru2021datasheets, page: "92"}]
   why: "Data statements, the NLP counterpart of datasheets; used by CrowS-Pairs and CAD, and relevant to ETH-02's dataset registry."
   priority: medium
   status: suggested
@@ -631,6 +631,16 @@
   venue: "AAAI, p. 2901"
   found_in: [{source: guo2017calibration, page: "PDF 10"}]
   why: "The source of expected and maximum calibration error, reported in MET-05."
+  priority: medium
+  status: suggested
+  key: ""
+
+- title: "Improving fairness in machine learning systems: What do industry practitioners need?"
+  authors: ["Holstein, K.", "Vaughan, J.", "Daumé, H.", "Dudík, M.", "Wallach, H."]
+  year: 2019
+  venue: "Proceedings of the 2019 ACM CHI Conference on Human Factors in Computing Systems"
+  found_in: [{source: gebru2021datasheets, page: "93"}]
+  why: "What practitioners need from fairness tooling; evidence for the ML engineer and data reviewer personas (ARCH-01) and VAL-03."
   priority: medium
   status: suggested
   key: ""
