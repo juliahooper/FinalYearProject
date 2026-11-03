@@ -4,7 +4,7 @@ title: Controls and statistics
 group: evaluation
 status: open
 decided_on:
-readings: [dixon2018measuring]
+readings: [dixon2018measuring, borkan2019nuanced]
 ---
 
 ## Question

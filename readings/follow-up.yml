@@ -40,7 +40,7 @@
   authors: ["Hardt, M.", "Price, E.", "Srebro, N."]
   year: 2016
   venue: "Advances in Neural Information Processing Systems (NeurIPS), pp. 3325–3333"
-  found_in: [{source: kumar2025detecting, page: "613"}, {source: dixon2018measuring, page: "7"}, {source: de-arteaga2019bias, page: "12"}]
+  found_in: [{source: kumar2025detecting, page: "613"}, {source: dixon2018measuring, page: "7"}, {source: de-arteaga2019bias, page: "12"}, {source: borkan2019nuanced, page: "500"}]
   why: "The source of the equal opportunity fairness metric; useful when defining MET-05 and explaining why classifier metrics differ from text scoring."
   priority: high
   status: suggested
@@ -285,8 +285,8 @@
   found_in: [{source: "external: ISE-XAI-Group-10 journal/sources/2026-10-21-borkan-2019.md", page: "-"}]
   why: "Per-group bias metrics on real data; candidates for EVAL-02 and for MET-05."
   priority: medium
-  status: suggested
-  key: ""
+  status: saved
+  key: "borkan2019nuanced"
 
 - title: "The risk of racial bias in hate speech detection"
   authors: ["Sap, M.", "Card, D.", "Gabriel, S.", "Choi, Y.", "Smith, N. A."]
@@ -377,7 +377,7 @@
   authors: ["Beutel, A.", "Chen, J.", "Zhao, Z.", "Chi, E. H."]
   year: 2017
   venue: "CoRR abs/1707.00075"
-  found_in: [{source: dixon2018measuring, page: "7"}]
+  found_in: [{source: dixon2018measuring, page: "7"}, {source: borkan2019nuanced, page: "500"}]
   why: "The equality gap metric that Dixon et al.'s equality difference is modelled on (MET-05)."
   priority: low
   status: suggested
@@ -387,7 +387,7 @@
   authors: ["Wulczyn, E.", "Thain, N.", "Dixon, L."]
   year: 2017
   venue: "Proceedings of the 26th International Conference on World Wide Web, WWW '17, pp. 1391–1399"
-  found_in: [{source: dixon2018measuring, page: "7"}]
+  found_in: [{source: dixon2018measuring, page: "7"}, {source: borkan2019nuanced, page: "500"}]
   why: "The source of the Wikipedia Talk toxicity dataset; only needed if that data is used."
   priority: low
   status: suggested
@@ -472,5 +472,35 @@
   found_in: [{source: sap2020social, page: "5486"}]
   why: "Dialect bias in abuse labels; threats to validity for training on labelled abuse datasets (DET-03, EVAL-06)."
   priority: low
+  status: suggested
+  key: ""
+
+- title: "Counterfactual fairness in text classification through robustness"
+  authors: ["Garg, S.", "Perot, V.", "Limtiaco, N.", "Taly, A.", "Chi, E. H.", "Beutel, A."]
+  year: 2018
+  venue: "CoRR abs/1809.10610"
+  found_in: [{source: borkan2019nuanced, page: "500"}]
+  why: "Counterfactual token fairness: the basis of the gap set's swapped-group invariance tests (VAL-01). Published at AIES 2019, which the master plan cites."
+  priority: high
+  status: suggested
+  key: ""
+
+- title: "Reducing gender bias in abusive language detection"
+  authors: ["Park, J. H.", "Shin, J.", "Fung, P."]
+  year: 2018
+  venue: "Proceedings of the 2018 Conference on Empirical Methods in Natural Language Processing, pp. 2799–2804"
+  found_in: [{source: borkan2019nuanced, page: "500"}]
+  why: "False-positive and false-negative equality gaps for gender, and debiasing by data augmentation (MET-05, DET-03)."
+  priority: medium
+  status: suggested
+  key: ""
+
+- title: "Model cards for model reporting"
+  authors: ["Mitchell, M.", "Wu, S.", "Zaldivar, A.", "Barnes, P.", "Vasserman, L.", "Hutchinson, B.", "Spitzer, E.", "Raji, I. D.", "Gebru, T."]
+  year: 2019
+  venue: "Proceedings of the Conference on Fairness, Accountability, and Transparency (FAT* '19), pp. 220–229"
+  found_in: [{source: borkan2019nuanced, page: "500"}]
+  why: "Cited in DET-03: every detector checkpoint ships with a model card."
+  priority: high
   status: suggested
   key: ""

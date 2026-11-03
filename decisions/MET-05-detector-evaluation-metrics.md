@@ -4,7 +4,7 @@ title: Detector evaluation metrics
 group: metrics
 status: decided
 decided_on: 2026-11-02
-readings: [mendu2025safer, dixon2018measuring, de-arteaga2019bias, rottger2021hatecheck]
+readings: [mendu2025safer, dixon2018measuring, de-arteaga2019bias, rottger2021hatecheck, borkan2019nuanced]
 ---
 
 ## Question
