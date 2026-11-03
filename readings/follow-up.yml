@@ -399,7 +399,7 @@
   authors: ["Zhao, J.", "Wang, T.", "Yatskar, M.", "Ordonez, V.", "Chang, K.-W."]
   year: 2018
   venue: "arXiv preprint arXiv:1804.06876"
-  found_in: [{source: de-arteaga2019bias, page: "12"}]
+  found_in: [{source: de-arteaga2019bias, page: "12"}, {source: blodgett2021stereotyping, page: "1015"}]
   why: "WinoBias, an output-side gender bias test based on occupations; a candidate for EVAL-02."
   priority: medium
   status: suggested
@@ -562,5 +562,15 @@
   found_in: [{source: blodgett2020language, page: "5465"}]
   why: "The other origin of the representational-harms taxonomy; a talk, so cite carefully (DET-01)."
   priority: low
+  status: suggested
+  key: ""
+
+- title: "Measurement and fairness"
+  authors: ["Jacobs, A. Z.", "Wallach, H."]
+  year: 2021
+  venue: "Conference on Fairness, Accountability, and Transparency (FAccT)"
+  found_in: [{source: blodgett2021stereotyping, page: "1014"}]
+  why: "The measurement-modelling framework (construct vs operationalisation, validity, reliability); a way to describe the validity of your own metrics (MET-05, EVAL-06)."
+  priority: medium
   status: suggested
   key: ""
