@@ -4,7 +4,7 @@ title: Configuration
 group: system
 status: open
 decided_on:
-readings: []
+readings: [antoniak2021bad]
 ---
 
 ## Question

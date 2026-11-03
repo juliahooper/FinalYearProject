@@ -90,3 +90,5 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-11-03 | `readings/follow-up.yml` | Edited: added 2 from blodgett2020language's reference list | |
 | 2026-11-03 | `readings/blodgett2021stereotyping.md` | Drafted reading summary from the ACL Anthology PDF (2021.acl-long.81); added the citekey to VAL-01, MET-01, EVAL-02, DET-06, EVAL-06 | |
 | 2026-11-03 | `readings/follow-up.yml` | Edited: added 1 from blodgett2021stereotyping's reference list; added blodgett2021stereotyping to the sources of 1 existing entries | |
+| 2026-11-03 | `readings/antoniak2021bad.md` | Drafted reading summary from the ACL Anthology PDF (2021.acl-long.148); added the citekey to MET-01, MET-03, ARCH-07, ETH-02, EVAL-05 | |
+| 2026-11-03 | `readings/follow-up.yml` | Edited: added 3 from antoniak2021bad's reference list | |

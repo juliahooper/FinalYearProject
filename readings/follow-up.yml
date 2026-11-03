@@ -574,3 +574,33 @@
   priority: medium
   status: suggested
   key: ""
+
+- title: "Understanding undesirable word embedding associations"
+  authors: ["Ethayarajh, K.", "Duvenaud, D.", "Hirst, G."]
+  year: 2019
+  venue: "Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics, pp. 1696–1705"
+  found_in: [{source: antoniak2021bad, page: "1898"}]
+  why: "WEAT needs seeds of similar frequency and can be manipulated; relevant if EVAL-02 uses WEAT-style tests."
+  priority: low
+  status: suggested
+  key: ""
+
+- title: "The geometry of culture: Analyzing the meanings of class through word embeddings"
+  authors: ["Kozlowski, A. C.", "Taddy, M.", "Evans, J. A."]
+  year: 2019
+  venue: "American Sociological Review, 84(5), pp. 905–949"
+  found_in: [{source: antoniak2021bad, page: "1899"}]
+  why: "Corpus-level association measurement from sociology; background for the source-level skewed association measure (DET-01, MET-01)."
+  priority: low
+  status: suggested
+  key: ""
+
+- title: "Data statements for natural language processing: Toward mitigating system bias and enabling better science"
+  authors: ["Bender, E. M.", "Friedman, B."]
+  year: 2018
+  venue: "Transactions of the Association for Computational Linguistics, 6, pp. 587–604"
+  found_in: [{source: antoniak2021bad, page: "1897"}]
+  why: "Data statements, the NLP counterpart of datasheets; used by CrowS-Pairs and CAD, and relevant to ETH-02's dataset registry."
+  priority: medium
+  status: suggested
+  key: ""
