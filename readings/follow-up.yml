@@ -664,3 +664,23 @@
   priority: low
   status: suggested
   key: ""
+
+- title: "Perturbation sensitivity analysis to detect unintended model biases"
+  authors: ["Prabhakaran, V.", "Hutchinson, B.", "Mitchell, M."]
+  year: 2019
+  venue: "Proceedings of EMNLP-IJCNLP 2019"
+  found_in: [{source: ribeiro2020accuracy, page: "4911"}]
+  why: "Swapping names and identity terms to measure unintended bias; a method for the gap set's invariance tests (VAL-01)."
+  priority: medium
+  status: suggested
+  key: ""
+
+- title: "Analysis methods in neural language processing: A survey"
+  authors: ["Belinkov, Y.", "Glass, J."]
+  year: 2019
+  venue: "Transactions of the Association for Computational Linguistics, 7, pp. 49–72"
+  found_in: [{source: ribeiro2020accuracy, page: "4911"}]
+  why: "Survey of challenge datasets and their strengths and weaknesses; background for the gap set."
+  priority: low
+  status: suggested
+  key: ""

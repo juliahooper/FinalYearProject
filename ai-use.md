@@ -98,3 +98,5 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-11-03 | `readings/follow-up.yml` | Edited: added 1 from gebru2021datasheets's reference list; added gebru2021datasheets to the sources of 2 existing entries | |
 | 2026-11-03 | `readings/nadeem2021stereoset.md` | Drafted reading summary from the ACL Anthology PDF (2021.acl-long.416); added the citekey to EVAL-02, VAL-01, MET-01 | |
 | 2026-11-03 | `readings/follow-up.yml` | Edited: added 2 from nadeem2021stereoset's reference list | |
+| 2026-11-03 | `readings/ribeiro2020accuracy.md` | Drafted reading summary from the ACL Anthology PDF (2020.acl-main.442); added the citekey to VAL-01, EVAL-05, MET-05 | |
+| 2026-11-03 | `readings/follow-up.yml` | Edited: added 2 from ribeiro2020accuracy's reference list | |
