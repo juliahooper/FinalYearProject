@@ -1,15 +1,15 @@
 {
   "readings": {
-    "total": 5,
+    "total": 20,
     "target": 30,
     "verified": 1,
     "byStatus": {
-      "to-read": 4,
+      "to-read": 19,
       "in-progress": 0,
       "done": 1
     },
     "byStars": {
-      "0": 5,
+      "0": 20,
       "1": 0,
       "2": 0,
       "3": 0,
@@ -17,150 +17,175 @@
       "5": 0
     },
     "byTag": {
-      "architecture": 0,
-      "metrics": 3,
-      "detector-model": 2,
-      "ci-cd": 0,
+      "architecture": 1,
+      "metrics": 14,
+      "detector-model": 8,
+      "ci-cd": 2,
       "medical": 0,
-      "benchmarks": 3,
-      "governance": 1,
+      "benchmarks": 12,
+      "governance": 3,
       "usability": 0,
-      "ethics": 0,
-      "data-curation": 4,
-      "impact-evaluation": 3
+      "ethics": 4,
+      "data-curation": 8,
+      "impact-evaluation": 5
     },
     "bySection": {
       "abstract": 0,
-      "introduction": 1,
-      "background": 4,
-      "related-work": 4,
-      "methodology": 3,
+      "introduction": 3,
+      "background": 12,
+      "related-work": 14,
+      "methodology": 18,
       "work-to-date": 0,
       "project-plan": 0,
-      "deliverable": 0,
-      "evaluation": 2,
+      "deliverable": 2,
+      "evaluation": 9,
       "analysis": 0,
-      "conclusion": 0
+      "conclusion": 1
     },
     "byDecision": {
       "ARCH-01": 0,
       "ARCH-02": 0,
-      "ARCH-03": 0,
-      "ARCH-04": 1,
-      "ARCH-05": 0,
-      "ARCH-06": 0,
-      "ARCH-07": 0,
+      "ARCH-03": 1,
+      "ARCH-04": 2,
+      "ARCH-05": 1,
+      "ARCH-06": 1,
+      "ARCH-07": 1,
       "CI-01": 0,
       "CI-02": 1,
-      "CI-03": 0,
-      "DET-01": 4,
-      "DET-02": 1,
-      "DET-03": 1,
-      "DET-04": 1,
-      "DET-05": 0,
-      "DET-06": 1,
+      "CI-03": 1,
+      "DET-01": 8,
+      "DET-02": 2,
+      "DET-03": 7,
+      "DET-04": 2,
+      "DET-05": 1,
+      "DET-06": 6,
       "ETH-01": 0,
-      "ETH-02": 0,
+      "ETH-02": 3,
       "EVAL-01": 1,
-      "EVAL-02": 2,
-      "EVAL-03": 1,
+      "EVAL-02": 5,
+      "EVAL-03": 3,
       "EVAL-04": 1,
-      "EVAL-05": 1,
-      "EVAL-06": 2,
-      "MET-01": 2,
-      "MET-02": 0,
-      "MET-03": 0,
-      "MET-04": 1,
-      "MET-05": 3,
-      "MET-06": 0,
-      "UI-01": 0,
-      "UI-02": 1,
-      "VAL-01": 1,
+      "EVAL-05": 4,
+      "EVAL-06": 5,
+      "MET-01": 10,
+      "MET-02": 1,
+      "MET-03": 1,
+      "MET-04": 4,
+      "MET-05": 10,
+      "MET-06": 3,
+      "UI-01": 1,
+      "UI-02": 2,
+      "VAL-01": 10,
       "VAL-02": 1,
-      "VAL-03": 0
+      "VAL-03": 1
     },
     "unverifiedClaude": [
+      "antoniak2021bad",
+      "blodgett2020language",
+      "blodgett2021stereotyping",
+      "borkan2019nuanced",
       "de-arteaga2019bias",
       "dixon2018measuring",
+      "dror2018hitchhikers",
+      "esri2017who",
+      "gebru2021datasheets",
+      "guo2017calibration",
       "mendu2025safer",
-      "rajawat2024investigating"
+      "nadeem2021stereoset",
+      "nangia2020crowspairs",
+      "ribeiro2020accuracy",
+      "rottger2021hatecheck",
+      "saito2015precisionrecall",
+      "sap2020social",
+      "vidgen2021introducing",
+      "zafrir2019q8bert"
     ]
   },
   "decisions": {
     "total": 35,
     "byStatus": {
-      "open": 35,
-      "exploring": 0,
-      "decided": 0
+      "open": 14,
+      "exploring": 3,
+      "decided": 18
     },
     "byGroup": {
       "system": {
         "total": 7,
-        "open": 7,
-        "exploring": 0,
-        "decided": 0
+        "open": 2,
+        "exploring": 1,
+        "decided": 4
       },
       "detector": {
         "total": 6,
-        "open": 6,
+        "open": 0,
         "exploring": 0,
-        "decided": 0
+        "decided": 6
       },
       "metrics": {
         "total": 6,
-        "open": 6,
+        "open": 2,
         "exploring": 0,
-        "decided": 0
+        "decided": 4
       },
       "ci-cd": {
         "total": 3,
-        "open": 3,
+        "open": 2,
         "exploring": 0,
-        "decided": 0
+        "decided": 1
       },
       "reporting": {
         "total": 2,
-        "open": 2,
-        "exploring": 0,
+        "open": 1,
+        "exploring": 1,
         "decided": 0
       },
       "validation": {
         "total": 3,
-        "open": 3,
+        "open": 2,
         "exploring": 0,
-        "decided": 0
+        "decided": 1
       },
       "evaluation": {
         "total": 6,
-        "open": 6,
-        "exploring": 0,
+        "open": 5,
+        "exploring": 1,
         "decided": 0
       },
       "governance": {
         "total": 2,
-        "open": 2,
+        "open": 0,
         "exploring": 0,
-        "decided": 0
+        "decided": 2
       }
     }
   },
   "bib": {
-    "total": 6,
+    "total": 31,
     "withoutReading": [
-      "kumar2025detecting"
+      "article",
+      "blodgett2021stereotypinga",
+      "bookeisbelectronic",
+      "dodge2021documenting",
+      "hardt2016equality",
+      "katzman2023taxonomizing",
+      "kumar2025detecting",
+      "longpre2024largescale",
+      "rajawat2024investigating",
+      "sap2020sociala",
+      "sap2020socialb"
     ]
   },
   "followUp": {
-    "total": 40,
+    "total": 75,
     "byStatus": {
-      "suggested": 37,
-      "saved": 3,
+      "suggested": 67,
+      "saved": 8,
       "skipped": 0
     },
     "suggestedByPriority": {
-      "high": 12,
-      "medium": 16,
-      "low": 9
+      "high": 13,
+      "medium": 28,
+      "low": 26
     }
   }
 }
