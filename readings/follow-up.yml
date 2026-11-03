@@ -399,7 +399,7 @@
   authors: ["Zhao, J.", "Wang, T.", "Yatskar, M.", "Ordonez, V.", "Chang, K.-W."]
   year: 2018
   venue: "arXiv preprint arXiv:1804.06876"
-  found_in: [{source: de-arteaga2019bias, page: "12"}, {source: blodgett2021stereotyping, page: "1015"}]
+  found_in: [{source: de-arteaga2019bias, page: "12"}]
   why: "WinoBias, an output-side gender bias test based on occupations; a candidate for EVAL-02."
   priority: medium
   status: suggested
@@ -409,7 +409,7 @@
   authors: ["Rudinger, R.", "Naradowsky, J.", "Leonard, B.", "Van Durme, B."]
   year: 2018
   venue: "arXiv preprint arXiv:1804.09301"
-  found_in: [{source: de-arteaga2019bias, page: "12"}]
+  found_in: [{source: de-arteaga2019bias, page: "12"}, {source: blodgett2021stereotyping, page: "1015"}]
   why: "Winogender, another occupation-based gender test; a candidate for EVAL-02."
   priority: medium
   status: suggested
