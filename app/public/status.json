@@ -1,15 +1,15 @@
 {
   "readings": {
-    "total": 6,
+    "total": 5,
     "target": 30,
     "verified": 1,
     "byStatus": {
-      "to-read": 5,
+      "to-read": 4,
       "in-progress": 0,
       "done": 1
     },
     "byStars": {
-      "0": 6,
+      "0": 5,
       "1": 0,
       "2": 0,
       "3": 0,
@@ -18,11 +18,11 @@
     },
     "byTag": {
       "architecture": 0,
-      "metrics": 4,
+      "metrics": 3,
       "detector-model": 2,
       "ci-cd": 0,
       "medical": 0,
-      "benchmarks": 4,
+      "benchmarks": 3,
       "governance": 1,
       "usability": 0,
       "ethics": 0,
@@ -33,7 +33,7 @@
       "abstract": 0,
       "introduction": 1,
       "background": 4,
-      "related-work": 5,
+      "related-work": 4,
       "methodology": 3,
       "work-to-date": 0,
       "project-plan": 0,
@@ -75,14 +75,13 @@
       "MET-06": 0,
       "UI-01": 0,
       "UI-02": 1,
-      "VAL-01": 2,
+      "VAL-01": 1,
       "VAL-02": 1,
       "VAL-03": 0
     },
     "unverifiedClaude": [
       "de-arteaga2019bias",
       "dixon2018measuring",
-      "kumar2025detecting",
       "mendu2025safer",
       "rajawat2024investigating"
     ]
@@ -147,7 +146,9 @@
   },
   "bib": {
     "total": 6,
-    "withoutReading": []
+    "withoutReading": [
+      "kumar2025detecting"
+    ]
   },
   "followUp": {
     "total": 40,
