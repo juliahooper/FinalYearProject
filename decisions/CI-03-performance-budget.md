@@ -4,7 +4,7 @@ title: Performance budget
 group: ci-cd
 status: open
 decided_on:
-readings: []
+readings: [zafrir2019q8bert]
 ---
 
 ## Question

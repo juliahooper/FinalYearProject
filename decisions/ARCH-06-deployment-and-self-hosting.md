@@ -4,7 +4,7 @@ title: Deployment and self-hosting
 group: system
 status: open
 decided_on:
-readings: []
+readings: [zafrir2019q8bert]
 ---
 
 ## Question

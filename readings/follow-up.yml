@@ -734,3 +734,23 @@
   priority: medium
   status: suggested
   key: ""
+
+- title: "Quantization and training of neural networks for efficient integer-arithmetic-only inference"
+  authors: ["Jacob, B.", "Kligys, S.", "Chen, B.", "Zhu, M.", "Tang, M.", "Howard, A.", "Adam, H.", "Kalenichenko, D."]
+  year: 2018
+  venue: "Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pp. 2704–2713"
+  found_in: [{source: zafrir2019q8bert, page: "PDF 5"}]
+  why: "The integer quantisation method Q8BERT builds on; background if ARCH-05's optional quantisation is attempted."
+  priority: low
+  status: suggested
+  key: ""
+
+- title: "Efficient 8-bit quantization of transformer neural machine language translation model"
+  authors: ["Bhandare, A.", "Sripathi, V.", "Karkada, D.", "Menon, V.", "Choi, S.", "Datta, K.", "Saletore, V."]
+  year: 2019
+  venue: "arXiv preprint arXiv:1906.00532"
+  found_in: [{source: zafrir2019q8bert, page: "PDF 5"}]
+  why: "Source of the 3.7× Int8 speed-up on Intel CPUs; check before citing any CPU speed-up in MET-06 or CI-03."
+  priority: low
+  status: suggested
+  key: ""

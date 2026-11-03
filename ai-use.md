@@ -104,3 +104,5 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-11-03 | `readings/follow-up.yml` | Edited: added 2 from saito2015precisionrecall's reference list | |
 | 2026-11-03 | `readings/dror2018hitchhikers.md` | Drafted reading summary from the ACL Anthology PDF (P18-1128); added the citekey to MET-05, MET-06, EVAL-03, DET-03 | |
 | 2026-11-03 | `readings/follow-up.yml` | Edited: added 3 from dror2018hitchhikers's reference list | |
+| 2026-11-03 | `readings/zafrir2019q8bert.md` | Drafted reading summary from the arXiv preprint PDF (1910.06188v2); added the citekey to ARCH-05, ARCH-06, CI-03, MET-06, DET-02 | |
+| 2026-11-03 | `readings/follow-up.yml` | Edited: added 2 from zafrir2019q8bert's reference list | |
