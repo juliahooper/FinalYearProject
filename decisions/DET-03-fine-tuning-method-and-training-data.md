@@ -61,11 +61,14 @@ Leaks between training and test data have inflated published hate speech results
 - Three training sources generalise better than one, and each adds something: stereotype implications (SBIC; Sap et al., 2020, @sap2020social), implicit statements about 13 groups (ToxiGen; Hartvigsen et al., 2022) and labelled counter speech (CAD; Vidgen et al., 2021, @vidgen2021introducing).
 - Hard negatives put the "mention is not bias" stance into the model. Dixon et al. (2018) @dixon2018measuring reduced unintended bias by adding non-toxic examples containing identity terms, and teaching the use-mention distinction reduced errors on counter-speech (Gligorić et al., 2024).
 - A masked loss avoids inventing context labels for data that has none.
+- CAD's counter speech is a small, noisy signal: only 220 counter-speech labels (115 against identity-directed abuse), with low annotator agreement (Fleiss' κ 0.267), and every one was labelled using the earlier messages in its thread, which the detector does not see (Vidgen et al., 2021, @vidgen2021introducing). So the generated hard negatives carry most of the "quotes or counters" signal for the context head, and CAD counter speech is only used where the entry itself quotes or names the abuse it counters; the rest is kept for the harm outputs (as none) but not used as a context-type example.
 - Training both checkpoints turns the data edit into an experiment: comparing their false-positive rates on identity mentions measures the effect of the hard negatives directly.
 
 ## Consequences
 - MET-05 adds an ablation: with versus without hard negatives, on every test set.
 - ARCH-07 has a setting for which checkpoint to run.
 - UI-01 shows the checkpoint and its training data on every report.
+- The CAD filter (counter speech that quotes or names the abuse) is a written rule in the labelling guideline (DET-06), and the number of CAD counter-speech examples kept is reported.
+- CAD comments from the same thread stay in the same split, as in the dataset's own experiments.
 - ETH-02 adds datasheets for the Contextual Abuse Dataset (CC BY 4.0) and the generated hard negatives, and a licence check for SBIC before training.
 - The template design for hard negatives is a Methodology detail worth a short table in the paper.

@@ -37,11 +37,13 @@ Language, libraries and packaging.
 ## Why
 - The models (ModernBERT, HateBERT, DeBERTa-v3) load through Hugging Face Transformers on PyTorch, so training and evaluation stay in one ecosystem.
 - The CPU-only PyTorch build keeps the install small enough for CI runners. ONNX was moved off the critical path because ModernBERT's export is fragile: support had to be added to Hugging Face Optimum with a workaround (Optimum pull request 2131), a fine-tuned ModernBERT classifier exported on GPU differed from the original by about 0.005 (ONNX Runtime issue 24198), and ONNX Runtime's speed optimisations for ModernBERT were still an open pull request when checked (Optimum pull request 2208).
-- 8-bit quantisation typically shrinks a model about four times with little accuracy loss (see Zafrir et al., 2019, @zafrir2019q8bert, for BERT), so it is available if CPU latency in MET-06 is too slow.
+- 8-bit quantisation shrinks a model about four times. For BERT, the accuracy loss stayed under 1% only with quantisation-aware training (quantisation simulated during fine-tuning); quantising an already trained model lost 1.4% to 9.5% (Zafrir et al., 2019, @zafrir2019q8bert). The ONNX route here quantises after training, so it may cost accuracy; that is why it is kept only if test metrics are unchanged, and it is available only if CPU latency in MET-06 is too slow.
 - PySBD is rule-based, needs no downloaded model and is designed for edge cases such as abbreviations and quotes; correct handling of quotes matters for the "mention is not bias" stance.
 - scikit-learn and SciPy cover every MET-05 metric and test.
 
 ## Consequences
 - ONNX export is attempted only after the PyTorch tool works end to end: on CPU, without flash-attention installed, and validated on the test metrics rather than raw output differences. If it fails, the tool ships with PyTorch and the attempt is reported as a practical finding.
 - If an ONNX model is shipped, every release checks its scores match the PyTorch model's within a small tolerance (EVAL-05).
+- If a quantised model is shipped, its temperatures (MET-02) are refitted on the quantised model and its calibration error re-measured, since quantisation shifts the logits.
+- If post-training quantisation loses accuracy, quantisation-aware training during fine-tuning (DET-03) is the fallback.
 - MET-06 latency is measured with PyTorch on a CPU-only runner, and with ONNX and quantisation if the export succeeds. If PyTorch on CPU is too slow, DET-02 is revisited with a model that has mature ONNX support, such as RoBERTa-base.
