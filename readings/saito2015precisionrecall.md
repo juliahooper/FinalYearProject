@@ -92,7 +92,7 @@ On T2, ROC makes RNAmicro the clear winner (0.886), while PRC shows every tool e
 - PRC plots "express the susceptibility of classifiers to imbalanced datasets with clear visual cues and allow for an accurate and intuitive interpretation of practical classifier performance" (p. 19).
 - Because ROC is so widely used on imbalanced data, switching to PRC "may influence many studies" (p. 16).
 - The PRC baseline also shows how hard the problem is (p. 19).
-- They "strongly recommend PRC plots as the most informative visual analysis tool" (p. 19).
+- Their results "strongly recommend PRC plots as the most informative visual analysis tool" (p. 19).
 
 ## 5. What do I think it means?
 *Claude's draft. Rewrite this in your own words when you verify.*
@@ -118,7 +118,7 @@ Suggested metadata, one line each:
 - Literature: 58 articles; ROC 60.3%, PRC 6.9%; filtered 33 articles: ROC 66.7%, PRC 12.1% (Table 4, p. 15).
 - Re-analysis T2: ROC AUCs 0.706–0.886, PRC AUCs 0.015–0.106 (Table 5, p. 17).
 
-Quote (p. 19): "we strongly recommend PRC plots as the most informative visual analysis tool". *(Exact wording is "The results of our study strongly recommend PRC plots as the most informative visual analysis tool"; quote that version.)*
+Quote (p. 19): "strongly recommend PRC plots as the most informative visual analysis tool".
 
 ## Concerns
 - **Bioinformatics examples,** not NLP. The argument is mathematical and transfers; the case studies don't.
