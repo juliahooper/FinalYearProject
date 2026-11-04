@@ -126,3 +126,4 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-11-04 | `readings/warner2025smarter.md` | Drafted reading summary from the ACL Anthology PDF (2025.acl-long.127); added the citekey to DET-02, ARCH-04, ARCH-05, CI-03, MET-06 | |
 | 2026-11-04 | `readings/tian2023just.md` | Drafted reading summary from the ACL Anthology PDF (2023.emnlp-main.330); added the citekey to DET-04, DET-05, MET-02, MET-05, MET-06 | |
 | 2026-11-04 | `readings/parrish2022bbq.md` | Drafted reading summary from the ACL Anthology PDF (2022.findings-acl.165); added the citekey to EVAL-02, MET-01, VAL-01, ETH-02 | |
+| 2026-11-04 | `readings/kirk2022handling.md` | Drafted reading summary from the ACL Anthology PDF (2022.findings-emnlp.35); added the citekey to ETH-01, ETH-02, VAL-01, UI-01, UI-02 | |

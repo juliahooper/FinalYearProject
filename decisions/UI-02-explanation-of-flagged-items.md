@@ -4,7 +4,7 @@ title: Explanation of flagged items
 group: reporting
 status: exploring
 decided_on:
-readings: [de-arteaga2019bias, sap2020social]
+readings: [de-arteaga2019bias, sap2020social, kirk2022handling]
 ---
 
 ## Question
