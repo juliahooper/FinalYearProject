@@ -143,3 +143,7 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-11-04 | `readings/pruitt2003personas.md` | Drafted reading summary from ACM PDF; added the citekey to ARCH-01, VAL-03, UI-01 | |
 | 2026-11-04 | `readings/coefficient.md` | Drafted reading summary from SAGE PDF (scan); added the citekey to VAL-01, DET-06 | |
 | 2026-11-04 | `readings/breckdata.md` | Drafted reading summary from PDF (Zotero storage); added the citekey to CI-01, ARCH-02, CI-02, MET-04, MET-03 | |
+| 2026-11-04 | `readings/article.md` | Drafted reading summary from AI Act Service Desk snapshot (Zotero); added the citekey to MET-01, ARCH-02, ARCH-03, ETH-02 | |
+| 2026-11-04 | `readings/follow-up.yml` | Edited: added 1 from article's reference list | |
+| 2026-11-04 | `readings/bookeisbelectronic.md` | Drafted reading summary from eISB snapshot (Zotero); added the citekey to MET-01, DET-06, VAL-01 | |
+| 2026-11-04 | `readings/follow-up.yml` | Edited: added 1 from bookeisbelectronic's reference list | |

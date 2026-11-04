@@ -4,7 +4,7 @@ title: System flow
 group: system
 status: decided
 decided_on: 2026-11-03
-readings: [breckdata]
+readings: [breckdata, article]
 ---
 
 ## Question

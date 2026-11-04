@@ -4,7 +4,7 @@ title: Data licensing and use
 group: governance
 status: decided
 decided_on: 2026-11-02
-readings: [vidgen2021introducing, antoniak2021bad, gebru2021datasheets, hartvigsen2022toxigen, dodge2021documenting, parrish2022bbq, kirk2022handling]
+readings: [vidgen2021introducing, antoniak2021bad, gebru2021datasheets, hartvigsen2022toxigen, dodge2021documenting, parrish2022bbq, kirk2022handling, article]
 ---
 
 ## Question

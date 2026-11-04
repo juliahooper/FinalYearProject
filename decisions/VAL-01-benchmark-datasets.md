@@ -4,7 +4,7 @@ title: Benchmark datasets
 group: validation
 status: decided
 decided_on: 2026-11-02
-readings: [de-arteaga2019bias, rottger2021hatecheck, sap2020social, borkan2019nuanced, nangia2020crowspairs, blodgett2021stereotyping, gebru2021datasheets, nadeem2021stereoset, ribeiro2020accuracy, esri2017who, gligoric2024nlp, hartvigsen2022toxigen, parrish2022bbq, kirk2022handling, arango2019hate, yin2021generalisable, garg2019counterfactual, dev2021harms, coefficient]
+readings: [de-arteaga2019bias, rottger2021hatecheck, sap2020social, borkan2019nuanced, nangia2020crowspairs, blodgett2021stereotyping, gebru2021datasheets, nadeem2021stereoset, ribeiro2020accuracy, esri2017who, gligoric2024nlp, hartvigsen2022toxigen, parrish2022bbq, kirk2022handling, arango2019hate, yin2021generalisable, garg2019counterfactual, dev2021harms, coefficient, bookeisbelectronic]
 ---
 
 ## Question

@@ -874,3 +874,25 @@
   priority: medium
   status: suggested
   key: ""
+
+- title: "Article 4a: Processing of special categories of personal data for bias detection and correction"
+  authors: ["European Union"]
+  year:
+  venue: "EU AI Act, consolidated text with Digital Omnibus amendments (AI Act Service Desk)"
+  found_in: [{source: article, page: "Art. 10(1), 10(5)"}]
+  why: "Replaces the deleted Art. 10(5); sets the rules for using protected-characteristic data to detect and correct bias (ETH-02, MET-01)."
+  priority: high
+  status: suggested
+  key: ""
+  notes: "Year NOT FOUND IN SOURCE: the snapshot names Article 4a but not when the Digital Omnibus added it."
+
+- title: "Equal Status Act 2000 (revised, consolidated text)"
+  authors: ["NOT FOUND IN SOURCE"]
+  year:
+  venue: "Electronic Irish Statute Book, Revised Acts"
+  found_in: [{source: bookeisbelectronic, page: "s. 3"}]
+  why: "Current wording of the grounds (civil status, housing assistance, gender ground) that MET-01 relies on; the saved snapshot is the 2000 text as enacted."
+  priority: high
+  status: suggested
+  key: ""
+  notes: "Authors and year NOT FOUND IN SOURCE: the eISB page only links to the Revised Act."
