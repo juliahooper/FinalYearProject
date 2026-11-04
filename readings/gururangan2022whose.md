@@ -1,4 +1,4 @@
-﻿---
+---
 key: gururangan2022whose
 title: "Whose Language Counts as High Quality? Measuring Language Ideologies in Text Data Selection"
 authors: ["Gururangan, S.", "Card, D.", "Dreier, S. K.", "Gade, E. K.", "Wang, L. Z.", "Wang, Z.", "Zettlemoyer, L.", "Smith, N. A."]
