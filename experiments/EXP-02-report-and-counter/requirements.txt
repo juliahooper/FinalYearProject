@@ -1,0 +1,6 @@
+# Versions were not recorded when these notebooks were run (Colab, October 2026).
+# Cell 1 installs these unpinned with `pip -q install detoxify shap lime`; the notebook
+# also imports numpy, pandas, matplotlib, torch, scipy and scikit-learn from Colab's preinstalled set.
+detoxify
+shap
+lime

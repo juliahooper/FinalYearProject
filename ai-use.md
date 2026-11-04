@@ -151,3 +151,6 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-11-04 | `decisions/` (ARCH-05, DET-02, DET-03, DET-06, ETH-02, EVAL-02, EVAL-04, MET-01, MET-05, UI-02, VAL-01) | Edited: added a Resources section with official dataset, model and tool links, each checked to resolve | |
 | 2026-11-04 | `PLAN.md` (§2, §4, §8, new §9) | Edited: added Stage 10 (Experiments) from Julia's spec, reformatted as markdown, with a dated note on the XAI repo's commit history | |
 | 2026-11-04 | `experiments/README.md`, `experiments/_template.md`, `README.md` (repo map) | Drafted the experiments index and rules; copied the template from PLAN.md §9.4 | |
+| 2026-11-04 | `experiments/EXP-01-identity-mentions/` `code/`, `results/`; `experiments/EXP-02-report-and-counter/` `code/`, `data/`, `results/` | Copied, unmodified, from MistorRonan/ISE-XAI-Group-10 at 9a66644 (Julia's notebooks and results) | |
+| 2026-11-04 | `experiments/EXP-01-identity-mentions/README.md`, `requirements.txt` | Drafted the experiment record from the notebook and results CSVs; provenance from the source repo's git history | |
+| 2026-11-04 | `experiments/EXP-02-report-and-counter/README.md`, `requirements.txt` | Drafted the experiment record from the notebook and results CSVs; provenance from the source repo's git history | |
