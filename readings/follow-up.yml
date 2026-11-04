@@ -824,3 +824,13 @@
   priority: medium
   status: suggested
   key: ""
+
+- title: "Demographic dialectal variation in social media: A case study of African-American English"
+  authors: ["Blodgett, S. L.", "Green, L.", "O'Connor, B."]
+  year: 2016
+  venue: "Proceedings of the 2016 Conference on Empirical Methods in Natural Language Processing, pp. 1119–1130"
+  found_in: [{source: dodge2021documenting, page: "1295"}]
+  why: "The dialect model Dodge et al. use to show the blocklist removed African American English; a possible EVAL-06 measure of what the gate rejects."
+  priority: low
+  status: suggested
+  key: ""
