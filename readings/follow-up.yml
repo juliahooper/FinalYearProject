@@ -318,14 +318,14 @@
   found_in: [{source: mendu2025safer, page: "8"}, {source: udagawa2025bias, page: "21"}]
   why: "Measures how filtering pretraining data (including for toxicity) changes the trained model; the closest precedent for EVAL-01 and EVAL-03 so far, and the source of the over-filtering warning for EVAL-06."
   priority: high
-  status: suggested
-  key: ""
+  status: saved
+  key: "longpre2024pretrainers"
 
 - title: "RealToxicityPrompts: Evaluating neural toxic degeneration in language models"
   authors: ["Gehman, S.", "Gururangan, S.", "Sap, M.", "Choi, Y.", "Smith, N. A."]
   year: 2020
   venue: "Findings of the Association for Computational Linguistics: EMNLP 2020, pp. 3356–3369"
-  found_in: [{source: mendu2025safer, page: "8"}]
+  found_in: [{source: mendu2025safer, page: "8"}, {source: longpre2024pretrainers, page: "3256"}]
   why: "The standard output-side toxicity benchmark; a candidate measure for EVAL-02, and the benchmark HAVOC is compared against."
   priority: medium
   status: suggested
@@ -862,5 +862,15 @@
   found_in: [{source: udagawa2025bias, page: "22"}]
   why: "A modern pretraining corpus and its filtering pipeline; context for where a per-source gate sits (related work)."
   priority: low
+  status: suggested
+  key: ""
+
+- title: "On the challenges of using black-box APIs for toxicity evaluation in research"
+  authors: ["Pozzobon, L. A.", "Ermis, B.", "Lewis, P.", "Hooker, S."]
+  year: 2023
+  venue: "ICLR 2023 Workshop on Trustworthy and Reliable Large-Scale Machine Learning Models"
+  found_in: [{source: longpre2024pretrainers, page: "3258"}]
+  why: "Black-box toxicity APIs change over time and break reproducibility; supports using open Detoxify as the baseline and recording API versions (DET-04, MET-06)."
+  priority: medium
   status: suggested
   key: ""
