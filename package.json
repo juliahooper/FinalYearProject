@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "check": "node scripts/check.mjs"
+    "check": "node scripts/check.mjs",
+    "test": "node --test scripts/check.test.mjs"
   },
   "devDependencies": {
     "@retorquere/bibtex-parser": "^9.0.29",

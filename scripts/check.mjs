@@ -1,4 +1,4 @@
-// Repo consistency checks (PLAN.md §4).
+// Repo consistency checks (PLAN.md §4, experiments §9.5).
 //
 //   node scripts/check.mjs              check, then write app/public/status.json and the README status block
 //   node scripts/check.mjs --no-write   check only
@@ -7,8 +7,8 @@
 // Exits 1 if there are errors. Warnings are printed but don't fail the check.
 // Nothing is written when there are errors.
 
-import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from "node:fs";
-import { join, basename, dirname, resolve } from "node:path";
+import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync, statSync } from "node:fs";
+import { join, basename, dirname, resolve, relative, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parse as parseYaml } from "yaml";
 import { parse as parseBib } from "@retorquere/bibtex-parser";
@@ -112,6 +112,48 @@ const DECISION_HINTS = {
   status: DECISION_STATUS.join(" | "),
   decided_on: "a date, YYYY-MM-DD, or empty",
   readings: "a list of citekeys",
+};
+
+// Experiments (PLAN.md §9.4)
+const EXPERIMENT_KIND = ["preliminary", "main", "supporting"];
+const EXPERIMENT_STATUS = ["planned", "running", "done"];
+const CODE_BY = ["julia", "claude", "mixed"];
+const REUSE_APPROVED = ["pending", "yes", "no"];
+const EXPERIMENT_DIR_RE = /^(EXP-\d{2})-[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const MB = 1024 * 1024;
+const EXPERIMENT_FIELDS = {
+  id: (v) => isString(v) && /^EXP-\d{2}$/.test(v),
+  title: (v) => isString(v) && v.length > 0,
+  kind: (v) => EXPERIMENT_KIND.includes(v),
+  status: (v) => EXPERIMENT_STATUS.includes(v),
+  question: isString,
+  run_on: (v) => v === null || (isString(v) && DATE_RE.test(v)),
+  code_by: (v) => CODE_BY.includes(v),
+  origin: isString,
+  depends_on: isStringList,
+  decisions: isStringList,
+  sections: isStringList,
+  readings: isStringList,
+  headline: isString,
+  results: (v) =>
+    Array.isArray(v) &&
+    v.every((r) => r && typeof r === "object" && isString(r.file) && isString(r.caption) && Object.keys(r).length === 2),
+};
+// Only for reused work (a non-empty origin); empty otherwise.
+const EXPERIMENT_OPTIONAL = { reuse_approved: (v) => v === null || REUSE_APPROVED.includes(v) };
+const EXPERIMENT_HINTS = {
+  id: "EXP-NN, e.g. EXP-01",
+  title: "a non-empty title",
+  kind: EXPERIMENT_KIND.join(" | "),
+  status: EXPERIMENT_STATUS.join(" | "),
+  run_on: "a date, YYYY-MM-DD, or empty",
+  code_by: CODE_BY.join(" | "),
+  depends_on: "a list of experiment IDs",
+  decisions: "a list of decision IDs",
+  sections: "a list of section IDs",
+  readings: "a list of citekeys",
+  results: 'a list like [{file: results/x.csv, caption: "..."}]',
+  reuse_approved: REUSE_APPROVED.join(" | ") + ", or empty",
 };
 
 // ---------------------------------------------------------------------
@@ -269,6 +311,93 @@ for (const { rel, data } of decisions.values()) {
 }
 
 // ---------------------------------------------------------------------
+// 3b. Experiments (PLAN.md §9)
+// ---------------------------------------------------------------------
+
+const experiments = new Map(); // id -> { rel, dir, data }
+const EXP_ROOT = join(root, "experiments");
+const expDirs = existsSync(EXP_ROOT)
+  ? readdirSync(EXP_ROOT, { withFileTypes: true }).filter((e) => e.isDirectory()).map((e) => e.name).sort()
+  : [];
+const allExperimentFields = { ...EXPERIMENT_FIELDS, ...EXPERIMENT_OPTIONAL };
+for (const dir of expDirs) {
+  const prefix = dir.match(EXPERIMENT_DIR_RE)?.[1];
+  if (!prefix) {
+    error(`experiments/${dir}`, `folder name must be EXP-NN-<slug>, with a kebab-case slug, e.g. EXP-04-backend-timing`);
+    continue;
+  }
+  const rel = `experiments/${dir}/README.md`;
+  if (!existsSync(join(root, rel))) {
+    error(`experiments/${dir}`, "has no README.md (copy experiments/_template.md)");
+    continue;
+  }
+  const x = frontMatter(rel);
+  if (!x) continue;
+  for (const k of Object.keys(x)) {
+    if (!(k in allExperimentFields)) error(rel, `unknown field "${k}" (allowed: ${Object.keys(allExperimentFields).join(", ")})`);
+  }
+  for (const [k, ok] of Object.entries(EXPERIMENT_FIELDS)) {
+    if (!(k in x)) error(rel, `missing field "${k}"`);
+    else if (!ok(x[k])) error(rel, `"${k}" is ${JSON.stringify(x[k])}, expected ${EXPERIMENT_HINTS[k] ?? "text"}`);
+  }
+  if ("reuse_approved" in x && !EXPERIMENT_OPTIONAL.reuse_approved(x.reuse_approved)) {
+    error(rel, `"reuse_approved" is ${JSON.stringify(x.reuse_approved)}, expected ${EXPERIMENT_HINTS.reuse_approved}`);
+  }
+  if (!isString(x.id)) continue;
+  if (x.id !== prefix) error(rel, `"id" is "${x.id}" but the folder says "${prefix}"; they must match`);
+  if (experiments.has(x.id)) error(rel, `duplicate experiment id "${x.id}" (also in ${experiments.get(x.id).rel})`);
+  experiments.set(x.id, { rel, dir, data: x });
+}
+
+for (const { rel, dir, data: x } of experiments.values()) {
+  for (const id of isStringList(x.decisions) ? x.decisions : []) {
+    if (!decisions.has(id)) error(rel, `decision "${id}" has no file in decisions/`);
+  }
+  for (const s of isStringList(x.sections) ? x.sections : []) {
+    if (!SECTIONS.includes(s)) error(rel, `section "${s}" doesn't exist (sections: ${SECTIONS.join(", ")})`);
+  }
+  for (const id of isStringList(x.depends_on) ? x.depends_on : []) {
+    if (id === x.id) error(rel, `depends_on lists the experiment itself`);
+    else if (!experiments.has(id)) error(rel, `depends_on "${id}" has no folder in experiments/`);
+  }
+  for (const key of isStringList(x.readings) ? x.readings : []) {
+    if (!readings.has(key)) warn(rel, `reading "${key}" has no file in readings/ (not summarised yet?)`);
+  }
+  const results = EXPERIMENT_FIELDS.results(x.results) ? x.results : [];
+  const base = resolve(EXP_ROOT, dir);
+  for (const { file } of results) {
+    const abs = resolve(base, file);
+    if (!abs.startsWith(base + sep)) error(rel, `results file "${file}" must be inside experiments/${dir}/`);
+    else if (!existsSync(abs)) error(rel, `results file "${file}" doesn't exist`);
+  }
+  if (x.status === "done") {
+    if (!x.run_on) error(rel, `status is done, so "run_on" needs the date of the run`);
+    if (!isString(x.headline) || !x.headline.trim()) error(rel, `status is done, so "headline" needs the one-line result`);
+    if (!results.length) error(rel, `status is done, so "results" needs at least one file`);
+  }
+  const reused = isString(x.origin) && x.origin.trim() !== "";
+  const approval = x.reuse_approved ?? null;
+  if (reused) {
+    if (approval === null) error(rel, `"origin" is set, so "reuse_approved" needs ${REUSE_APPROVED.join(" | ")}`);
+    else if (approval === "pending") warn(rel, `${x.id}: reuse not yet approved by supervisor`);
+    else if (approval === "no") error(rel, `${x.id}: the supervisor did not approve reuse; remove or replace this experiment`);
+  } else if (approval !== null) {
+    error(rel, `"reuse_approved" is only for reused work, but "origin" is empty`);
+  }
+}
+
+// File sizes and types anywhere under experiments/.
+const walk = (dir) =>
+  readdirSync(dir, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(join(dir, e.name)) : [join(dir, e.name)]));
+for (const abs of existsSync(EXP_ROOT) ? walk(EXP_ROOT) : []) {
+  const rel = relative(root, abs).split(sep).join("/");
+  const size = statSync(abs).size;
+  if (/\.pdf$/i.test(abs)) error(rel, "PDFs are never committed; link to the source instead");
+  if (size > 50 * MB) error(rel, `is ${(size / MB).toFixed(1)} MB; nothing over 50 MB is committed (point to the original source in the README)`);
+  else if (size > 5 * MB) warn(rel, `is ${(size / MB).toFixed(1)} MB; files over 5 MB need Julia's OK`);
+}
+
+// ---------------------------------------------------------------------
 // 4. references.bib against readings/
 // ---------------------------------------------------------------------
 
@@ -361,7 +490,7 @@ for (const [i, f] of followUps.entries()) {
 for (const w of warnings) console.log(`warning  ${w}`);
 for (const e of errors) console.log(`error    ${e}`);
 console.log(
-  `\n${readings.size} readings, ${decisions.size} decisions, ${bibKeys.size} bib entries, ${tags.length} tags, ` +
+  `\n${readings.size} readings, ${decisions.size} decisions, ${experiments.size} experiments, ${bibKeys.size} bib entries, ${tags.length} tags, ` +
     `${followUps.length} follow-ups: ` +
     `${errors.length} error${errors.length === 1 ? "" : "s"}, ${warnings.length} warning${warnings.length === 1 ? "" : "s"}`,
 );
@@ -378,6 +507,7 @@ if (!write) process.exit(0);
 
 const rs = [...readings.values()].map((r) => r.data);
 const ds = [...decisions.values()].map((d) => d.data);
+const xs = [...experiments.values()].map((x) => x.data);
 
 const tally = (init, items, pick) => {
   const out = { ...init };
@@ -407,6 +537,12 @@ const status = {
     total: ds.length,
     byStatus: tally(count(DECISION_STATUS), ds, (d) => d.status),
     byGroup,
+  },
+  experiments: {
+    total: xs.length,
+    byStatus: tally(count(EXPERIMENT_STATUS), xs, (x) => x.status),
+    byKind: tally(count(EXPERIMENT_KIND), xs, (x) => x.kind),
+    reusePending: xs.filter((x) => x.origin && x.reuse_approved === "pending").map((x) => x.id).sort(),
   },
   bib: {
     total: bibKeys.size,
@@ -439,7 +575,8 @@ function countdown() {
 const decided = status.decisions.byStatus.decided;
 const line =
   `> Readings: ${rs.length} / ${READINGS_TARGET} · verified: ${status.readings.verified} · ` +
-  `decisions: ${decided} decided / ${ds.length - decided} open · ${countdown()}`;
+  `decisions: ${decided} decided / ${ds.length - decided} open · ` +
+  `experiments: ${status.experiments.byStatus.done} done · ${countdown()}`;
 
 const readme = read("README.md");
 const block = /<!-- status:start -->[\s\S]*?<!-- status:end -->/;

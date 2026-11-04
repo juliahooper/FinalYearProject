@@ -32,6 +32,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Test the checks against broken fixtures
+        run: npm test
+
       - name: Run the checks
         run: node scripts/check.mjs
 
