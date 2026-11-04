@@ -1,4 +1,4 @@
----
+﻿---
 key: gururangan2022whose
 title: "Whose Language Counts as High Quality? Measuring Language Ideologies in Text Data Selection"
 authors: ["Gururangan, S.", "Card, D.", "Dreier, S. K.", "Gade, E. K.", "Wang, L. Z.", "Wang, Z.", "Zettlemoyer, L.", "Smith, N. A."]
@@ -9,7 +9,7 @@ url: "https://aclanthology.org/2022.emnlp-main.165/"
 stars: 0
 status: to-read
 tags: [data-curation, ethics, impact-evaluation]
-sections: [background, related-work, discussion]
+sections: [background, related-work, analysis]
 decisions: [DET-01, EVAL-01]
 summarised_by: claude
 verified: false
@@ -87,7 +87,7 @@ xychart-beta
 
 Suggested metadata, one line each:
 - `data-curation`, `ethics`, `impact-evaluation`: filtering side effects; what to check in EVAL-01.
-- `background`, `related-work`, `discussion`: why filtering isn't neutral.
+- `background`, `related-work`, `analysis`: why filtering isn't neutral.
 - `DET-01`, `EVAL-01`: as above.
 
 ## Key numbers
