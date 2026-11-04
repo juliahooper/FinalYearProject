@@ -784,3 +784,33 @@
   priority: low
   status: suggested
   key: ""
+
+- title: "Human-in-the-loop for data collection: a multi-target counter narrative dataset to fight online hate speech"
+  authors: ["Fanton, M.", "Bonaldi, H.", "Tekiroğlu, S. S.", "Guerini, M."]
+  year: 2021
+  venue: "Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics"
+  found_in: [{source: gligoric2024nlp, page: "5952"}]
+  why: "Expert counterspeech paired with the hate it answers, covering several target groups; a strong candidate for DET-03's 'quotes or counters' training examples."
+  priority: high
+  status: suggested
+  key: ""
+
+- title: "CONAN - counter narratives through nichesourcing: a multilingual dataset of responses to fight online hate speech"
+  authors: ["Chung, Y.-L.", "Kuzmenko, E.", "Tekiroğlu, S. S.", "Guerini, M."]
+  year: 2019
+  venue: "Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics, pp. 2819–2829"
+  found_in: [{source: gligoric2024nlp, page: "5952"}]
+  why: "The original CONAN counter-narrative dataset; another source of paired hate and counterspeech for DET-03."
+  priority: medium
+  status: suggested
+  key: ""
+
+- title: "Challenges for toxic comment classification: An in-depth error analysis"
+  authors: ["Van Aken, B.", "Risch, J.", "Krestel, R.", "Löser, A."]
+  year: 2018
+  venue: "Proceedings of the 2nd Workshop on Abusive Language Online (ALW2), pp. 33–42"
+  found_in: [{source: gligoric2024nlp, page: "5955"}]
+  why: "Early error analysis showing quoted toxic phrases cause false positives; background for the stance (DET-01)."
+  priority: low
+  status: suggested
+  key: ""
