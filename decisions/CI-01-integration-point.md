@@ -4,7 +4,7 @@ title: Integration point
 group: ci-cd
 status: decided
 decided_on: 2026-11-03
-readings: []
+readings: [breckdata]
 ---
 
 ## Question

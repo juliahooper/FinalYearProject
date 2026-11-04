@@ -4,7 +4,7 @@ title: Pass/fail and override behaviour
 group: ci-cd
 status: open
 decided_on:
-readings: [dixon2018measuring]
+readings: [dixon2018measuring, breckdata]
 ---
 
 ## Question

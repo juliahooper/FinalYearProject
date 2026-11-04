@@ -142,3 +142,4 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-11-04 | `readings/nielsen1990heuristic.md` | Drafted reading summary from ACM PDF (1990 scan); added the citekey to VAL-03, ETH-01, ARCH-01 | |
 | 2026-11-04 | `readings/pruitt2003personas.md` | Drafted reading summary from ACM PDF; added the citekey to ARCH-01, VAL-03, UI-01 | |
 | 2026-11-04 | `readings/coefficient.md` | Drafted reading summary from SAGE PDF (scan); added the citekey to VAL-01, DET-06 | |
+| 2026-11-04 | `readings/breckdata.md` | Drafted reading summary from PDF (Zotero storage); added the citekey to CI-01, ARCH-02, CI-02, MET-04, MET-03 | |

@@ -4,7 +4,7 @@ title: Aggregation to a source score
 group: metrics
 status: open
 decided_on:
-readings: [antoniak2021bad, udagawa2025bias]
+readings: [antoniak2021bad, udagawa2025bias, breckdata]
 ---
 
 ## Question
