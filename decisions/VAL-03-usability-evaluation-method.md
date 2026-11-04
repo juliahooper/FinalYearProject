@@ -4,7 +4,7 @@ title: Usability evaluation method
 group: validation
 status: open
 decided_on:
-readings: [blodgett2020language, ribeiro2016why, nielsen1990heuristic]
+readings: [blodgett2020language, ribeiro2016why, nielsen1990heuristic, pruitt2003personas]
 ---
 
 ## Question
