@@ -47,3 +47,13 @@ Language, libraries and packaging.
 - If a quantised model is shipped, its temperatures (MET-02) are refitted on the quantised model and its calibration error re-measured, since quantisation shifts the logits.
 - If post-training quantisation loses accuracy, quantisation-aware training during fine-tuning (DET-03) is the fallback.
 - MET-06 latency is measured with PyTorch on a CPU-only runner, and with ONNX and quantisation if the export succeeds. If PyTorch on CPU is too slow, DET-02 is revisited with a model that has mature ONNX support, such as RoBERTa-base.
+
+## Resources
+Datasets, models and tools this decision relies on. Papers are in the Readings panel.
+
+- [ModernBERT-base model card](https://huggingface.co/answerdotai/ModernBERT-base) and [code](https://github.com/AnswerDotAI/ModernBERT) (Warner et al., 2025).
+- [HateBERT model card](https://huggingface.co/GroNLP/hateBERT): check the licence here; the paper doesn't state one (Caselli et al., 2021).
+- [DeBERTa-v3-base model card](https://huggingface.co/microsoft/deberta-v3-base).
+- [Hugging Face Optimum pull request 2131](https://github.com/huggingface/optimum/pull/2131): ModernBERT ONNX export support.
+- [Hugging Face Optimum pull request 2208](https://github.com/huggingface/optimum/pull/2208): ONNX Runtime optimisations for ModernBERT.
+- [ONNX Runtime issue 24198](https://github.com/microsoft/onnxruntime/issues/24198): exported ModernBERT classifier differing from the original.

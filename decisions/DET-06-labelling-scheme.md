@@ -58,3 +58,11 @@ Where a dataset does not separate stereotyping from demeaning cleanly, the mappi
 - DET-03 needs training data that includes all four context types; the Contextual Abuse Dataset (CC BY 4.0) is a candidate for counter speech.
 - ARCH-04's span identification produces the span field at inference time.
 - The gap set tags exclusionary examples and reports how the detector and Detoxify treat them, descriptively.
+
+## Resources
+Datasets, models and tools this decision relies on. Papers are in the Readings panel.
+
+- [Social Bias Inference Corpus (SBIC)](https://maartensap.com/social-bias-frames/): official page, as given in Sap et al. (2020).
+- [ToxiGen](https://github.com/microsoft/ToxiGen): official repository, as given in Hartvigsen et al. (2022).
+- [Contextual Abuse Dataset](https://github.com/dongpng/cad_naacl2021): official repository, as given in Vidgen et al. (2021).
+- [Detoxify](https://github.com/unitaryai/detoxify) (Hanu and Unitary team, 2020): the baseline toxicity filter. Software, so it has no reading note.

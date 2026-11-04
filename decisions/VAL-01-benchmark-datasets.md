@@ -4,7 +4,7 @@ title: Benchmark datasets
 group: validation
 status: decided
 decided_on: 2026-11-02
-readings: [de-arteaga2019bias, rottger2021hatecheck, sap2020social, borkan2019nuanced, nangia2020crowspairs, blodgett2021stereotyping, gebru2021datasheets, nadeem2021stereoset, ribeiro2020accuracy, esri2017who, gligoric2024nlp, hartvigsen2022toxigen, parrish2022bbq, kirk2022handling, arango2019hate, yin2021generalisable, garg2019counterfactual, dev2021harms, coefficient, bookeisbelectronic]
+readings: [de-arteaga2019bias, rottger2021hatecheck, sap2020social, borkan2019nuanced, nangia2020crowspairs, blodgett2021stereotyping, gebru2021datasheets, nadeem2021stereoset, ribeiro2020accuracy, esri2017who, gligoric2024nlp, hartvigsen2022toxigen, parrish2022bbq, kirk2022handling, arango2019hate, yin2021generalisable, garg2019counterfactual, dev2021harms, coefficient, bookeisbelectronic, dixon2018measuring]
 ---
 
 ## Question
@@ -51,3 +51,15 @@ E.g. StereoSet and CrowS-Pairs, with their licences and known weaknesses.
 - BBQ (Parrish et al., 2022) and StereoSet (Nadeem et al., 2021) are kept for EVAL-02, where they test the trained model's outputs.
 - The gap set is a contribution in its own right for the deliverable section.
 - ETH-02 checks the licence of every dataset listed here.
+
+## Resources
+Datasets, models and tools this decision relies on. Papers are in the Readings panel.
+
+- [Social Bias Inference Corpus (SBIC)](https://maartensap.com/social-bias-frames/): official page, as given in Sap et al. (2020).
+- [ToxiGen](https://github.com/microsoft/ToxiGen): official repository, as given in Hartvigsen et al. (2022).
+- [HateCheck data](https://github.com/paul-rottger/hatecheck-data): official repository, as given in Röttger et al. (2021).
+- [CrowS-Pairs](https://github.com/nyu-mll/crows-pairs): official repository, as given in Nangia et al. (2020).
+- [Bias in Bios](https://github.com/microsoft/biosbias): code that rebuilds the dataset from Common Crawl (De-Arteaga et al., 2019).
+- [Detoxify](https://github.com/unitaryai/detoxify) (Hanu and Unitary team, 2020): the baseline toxicity filter. Software, so it has no reading note.
+- [A social portrait of Travellers in Ireland](https://www.esri.ie/publications/a-social-portrait-of-travellers-in-ireland) (Watson, Kenny and McGinnity, 2017, ESRI): in To read next, not yet summarised.
+- All Ireland Traveller Health Study (2010): in To read next; no link saved yet.

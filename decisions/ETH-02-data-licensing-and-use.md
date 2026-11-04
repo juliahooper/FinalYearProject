@@ -60,3 +60,14 @@ Only the chosen option is recorded in the master plan; alternatives that were re
 - If a dataset is withdrawn for ethical reasons rather than licensing, the frozen copy is still used and the withdrawal is noted in the paper.
 - MET-06 can count "no text leaves the machine" as a privacy property of the local backend.
 - Still open, for ARCH-06: the licence for the tool's code (MIT or Apache-2.0) and for the gap set (CC BY 4.0 suggested).
+
+## Resources
+Datasets, models and tools this decision relies on. Papers are in the Readings panel.
+
+- [Social Bias Inference Corpus (SBIC)](https://maartensap.com/social-bias-frames/): official page, as given in Sap et al. (2020).
+- [ToxiGen](https://github.com/microsoft/ToxiGen): official repository, as given in Hartvigsen et al. (2022).
+- [HateCheck data](https://github.com/paul-rottger/hatecheck-data): official repository, as given in Röttger et al. (2021).
+- [CrowS-Pairs](https://github.com/nyu-mll/crows-pairs): official repository, as given in Nangia et al. (2020).
+- [BBQ](https://github.com/nyu-mll/BBQ): official repository, as given in Parrish et al. (2022).
+- [Bias in Bios](https://github.com/microsoft/biosbias): code that rebuilds the dataset from Common Crawl (De-Arteaga et al., 2019).
+- [Contextual Abuse Dataset](https://github.com/dongpng/cad_naacl2021): official repository, as given in Vidgen et al. (2021).

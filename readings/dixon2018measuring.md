@@ -10,7 +10,7 @@ stars: 0
 status: to-read
 tags: [metrics, benchmarks, detector-model, data-curation, impact-evaluation]
 sections: [background, related-work, methodology, evaluation]
-decisions: [DET-01, DET-03, MET-04, MET-05, EVAL-02, EVAL-03, EVAL-05, EVAL-06, CI-02]
+decisions: [DET-01, DET-03, MET-01, VAL-01, MET-04, MET-05, EVAL-02, EVAL-03, EVAL-05, EVAL-06, CI-02]
 summarised_by: claude
 verified: false
 added: 2026-11-02

@@ -46,3 +46,9 @@ E.g. precision, recall, F1, calibration, per-category breakdown.
 - MET-06 reuses these accuracy metrics to compare backends.
 - EVAL-05's regression tests can assert minimum values on a fixed subset.
 - The 10,000-word limit means only the headline metrics go in the main text; the rest go in an appendix table.
+
+## Resources
+Datasets, models and tools this decision relies on. Papers are in the Readings panel.
+
+- [Detoxify](https://github.com/unitaryai/detoxify) (Hanu and Unitary team, 2020): the baseline toxicity filter. Software, so it has no reading note.
+- [HateCheck data](https://github.com/paul-rottger/hatecheck-data): official repository, as given in Röttger et al. (2021).

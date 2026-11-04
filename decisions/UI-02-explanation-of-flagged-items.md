@@ -23,3 +23,8 @@ What it suggests: the report should **highlight spans rather than precise effect
 
 ## Consequences
 (empty until decided)
+
+## Resources
+Datasets, models and tools this decision relies on. Papers are in the Readings panel.
+
+- [Detoxify](https://github.com/unitaryai/detoxify) (Hanu and Unitary team, 2020): the baseline toxicity filter. Software, so it has no reading note.

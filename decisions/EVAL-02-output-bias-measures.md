@@ -21,3 +21,8 @@ Which output-side benchmarks and metrics compare the models before and after fil
 
 ## Consequences
 (empty until decided)
+
+## Resources
+Datasets, models and tools this decision relies on. Papers are in the Readings panel.
+
+- [BBQ](https://github.com/nyu-mll/BBQ): official repository, as given in Parrish et al. (2022).

@@ -4,7 +4,7 @@ title: Bias categories covered
 group: metrics
 status: decided
 decided_on: 2026-11-02
-readings: [caliskan2017semantics, de-arteaga2019bias, rottger2021hatecheck, sap2020social, nangia2020crowspairs, blodgett2020language, blodgett2021stereotyping, antoniak2021bad, nadeem2021stereoset, esri2017who, hartvigsen2022toxigen, dodge2021documenting, udagawa2025bias, gallegos2024bias, parrish2022bbq, dev2021harms, article, bookeisbelectronic]
+readings: [caliskan2017semantics, de-arteaga2019bias, rottger2021hatecheck, sap2020social, nangia2020crowspairs, blodgett2020language, blodgett2021stereotyping, antoniak2021bad, nadeem2021stereoset, esri2017who, hartvigsen2022toxigen, dodge2021documenting, udagawa2025bias, gallegos2024bias, parrish2022bbq, dev2021harms, article, bookeisbelectronic, dixon2018measuring]
 ---
 
 ## Question
@@ -45,3 +45,10 @@ Which groups and bias types (gender, race, age, disability, etc.).
 - Word lists are documented in the repo with origin and rationale, published as files, checked for presence in the corpus and compared with an alternative list (Antoniak and Mimno, 2021). Keyword matches need disambiguation ("blind date" is not about disability): Udagawa et al. (2025) used a word-sense model for this, so the counter starts with simple context rules and reports its false-match rate on a sample. Their pipeline (protected-group detection, regard classification and co-occurrence across Common Crawl) is the closest prior work to the source level, but it rebalances a corpus offline rather than gating each new source.
 - The paper frames the tool as supporting AI Act Article 10 data governance, without claiming legal compliance.
 - EVAL-02 measures the trained model on the same grounds where benchmarks exist.
+
+## Resources
+Datasets, models and tools this decision relies on. Papers are in the Readings panel.
+
+- [CrowS-Pairs](https://github.com/nyu-mll/crows-pairs): official repository, as given in Nangia et al. (2020).
+- [BBQ](https://github.com/nyu-mll/BBQ): official repository, as given in Parrish et al. (2022).
+- All Ireland Traveller Health Study (2010): in To read next; no link saved yet.

@@ -72,3 +72,10 @@ Leaks between training and test data have inflated published hate speech results
 - CAD comments from the same thread stay in the same split, as in the dataset's own experiments.
 - ETH-02 adds datasheets for the Contextual Abuse Dataset (CC BY 4.0) and the generated hard negatives, and a licence check for SBIC before training.
 - The template design for hard negatives is a Methodology detail worth a short table in the paper.
+
+## Resources
+Datasets, models and tools this decision relies on. Papers are in the Readings panel.
+
+- [Social Bias Inference Corpus (SBIC)](https://maartensap.com/social-bias-frames/): official page, as given in Sap et al. (2020).
+- [ToxiGen](https://github.com/microsoft/ToxiGen): official repository, as given in Hartvigsen et al. (2022).
+- [Contextual Abuse Dataset](https://github.com/dongpng/cad_naacl2021): official repository, as given in Vidgen et al. (2021).

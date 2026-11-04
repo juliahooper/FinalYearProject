@@ -42,3 +42,10 @@ Which small open-weight model to fine-tune, and why.
 - ARCH-05 is built around the Hugging Face ecosystem for ModernBERT.
 - MET-06 compares a roughly 150M-parameter local model against the commercial backend on accuracy, cost, latency and privacy.
 - The Methodology's feasibility section can state that training fits free cloud GPU time.
+
+## Resources
+Datasets, models and tools this decision relies on. Papers are in the Readings panel.
+
+- [ModernBERT-base model card](https://huggingface.co/answerdotai/ModernBERT-base) and [code](https://github.com/AnswerDotAI/ModernBERT) (Warner et al., 2025).
+- [HateBERT model card](https://huggingface.co/GroNLP/hateBERT): check the licence here; the paper doesn't state one (Caselli et al., 2021).
+- [DeBERTa-v3-base model card](https://huggingface.co/microsoft/deberta-v3-base).
