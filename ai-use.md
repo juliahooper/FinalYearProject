@@ -118,3 +118,5 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-11-04 | `readings/follow-up.yml` | Edited: added 1 from dodge2021documenting's reference list | |
 | 2026-11-04 | `readings/sap2019risk.md` | Drafted reading summary from the ACL Anthology PDF (P19-1163); added the citekey to DET-01, DET-03, DET-06, MET-05, EVAL-06 | |
 | 2026-11-04 | `readings/follow-up.yml` | Edited: added sap2019risk to the sources of 2 existing entries | |
+| 2026-11-04 | `readings/udagawa2025bias.md` | Drafted reading summary from the ACL Anthology PDF (2025.findings-emnlp.2); added the citekey to DET-01, MET-01, MET-03, EVAL-01, EVAL-06 | |
+| 2026-11-04 | `readings/follow-up.yml` | Edited: added 3 from udagawa2025bias's reference list; added udagawa2025bias to the sources of 2 existing entries | |

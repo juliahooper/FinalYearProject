@@ -4,7 +4,7 @@ title: Downstream impact experiment
 group: evaluation
 status: open
 decided_on:
-readings: [mendu2025safer]
+readings: [mendu2025safer, udagawa2025bias]
 ---
 
 ## Question

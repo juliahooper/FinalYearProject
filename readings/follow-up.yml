@@ -305,8 +305,8 @@
   found_in: [{source: "external: ISE-XAI-Group-10 journal/sources/2026-10-05-udagawa-2025.md", page: "-"}]
   why: "Protected attribute detection and regard classification as a way to analyse bias in text; relevant to both the detector and EVAL-02."
   priority: medium
-  status: suggested
-  key: ""
+  status: saved
+  key: "udagawa2025bias"
   notes: "The earlier review says the DOI (10.18653/v1/2025.findings-emnlp.2) is inferred and needs confirming."
 
 # --- From mendu2025safer's reference list (pp. 8–9), as printed there.
@@ -315,7 +315,7 @@
   authors: ["Longpre, S.", "Yauney, G.", "Reif, E.", "Lee, K.", "Roberts, A.", "Zoph, B.", "Zhou, D.", "Wei, J.", "Robinson, K.", "Mimno, D.", "Ippolito, D."]
   year: 2024
   venue: "Proceedings of the 2024 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 1: Long Papers), pp. 3245–3276"
-  found_in: [{source: mendu2025safer, page: "8"}]
+  found_in: [{source: mendu2025safer, page: "8"}, {source: udagawa2025bias, page: "21"}]
   why: "Measures how filtering pretraining data (including for toxicity) changes the trained model; the closest precedent for EVAL-01 and EVAL-03 so far, and the source of the over-filtering warning for EVAL-06."
   priority: high
   status: suggested
@@ -335,7 +335,7 @@
   authors: ["Luccioni, A.", "Viviano, J."]
   year: 2021
   venue: "Proceedings of the 59th Annual Meeting of the ACL and the 11th IJCNLP (Volume 2: Short Papers), pp. 182–189"
-  found_in: [{source: mendu2025safer, page: "9"}]
+  found_in: [{source: mendu2025safer, page: "9"}, {source: udagawa2025bias, page: "21"}]
   why: "Background evidence of undesirable content in Common Crawl, the corpus most LLM pretraining starts from."
   priority: medium
   status: suggested
@@ -831,6 +831,36 @@
   venue: "Proceedings of the 2016 Conference on Empirical Methods in Natural Language Processing, pp. 1119–1130"
   found_in: [{source: dodge2021documenting, page: "1295"}, {source: sap2019risk, page: "1672"}]
   why: "The dialect model Dodge et al. use to show the blocklist removed African American English; a possible EVAL-06 measure of what the gate rejects."
+  priority: low
+  status: suggested
+  key: ""
+
+- title: "SeeGULL: A stereotype benchmark with broad geo-cultural coverage leveraging generative models"
+  authors: ["Jha, A.", "Mostafazadeh Davani, A.", "Reddy, C. K.", "Dave, S.", "Prabhakaran, V.", "Dev, S."]
+  year: 2023
+  venue: "Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pp. 9851–9870"
+  found_in: [{source: udagawa2025bias, page: "21"}]
+  why: "Stereotypes across many nationalities and regions; a possible documented source for gap-set stereotypes beyond the US (VAL-01)."
+  priority: high
+  status: suggested
+  key: ""
+
+- title: "Identifying and reducing gender bias in word-level language models"
+  authors: ["Bordia, S.", "Bowman, S. R."]
+  year: 2019
+  venue: "Proceedings of NAACL 2019: Student Research Workshop, pp. 7–15"
+  found_in: [{source: udagawa2025bias, page: "20"}]
+  why: "The frequency bias score used by Udagawa et al.; a candidate formula for the source-level skewed association measure (DET-01, MET-03)."
+  priority: medium
+  status: suggested
+  key: ""
+
+- title: "The FineWeb datasets: Decanting the web for the finest text data at scale"
+  authors: ["Penedo, G.", "Kydlíček, H.", "Lozhkov, A.", "Mitchell, M.", "Raffel, C.", "Von Werra, L.", "Wolf, T."]
+  year: 2024
+  venue: "arXiv preprint arXiv:2406.17557"
+  found_in: [{source: udagawa2025bias, page: "22"}]
+  why: "A modern pretraining corpus and its filtering pipeline; context for where a per-source gate sits (related work)."
   priority: low
   status: suggested
   key: ""
