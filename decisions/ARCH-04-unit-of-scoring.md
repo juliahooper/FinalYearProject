@@ -4,7 +4,7 @@ title: Unit of scoring
 group: system
 status: decided
 decided_on: 2026-11-02
-readings: [mendu2025safer, vidgen2021introducing, gligoric2024nlp, dodge2021documenting, longpre2024pretrainers, warner2025smarter]
+readings: [mendu2025safer, vidgen2021introducing, gligoric2024nlp, dodge2021documenting, longpre2024pretrainers, warner2025smarter, pavlopoulos2020toxicity]
 ---
 
 ## Question

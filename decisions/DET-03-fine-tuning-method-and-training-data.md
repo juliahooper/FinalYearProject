@@ -4,7 +4,7 @@ title: Fine-tuning method and training data
 group: detector
 status: decided
 decided_on: 2026-11-03
-readings: [dixon2018measuring, sap2020social, borkan2019nuanced, vidgen2021introducing, guo2017calibration, gebru2021datasheets, dror2018hitchhikers, gligoric2024nlp, hartvigsen2022toxigen, sap2019risk, arango2019hate, yin2021generalisable]
+readings: [dixon2018measuring, sap2020social, borkan2019nuanced, vidgen2021introducing, guo2017calibration, gebru2021datasheets, dror2018hitchhikers, gligoric2024nlp, hartvigsen2022toxigen, sap2019risk, arango2019hate, yin2021generalisable, pavlopoulos2020toxicity]
 ---
 
 ## Question
