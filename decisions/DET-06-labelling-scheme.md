@@ -4,7 +4,7 @@ title: Labelling scheme
 group: detector
 status: decided
 decided_on: 2026-11-02
-readings: [mendu2025safer, rottger2021hatecheck, sap2020social, nangia2020crowspairs, vidgen2021introducing, blodgett2021stereotyping, gligoric2024nlp, hartvigsen2022toxigen]
+readings: [mendu2025safer, rottger2021hatecheck, sap2020social, nangia2020crowspairs, vidgen2021introducing, blodgett2021stereotyping, gligoric2024nlp, hartvigsen2022toxigen, sap2019risk]
 ---
 
 ## Question
