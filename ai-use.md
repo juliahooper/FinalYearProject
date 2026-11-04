@@ -122,3 +122,4 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-11-04 | `readings/follow-up.yml` | Edited: added 3 from udagawa2025bias's reference list; added udagawa2025bias to the sources of 2 existing entries | |
 | 2026-11-04 | `readings/longpre2024pretrainers.md` | Drafted reading summary from the ACL Anthology PDF (2024.naacl-long.179); added the citekey to EVAL-01, EVAL-02, EVAL-03, EVAL-06, ARCH-04, DET-04 | |
 | 2026-11-04 | `readings/follow-up.yml` | Edited: added 1 from longpre2024pretrainers's reference list; added longpre2024pretrainers to the sources of 1 existing entries | |
+| 2026-11-04 | `readings/gallegos2024bias.md` | Drafted reading summary from the MIT Press PDF (coli_a_00524); added the citekey to DET-01, DET-06, EVAL-02, MET-01, EVAL-01 | |
