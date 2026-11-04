@@ -139,3 +139,4 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-11-04 | `readings/katzman2023taxonomizing.md` | Drafted reading summary from AAAI PDF (Zotero storage); added the citekey to DET-01, MET-05, EVAL-02 | |
 | 2026-11-04 | `readings/lundberg2017unified.md` | Drafted reading summary from arXiv v2 PDF; added the citekey to UI-02, EVAL-04 | |
 | 2026-11-04 | `readings/ribeiro2016why.md` | Drafted reading summary from ACM PDF; added the citekey to UI-02, EVAL-04, VAL-03 | |
+| 2026-11-04 | `readings/nielsen1990heuristic.md` | Drafted reading summary from ACM PDF (1990 scan); added the citekey to VAL-03, ETH-01, ARCH-01 | |

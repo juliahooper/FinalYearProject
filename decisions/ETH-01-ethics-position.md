@@ -4,7 +4,7 @@ title: Ethics position
 group: governance
 status: decided
 decided_on: 2026-11-02
-readings: [kirk2022handling, dev2021harms]
+readings: [kirk2022handling, dev2021harms, nielsen1990heuristic]
 ---
 
 ## Question

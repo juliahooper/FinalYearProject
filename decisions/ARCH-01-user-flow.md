@@ -4,7 +4,7 @@ title: User flow
 group: system
 status: exploring
 decided_on:
-readings: []
+readings: [nielsen1990heuristic]
 ---
 
 ## Question
