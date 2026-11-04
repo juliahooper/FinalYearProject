@@ -29,5 +29,6 @@ EXP-NN-<slug>/
 |---|---|---|---|---|
 | [EXP-01](EXP-01-identity-mentions/) | How an off-the-shelf filter treats harmless identity mentions | preliminary | done | On Detoxify original, harmless sentences naming a group scored up to 0.847 P(toxic); the 40 neutral controls scored at most 0.003 |
 | [EXP-02](EXP-02-report-and-counter/) | How an off-the-shelf filter treats reporting and arguing against abuse | preliminary | done | Mean P(toxic) for promoting, reporting and arguing against abuse: 0.88, 0.43, 0.57 (original); 0.96, 0.84, 0.74 (unbiased) |
+| [EXP-03](EXP-03-false-positive-rates/) | False-positive rates at filter cut-offs (re-analysis) | preliminary | done | At 0.4, Detoxify original removes 18 / 150 harmless identity mentions (12%) and 0 / 40 neutral controls; unbiased removes 15 / 16 reporting sentences (94%) |
 
 EXP-01 to EXP-03 together are the preliminary study in the interim report (work to date, with the setup in methodology).
