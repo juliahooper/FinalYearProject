@@ -4,7 +4,7 @@ title: Ensemble mode
 group: detector
 status: decided
 decided_on: 2026-11-03
-readings: [guo2017calibration]
+readings: [guo2017calibration, tian2023just]
 ---
 
 ## Question
