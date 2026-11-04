@@ -1,7 +1,7 @@
 # Screening training data for representational bias before LLM training: CI-integrated, self-hostable tool
 
 <!-- status:start -->
-> Readings: 20 / 30 · verified: 1 · decisions: 18 decided / 17 open · interim report in 3 days
+> Readings: 34 / 30 · verified: 1 · decisions: 18 decided / 17 open · interim report in 2 days
 <!-- status:end -->
 
 ## Introduction
