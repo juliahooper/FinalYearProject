@@ -814,3 +814,13 @@
   priority: low
   status: suggested
   key: ""
+
+- title: "Latent hatred: A benchmark for understanding implicit hate speech"
+  authors: ["ElSherief, M.", "Ziems, C.", "Muchlinski, D.", "Anupindi, V.", "Seybolt, J.", "De Choudhury, M.", "Yang, D."]
+  year: 2021
+  venue: "arXiv preprint arXiv:2109.05322"
+  found_in: [{source: hartvigsen2022toxigen, page: "3318"}]
+  why: "ImplicitHateCorpus, human-written implicit hate; a possible extra out-of-distribution test for VAL-01."
+  priority: medium
+  status: suggested
+  key: ""

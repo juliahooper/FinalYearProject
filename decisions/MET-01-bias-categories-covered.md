@@ -4,7 +4,7 @@ title: Bias categories covered
 group: metrics
 status: decided
 decided_on: 2026-11-02
-readings: [caliskan2017semantics, de-arteaga2019bias, rottger2021hatecheck, sap2020social, nangia2020crowspairs, blodgett2020language, blodgett2021stereotyping, antoniak2021bad, nadeem2021stereoset, esri2017who]
+readings: [caliskan2017semantics, de-arteaga2019bias, rottger2021hatecheck, sap2020social, nangia2020crowspairs, blodgett2020language, blodgett2021stereotyping, antoniak2021bad, nadeem2021stereoset, esri2017who, hartvigsen2022toxigen]
 ---
 
 ## Question

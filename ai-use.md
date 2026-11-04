@@ -112,3 +112,5 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-11-03 | `decisions/{MET-01,VAL-01,ARCH-05,MET-02,DET-03}-*.md` | Edited (Julia's request): corrected claims found while summarising readings (Traveller odds ratios and sample size; what Antoniak's coherence scores measure; ESRI as a discrimination not stereotype source; 8-bit accuracy loss needs quantisation-aware training; per-sigmoid temperature scaling; CAD counter speech limits) | |
 | 2026-11-04 | `readings/gligoric2024nlp.md` | Drafted reading summary from the ACL Anthology PDF (2024.naacl-long.331); added the citekey to DET-01, DET-03, DET-04, DET-06, ARCH-04, VAL-01 | |
 | 2026-11-04 | `readings/follow-up.yml` | Edited: added 3 from gligoric2024nlp's reference list | |
+| 2026-11-04 | `readings/hartvigsen2022toxigen.md` | Drafted reading summary from the ACL Anthology PDF (2022.acl-long.234); added the citekey to DET-03, VAL-01, DET-06, MET-01, ETH-02 | |
+| 2026-11-04 | `readings/follow-up.yml` | Edited: added 1 from hartvigsen2022toxigen's reference list | |
