@@ -193,8 +193,8 @@
   found_in: [{source: "external: ISE-XAI-Group-10 journal/sources/2026-10-01-gururangan-2022.md", page: "-"}]
   why: "Shows a data-selection filter favours some groups' writing over others; a model for measuring who a filter removes (EVAL-03, EVAL-06)."
   priority: high
-  status: suggested
-  key: ""
+  status: saved
+  key: "gururangan2022whose"
 
 - title: "Epistemic Injustice in Language Models: An Audit of Pretraining Filters and Guardrails"
   authors: ["Stranisci, M. A.", "Pranav, A.", "Damiano, R.", "Hardmeier, C.", "Lauscher, A."]
