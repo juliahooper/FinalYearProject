@@ -4,7 +4,7 @@ title: Output bias measures
 group: evaluation
 status: open
 decided_on:
-readings: [dixon2018measuring, de-arteaga2019bias, nangia2020crowspairs, blodgett2021stereotyping, nadeem2021stereoset, longpre2024pretrainers, gallegos2024bias, parrish2022bbq]
+readings: [dixon2018measuring, de-arteaga2019bias, nangia2020crowspairs, blodgett2021stereotyping, nadeem2021stereoset, longpre2024pretrainers, gallegos2024bias, parrish2022bbq, katzman2023taxonomizing]
 ---
 
 ## Question
