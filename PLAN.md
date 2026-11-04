@@ -79,6 +79,15 @@ One place for everything in the FYP:
 ├── decisions/
 │   ├── _template.md
 │   └── <ID>-<slug>.md           # one file per decision, seeded with every open decision (§3.4)
+├── experiments/                 # code, inputs and results of every experiment (§9)
+│   ├── README.md                # index: what's here, the rules in §9.7, a table of all experiments
+│   ├── _template.md             # README template for a new experiment (§9.4)
+│   └── EXP-NN-<slug>/
+│       ├── README.md            # the experiment record the app shows
+│       ├── requirements.txt     # exact library versions, or a comment saying why they're unknown
+│       ├── code/                # notebooks and scripts, exactly as run
+│       ├── data/                # inputs (small files only; see the size rules in §9.5)
+│       └── results/             # outputs: CSVs, figures. Never edited by hand
 ├── drafts/                      # rough drafts, any format, named YYYY-MM-DD-<topic>.<ext>
 ├── journal/
 │   ├── meetings/                # YYYY-MM-DD.md, supervisor meetings
@@ -403,6 +412,16 @@ A Node script (no extra dependencies beyond `yaml` and a small bib parser such a
    - readings per tag, report section and decision
    - decisions by status and group
 6. Rewrites the README status block (§3.1). The countdown names the interim report up to and including 06/11/2026, then the final report and video.
+7. Validates experiments (§9.5 Step 5):
+   - parses `experiments/*/README.md` front matter against §9.4; fails on unknown fields, bad enum values, an `id` that doesn't match the folder's `EXP-NN` prefix, or a duplicate ID;
+   - every `decisions`, `sections` and `depends_on` value exists (error); every `readings` citekey exists (warning);
+   - every `results[].file` exists inside that experiment's folder;
+   - `status: done` needs `run_on`, a non-empty `headline` and at least one `results` entry;
+   - a non-empty `origin` needs `reuse_approved`: `pending` is a warning, `no` is an error;
+   - no file under `experiments/` is over 50 MB (error) or 5 MB (warning), and there are no PDFs;
+   - `status.json` gains `experiments: { total, byStatus, byKind, reusePending }`, and the README status block gains `· experiments: N done`.
+
+   `npm test` runs `scripts/check.test.mjs`, which checks that a deliberately broken experiment (a bad decision ID) fails.
 
 The workflow runs the script on every push. It commits README changes back only when the status block changed, with the message `chore: update status`, using `[skip ci]` to avoid loops.
 
@@ -677,8 +696,434 @@ The copyable prompt for the Guide page:
 | 7 | Report notes | After interim |
 | 8 | Dashboard + Guide | After interim |
 | 9 | Polish | After interim |
+| 10a | Experiments folder, EXP-01 to EXP-03, checks (§9.5) | Yes: evidence for the preliminary study |
+| 10b | Experiments page (§9.6) | After interim |
+| 10c | Links from Decisions, Report notes, Dashboard; Guide page (§9.7) | After interim |
 
 At the end of every stage:
 1. Summarise what changed and how to try it.
 2. List anything left undone or any assumptions you made.
 3. Wait for Julia's go-ahead before starting the next stage.
+
+---
+
+## 9. Stage 10: Experiments
+
+Every ground rule in §0 applies here, in particular:
+
+- never invent a number, citation or version;
+- log every file you draft or substantially edit in `ai-use.md`;
+- ask before adding any dependency;
+- make one commit per logical change, with messages in the form `area: what changed`;
+- stop at each checkpoint and wait for Julia.
+
+### 9.1 What this stage adds and why
+
+The repo already tracks readings, decisions and report notes. It has nowhere to keep experiments: the code that was run, its inputs, its outputs, and what they mean. Without that, results end up as loose CSVs, and the report's numbers can't be traced back to code.
+
+This stage adds:
+
+- An `experiments/` folder. Each experiment is a self-contained folder with a README record (the same front matter + markdown pattern as decisions), its code, its inputs and its results.
+- The first three experiments: the preliminary study used in the interim report.
+- Checks in `scripts/check.mjs`.
+- An Experiments page in the app, plus links from Decisions, Report notes and the Dashboard.
+
+The section keeps being useful after the interim report. Detector training runs, the backend comparison (MET-06) and the Phase 5 evaluations (EVAL-01 to EVAL-04) all become experiments here.
+
+### 9.2 Decisions already made
+
+| Topic | Decision |
+|---|---|
+| Name | Experiments (nav label, folder name and page title) |
+| IDs | `EXP-01`, `EXP-02`, … Two digits, never reused, assigned in creation order |
+| Folder | `experiments/EXP-NN-<slug>/`, with the slug in kebab-case from the title, at most 5 words |
+| What the app does | Indexes, displays and edits each experiment's README record, previews its results, and links to its code on GitHub. It never runs code and never edits code or results |
+| Where code runs | On Julia's laptop or Google Colab. Results are committed to the experiment's `results/` folder |
+| Provenance | Every experiment says where it came from. Work reused from outside the FYP must say so, and must record whether the supervisor has approved the reuse |
+| Report framing | EXP-01 to EXP-03 together are "the preliminary study" in the interim report (section `work-to-date`, with the setup described in `methodology`) |
+| Dependencies | None new. CSV parsing uses a small hand-written parser (§9.6) |
+
+### 9.3 Repo layout
+
+See §2. The README's repo map has an `experiments/` row.
+
+### 9.4 The experiment template (`experiments/_template.md`)
+
+```markdown
+---
+id: EXP-01
+title: ""
+kind: main               # preliminary | main | supporting
+status: planned          # planned | running | done
+question: ""             # one sentence, ending in a question mark
+run_on:                  # YYYY-MM-DD of the run that produced the committed results; empty until run
+code_by: julia           # julia | claude | mixed
+origin: ""               # empty for new FYP work; otherwise where it came from (see "Where this came from")
+reuse_approved:          # only when origin is set: pending | yes | no
+depends_on: []           # experiment IDs whose results this one reads
+decisions: []            # decision IDs this is evidence for
+sections: []             # report section IDs (§3.5) that use it
+readings: []             # citekeys of readings that shaped the method
+headline: ""             # the one-line result, with numbers; empty until done
+results:                 # the outputs worth showing in the app, in display order
+  - file: results/example.csv
+    caption: ""
+---
+
+## Question
+What this experiment answers, and why that matters for EvenGround.
+
+## Method
+Data, model(s), settings, sample sizes, seed. Enough to rerun it without asking anyone.
+
+## Results
+The key numbers, each one taken from a file in results/ (name the file).
+
+## What it means
+What the results show, and which decisions or report sections they feed.
+
+## Limits
+What the experiment can't show, and what not to overstate.
+
+## How to rerun
+Exact commands or notebook steps, environment (laptop or Colab, CPU or GPU) and expected run time if known.
+
+## Where this came from
+New FYP work: say so in one line. Reused work: the source repo and commit, the module, who did what, what was changed, and the supervisor's decision on reuse.
+```
+
+Field rules:
+
+- `kind` describes the experiment's role:
+  - `preliminary`: done before the tool exists, to motivate it;
+  - `main`: the evaluation that answers the project's questions;
+  - `supporting`: training runs, calibration, timing and the like.
+- `status: done` requires `run_on`, `headline` and at least one entry in `results`.
+- `headline` and every number in Results must be traceable to a file in `results/`.
+
+### 9.5 Stage 10a: repo, seed experiments and checks
+
+**Step 1. Scaffold.** Create:
+
+- `experiments/README.md`, with a short explanation, the rules from §9.7 and an index table (ID, title, kind, status, headline);
+- `experiments/_template.md` from §9.4.
+
+**Step 2. Get the source material.** The preliminary study reuses two experiments Julia designed and ran for her XAI module group project. That repo is public: https://github.com/MistorRonan/ISE-XAI-Group-10.
+
+- Clone it to a temporary folder outside this repo. Record the full commit SHA of HEAD; it goes in each `origin`.
+- Note for the provenance sections: that repo's git history is a single commit by another team member, so it does not show who wrote what. The README lists the team as Julia Hooper, Bláithín Kavanagh, Rory Linnane and April Gilhool. Julia states that she designed, coded and ran the experiments. Record exactly that, and claim nothing more.
+  > **Checked 2026-11-04 (Claude Code):** the clone at `9a6664468b9e472cd4f3dfe29f8657fdd9b5b1c4` has 121 commits by several members, not one. The EXP-01 files were all added by Julia (9 October 2026). The EXP-02 notebook was first added by `blaithinn` (8 October 2026) and moved into its folder with small edits by Julia (9 October 2026); its results were committed by Julia. The provenance sections record what the history shows.
+- Do not copy:
+  - the group's write-ups (`EXP*.md`), paper, journal or plans. They were written for the group paper and partly by others;
+  - anything about SHAP or LIME. Those analyses answer the XAI module's question, not this project's.
+- The README files are written fresh for the FYP (Step 4).
+
+**Step 3. Copy files into EXP-01 and EXP-02.** Folder names in the source contain spaces; quote them.
+
+| From the XAI repo | To |
+|---|---|
+| `experiments/identity term swap/02_identity_swap.ipynb` | `experiments/EXP-01-identity-mentions/code/` (unmodified) |
+| `experiments/identity term swap/results/` `exp2_sentences.csv`, `exp2_results.csv`, `exp2_debias_comparison.csv`, `fig_exp2_score_heatmap.png` | `experiments/EXP-01-identity-mentions/results/` |
+| `experiments/report vs promote/01_report_vs_promote.ipynb` | `experiments/EXP-02-report-and-counter/code/` (unmodified) |
+| `experiments/report vs promote/data/exp1_sentences.csv` | `experiments/EXP-02-report-and-counter/data/` |
+| `experiments/report vs promote/results/` `exp1_results.csv`, `exp1_summary.csv`, `fig_exp1_scores.png` | `experiments/EXP-02-report-and-counter/results/` |
+
+Notes on these files:
+
+- Notebooks stay as they were run, including their SHAP and LIME cells, so they stay a faithful record. Each README says which cells produce the scores used here: the scoring cells, not the attribution cells. Use cell numbers or headings as they appear in the notebook.
+- `requirements.txt`. The notebooks install `detoxify shap lime` without version pins. Search both notebooks' saved outputs for printed library versions. If you find them, pin exactly those. If not, write the unpinned names under the comment `# Versions were not recorded when these notebooks were run (Colab, October 2026).` Do not guess them. Ask Julia whether she has the Colab session details; don't invent dates or versions.
+- Size rules. Files in `data/` and `results/` up to 5 MB are fine. Anything over 5 MB needs Julia's OK. Never commit anything over 50 MB. Put a pointer to the original source in the README instead.
+
+**Step 4. Write EXP-01, EXP-02 and EXP-03.**
+
+*EXP-01: How an off-the-shelf filter treats harmless identity mentions*
+
+| Field | Value |
+|---|---|
+| kind | preliminary |
+| status | done |
+| code_by | julia |
+| origin | "Julia's own runs for the XAI module group project, repo MistorRonan/ISE-XAI-Group-10 at commit `<SHA>`" |
+| reuse_approved | pending |
+| decisions | [DET-01, MET-05, VAL-01, DET-03] |
+| sections | [work-to-date, methodology] |
+| readings | [dixon2018measuring, borkan2019nuanced, dodge2021documenting, udagawa2025bias] (keep only those that exist in `readings/`) |
+| run_on | The date from the notebook's metadata or the source repo's commit date. If neither is available, ask Julia |
+
+Question: does Detoxify score harmless sentences higher just because they name a group? Method: 10 templates × (15 identity terms + 4 neutral controls) = 190 sentences, scored by Detoxify `original` and `unbiased`. Take the details from the notebook.
+
+*EXP-02: How an off-the-shelf filter treats reporting and arguing against abuse*
+
+| Field | Value |
+|---|---|
+| kind | preliminary |
+| status | done |
+| code_by | julia |
+| origin | The same repo and commit as EXP-01 |
+| reuse_approved | pending |
+| decisions | [DET-01, DET-06, DET-03] |
+| sections | [work-to-date, methodology] |
+| readings | [gligoric2024nlp, rottger2021hatecheck] (if present) |
+
+Question: does Detoxify flag sentences that report or argue against abuse as often as sentences that promote it? Method: 16 topics × 3 versions (promote, report, counter) = 48 sentences, scored by both Detoxify models.
+
+*EXP-03: False-positive rates at filter cut-offs (re-analysis)*
+
+This experiment holds the new FYP analysis that combines EXP-01 and EXP-02 into the figure used in the interim report.
+
+| Field | Value |
+|---|---|
+| kind | preliminary |
+| status | done |
+| code_by | claude (drafted with Claude; Julia to review) |
+| origin | "" (new FYP work), so reuse_approved is omitted |
+| depends_on | [EXP-01, EXP-02] |
+| decisions | [MET-05, MET-04] |
+| sections | [work-to-date] |
+| readings | [mendu2025safer] (if present) |
+
+Question: at the cut-offs real pipelines use, what share of harmless and counter-speech sentences would Detoxify remove, and how certain are those rates?
+
+Code: put the script from Appendix A in `code/fp_rates.py`. You may tidy it (argparse, a docstring, clearer names), but the output CSVs must not change. The inputs are read from `../EXP-01-identity-mentions/results/exp2_results.csv` and `../EXP-02-report-and-counter/results/exp1_results.csv`. The outputs are `results/fp_rates.csv` and `results/fp_by_term.csv`. Its only dependency is pandas (plus numpy).
+
+Verify: run it and compare with Appendix B. Every number must match. If anything differs, stop and report it. Don't adjust the script to force a match.
+
+*Writing all three READMEs*
+
+- Fill every body section from the template, in plain UK English, at the level of the plan doc's section 4.
+- Every number comes from a results file, and you name the file.
+- Each Limits section covers:
+  - the sentences are short templates, not real web text;
+  - the report and counter sets have only 16 sentences each, so their intervals are wide;
+  - one filter family was tested;
+  - the EXP-02 topics are not all about the nine Equal Status grounds.
+- Each "Where this came from" section in EXP-01 and EXP-02 ends with: `Supervisor approval of reuse: pending (asked <date>).` Leave the date as `<date>` for Julia to fill in.
+
+**Step 5. Checks (`scripts/check.mjs`).** Add these to the script, and to §4:
+
+- Parse `experiments/*/README.md` front matter and validate it against §9.4. Fail on unknown fields or bad enum values. Fail if `id` doesn't match the folder name's `EXP-NN` prefix, or if an ID is used twice.
+- Every `decisions`, `readings`, `sections` and `depends_on` value exists. Missing readings are a warning (Julia may not have summarised them yet); everything else is an error.
+- Every `results[].file` exists inside that experiment's folder.
+- `status: done` requires `run_on`, a non-empty `headline` and at least one `results` entry.
+- A non-empty `origin` requires `reuse_approved`. `pending` is a warning ("EXP-01: reuse not yet approved by supervisor"); `no` is an error ("remove or replace this experiment").
+- No file under `experiments/` is over 50 MB (error) or over 5 MB (warning). No PDFs.
+- `app/public/status.json` gains `experiments: { total, byStatus, byKind, reusePending }`.
+- The README status block gains `· experiments: N done` after the decisions count.
+
+Add a deliberately broken fixture test, as in stage 2: an experiment with a bad decision ID must fail.
+
+**Step 6. Log and commit.**
+
+- `ai-use.md`: add a row for each README, the template, `fp_rates.py` and the check changes.
+- Commits:
+  - `experiments: scaffold folder and template`
+  - `experiments: add EXP-01 and EXP-02 from XAI project (claude draft, unverified)`
+  - `experiments: add EXP-03 false-positive re-analysis (claude draft, unverified)`
+  - `checks: validate experiments`
+
+**Checkpoint 10a.** Stop and report:
+
+- the source commit SHA;
+- the Appendix B comparison;
+- what you couldn't find (run dates, versions);
+- anything you left out.
+
+This part is worth having before the interim report (06/11/2026). The app parts can wait.
+
+### 9.6 Stage 10b: the Experiments page
+
+Follow the visual design in §5 and the layout in §6.2. Reuse existing components (`SplitPage`, `Pills`, `MarkdownView`, `RichEditor`, `Banner`) rather than writing new ones.
+
+**Data layer**
+
+- In `repo.ts`, add `/^experiments\/[^/]+\/README\.md$/` and `/^experiments\/_template\.md$/` to `WANTED`. Parse them into `experiments: Doc<ExperimentMeta>[]`, plus the template, the same way decisions are parsed.
+- Don't load CSVs, images or code at startup. When an experiment is opened, fetch the files listed in its `results` on demand through the existing blob fetch and IndexedDB cache.
+- Images need base64 → data URL, with the MIME type taken from the extension (`.png`, `.jpg`, `.svg`). Check whether `fetchBlob` already decodes to text. If it does, add a sibling that returns the raw base64.
+- Add `ExperimentMeta` to `types.ts`, mirroring §9.4.
+- Write a small CSV parser in `app/src/data/csv.ts`, with no dependency. It must handle quoted fields with commas, escaped quotes (`""`), newlines inside quotes, CRLF and a trailing newline. Unit-test it: the EXP-02 sentences contain commas inside quotes.
+
+**Routes and nav**
+
+- Routes: `/experiments`, `/experiments/new`, `/experiments/:id`, `/experiments/:id/edit`.
+- Add a nav item Experiments, with a count, after Decisions. Give it a simple flask or beaker icon in `Icons.tsx`, in the same style as the others.
+
+**List pane**
+
+- Grouped under Preliminary, Main and Supporting, each with a count.
+- Each row shows the ID, the title, a status pill (planned / running / done) and the headline in one truncated line. Reused experiments (non-empty `origin`) get a small Reused tag, and a Reuse pending tag while approval is pending.
+
+**Reader pane (view)**
+
+- Header: ID, title, kind, status; `run_on`, `code_by`; `depends_on` as links to those experiments.
+- Headline: a callout box with the headline.
+- Links: chips for decisions (link to the decision), report sections (link to the notes page for that section) and readings (link to the reading).
+- Body: the README body, rendered with `MarkdownView`.
+- Results:
+  - One card per `results` entry, with its caption.
+  - CSVs show as a table of the first 50 rows, with "Showing 50 of N rows" and an Open on GitHub link.
+  - Images are shown inline at full column width, with alt text taken from the caption.
+- Code:
+  - Lists every file under the experiment's `code/` folder, taken from the repo tree that is already loaded.
+  - Each file links to `https://github.com/<owner>/<repo>/blob/<branch>/<path>`, using `config.ts`.
+  - Also links to `requirements.txt`.
+- Where this came from: if `origin` is set, a highlighted box at the top of the body with the origin and the `reuse_approved` pill.
+
+**Edit**
+
+- The front matter is edited through form fields:
+  - `kind`, `status`, `question`, `run_on`, `code_by`, `origin`, `reuse_approved`, `headline`;
+  - multi-selects for `decisions`, `sections`, `readings` and `depends_on`;
+  - `results` as file path + caption rows.
+- The body uses the same rich text editor as decisions.
+- Saving works as in §6.1: one commit, conflict banner, local draft.
+- Changing `status` to `done` with an empty `run_on` fills in today's date and shows a note asking Julia to correct it if the run was on a different day.
+- Code, data and results are never editable in the app.
+
+**New experiment**
+
+- Asks for the title and kind.
+- Assigns the next free ID and creates `experiments/EXP-NN-<slug>/README.md` from the template, with `status: planned`.
+- Git can't hold empty folders, so only the README is created. The page explains that code and results are added from the laptop or Colab (link to the Guide).
+
+**Tests**
+
+- A smoke test like `decisions.smoke.test.tsx`: list, open, edit, save, using fixture data.
+- The CSV parser tests.
+
+**Checkpoint 10b.** Stop and report.
+
+### 9.7 Stage 10c: links, dashboard and guide
+
+**Decisions.** Each decision gets an Evidence panel under its Readings panel. It lists every experiment whose `decisions` includes that ID, with its status and headline, and links to it.
+
+**Report notes.** The side panel gets an Experiments list for that section, under the readings. Each item has:
+
+- Open;
+- Copy headline: copies `EXP-01: <headline>` for pasting into notes.
+
+**Dashboard**
+
+- An Experiments card: done / running / planned, by kind.
+- To do gains:
+  - "EXP-NN: reuse not yet approved by supervisor";
+  - "EXP-NN is done but not linked to a report section";
+  - "EXP-NN is running with no results yet".
+
+**Guide.** Write `docs/experiments.md` and show it on the Guide page. It covers:
+
+- What counts as an experiment, and the three kinds.
+- Adding one: New experiment in the app, or copy the template.
+- Writing the README before running: fill in Question and Method first, with `status: planned`.
+- Running it on a laptop or Colab: set a seed; record versions with `pip freeze > requirements.txt` (on Colab, `pip freeze` after installs); write outputs only to `results/`.
+- Committing code, data and results, then setting the status to `done` and filling in the headline from the results.
+- Rerunning: overwrite `results/`, update `run_on`, and commit as `experiments: rerun EXP-NN`. The old results stay in git history.
+- Reused work: fill in `origin` and `reuse_approved`, and never copy other people's writing.
+- Citing in the report: the report describes the experiment and cites any published sources. The EXP ID is for Julia's notes, not for the paper's reference list.
+
+**Checkpoint 10c.** Stop and report.
+
+### 9.8 How Claude Code works with experiments from now on
+
+When Julia says "set up EXP-NN for `<question>`":
+
+- create the folder and README with `status: planned`;
+- draft Question, Method, Limits and How to rerun;
+- suggest decisions and sections using only IDs that exist;
+- commit as `experiments: plan EXP-NN (claude draft)`.
+
+When Julia says "write up EXP-NN" after a run:
+
+- read the files in `results/`;
+- fill in Results, What it means and the headline, using only numbers from those files, each with its file named;
+- set `status: done`;
+- add a row to `ai-use.md`;
+- run the check;
+- commit as `experiments: write up EXP-NN (claude draft, unverified)`.
+
+Never:
+
+- edit a results file by hand;
+- round differently from the file without saying so;
+- describe a result that isn't in a committed file.
+
+### 9.9 Stage table
+
+See §8 (rows 10a, 10b, 10c).
+
+**Stage 10 is done when:**
+
+- the three experiments are in the repo, and EXP-03 reproduces Appendix B exactly;
+- the check validates experiments and fails on the broken fixture;
+- the Experiments page lists, shows, edits and saves experiments, with CSV and image previews;
+- decisions and report notes link to their experiments, the dashboard shows the card and to-dos, and the Guide page explains the workflow.
+
+### Appendix A: `fp_rates.py` (as run on 3 November 2026)
+
+Usage: `python fp_rates.py <exp2_results.csv> <exp1_results.csv> <out fp_rates.csv> <out fp_by_term.csv>`
+
+```python
+import sys, pandas as pd, numpy as np
+from math import sqrt
+def wilson(k,n,z=1.96):
+    if n==0: return (np.nan,np.nan)
+    p=k/n; d=1+z*z/n; c=p+z*z/(2*n); m=z*sqrt(p*(1-p)/n+z*z/(4*n*n))
+    return ((c-m)/d,(c+m)/d)
+e2=pd.read_csv(sys.argv[1]); e1=pd.read_csv(sys.argv[2])
+th=[0.1,0.4,0.5]
+rows=[]
+for model in ["original","unbiased"]:
+    col=f"p_{model}"
+    for name,sub in [("Identity mention (Exp 2)",e2[~e2.is_control]),("Neutral control (Exp 2)",e2[e2.is_control]),
+                     ("Promotes abuse (Exp 1)",e1[e1.condition=="promote"]),("Reports abuse (Exp 1)",e1[e1.condition=="report"]),("Argues against abuse (Exp 1)",e1[e1.condition=="counter"])]:
+        for t in th:
+            k=int((sub[col]>=t).sum()); n=len(sub); lo,hi=wilson(k,n)
+            rows.append(dict(model=model,set=name,threshold=t,flagged=k,n=n,rate=k/n,lo=lo,hi=hi,mean_p=sub[col].mean()))
+r=pd.DataFrame(rows); r.to_csv(sys.argv[3],index=False)
+pd.set_option("display.width",200)
+print(r.assign(rate=lambda d:(d.rate*100).round(1),lo=lambda d:(d.lo*100).round(1),hi=lambda d:(d.hi*100).round(1),mean_p=lambda d:d.mean_p.round(3)).to_string(index=False))
+print(e1.condition.value_counts().to_dict())
+# per-term at 0.4 and 0.5
+ids=e2[~e2.is_control]
+pt=ids.groupby("term").agg(orig_mean=("p_original","mean"),orig_ge04=("p_original",lambda s:(s>=0.4).sum()),orig_ge05=("p_original",lambda s:(s>=0.5).sum()),unb_mean=("p_unbiased","mean"),unb_ge04=("p_unbiased",lambda s:(s>=0.4).sum()),unb_ge05=("p_unbiased",lambda s:(s>=0.5).sum()),n=("text","count")).sort_values("orig_mean",ascending=False)
+print(pt.round(3).to_string()); pt.to_csv(sys.argv[4])
+print("max control p:",e2[e2.is_control][["p_original","p_unbiased"]].max().to_dict())
+```
+
+The set labels say "Exp 1" and "Exp 2" because those were the XAI project's numbers. When tidying, rename them to "EXP-02" and "EXP-01". The label change is the only permitted difference in the output CSVs; every count, rate and interval must be identical.
+
+### Appendix B: expected results (cut-off 0.4)
+
+From `fp_rates.csv`, rows with threshold 0.4:
+
+| Model | Set | Flagged | n |
+|---|---|---|---|
+| original | Identity mention | 18 | 150 |
+| original | Neutral control | 0 | 40 |
+| original | Promotes abuse | 15 | 16 |
+| original | Reports abuse | 7 | 16 |
+| original | Argues against abuse | 11 | 16 |
+| unbiased | Identity mention | 10 | 150 |
+| unbiased | Neutral control | 0 | 40 |
+| unbiased | Promotes abuse | 16 | 16 |
+| unbiased | Reports abuse | 15 | 16 |
+| unbiased | Argues against abuse | 13 | 16 |
+
+From `fp_by_term.csv`, flagged at 0.4 out of 10 sentences each (`orig_ge04`, `unb_ge04`):
+
+| Term | original | unbiased |
+|---|---|---|
+| gay | 5 | 4 |
+| transgender | 3 | 2 |
+| deaf | 3 | 0 |
+| black | 2 | 2 |
+| blind | 2 | 0 |
+| lesbian | 1 | 1 |
+| disabled | 1 | 0 |
+| poor | 1 | 1 |
+| white, muslim, jewish, asian, christian, immigrant, rural | 0 | 0 |
+
+These are the numbers the interim report and the plan doc's section 4 rely on:
+
+- 12% of identity mentions flagged = 18 / 150.
+- Neutral words never flagged = 0 / 40.
+- 44% vs 94% of reporting sentences = 7 / 16 (original) vs 15 / 16 (unbiased).

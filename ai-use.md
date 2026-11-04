@@ -149,3 +149,5 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-11-04 | `readings/follow-up.yml` | Edited: added 1 from bookeisbelectronic's reference list | |
 | 2026-11-04 | `readings/dixon2018measuring.md`, `readings/mendu2025safer.md` | Edited: added MET-01, VAL-01 (Dixon) and MET-02 (Mendu) to `decisions:`, where the decisions cite them; added the citekeys to those decisions | |
 | 2026-11-04 | `decisions/` (ARCH-05, DET-02, DET-03, DET-06, ETH-02, EVAL-02, EVAL-04, MET-01, MET-05, UI-02, VAL-01) | Edited: added a Resources section with official dataset, model and tool links, each checked to resolve | |
+| 2026-11-04 | `PLAN.md` (§2, §4, §8, new §9) | Edited: added Stage 10 (Experiments) from Julia's spec, reformatted as markdown, with a dated note on the XAI repo's commit history | |
+| 2026-11-04 | `experiments/README.md`, `experiments/_template.md`, `README.md` (repo map) | Drafted the experiments index and rules; copied the template from PLAN.md §9.4 | |

@@ -60,6 +60,7 @@ From the proposal form, with the interim date corrected to the current deadline.
 | [`course-materials/`](course-materials/) | FYP spec, lecture slides and forms (private; never published) |
 | [`readings/`](readings/) | One summary per reading, named by citekey (PDFs stay local) |
 | [`decisions/`](decisions/) | One file per design or metric decision, from open to decided |
+| [`experiments/`](experiments/) | One folder per experiment: its record, code, inputs and results |
 | [`drafts/`](drafts/) | Rough drafts in any format |
 | [`journal/`](journal/) | Supervisor meeting notes and weekly entries |
 | [`paper/`](paper/) | The interim and final reports in LaTeX (IEEE conference template, UL Harvard referencing) |
