@@ -224,8 +224,8 @@
   found_in: [{source: "external: ISE-XAI-Group-10 journal/sources/2026-10-18-lundberg-2017.md", page: "-"}]
   why: "SHAP, the main post-hoc attribution method for EVAL-04."
   priority: medium
-  status: suggested
-  key: ""
+  status: saved
+  key: "lundberg2017unified"
 
 - title: "The disagreement problem in explainable machine learning: A practitioner's perspective"
   authors: ["Krishna, S.", "Han, T.", "Gu, A.", "Wu, S.", "Jabbari, S.", "Lakkaraju, H."]

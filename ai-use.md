@@ -137,3 +137,4 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-11-04 | `readings/mitchell2019model.md` | Drafted reading summary from ACM PDF; added the citekey to DET-03, MET-04, MET-05, UI-01 | |
 | 2026-11-04 | `readings/hardt2016equality.md` | Drafted reading summary from NeurIPS PDF (Zotero storage); added the citekey to MET-05, MET-04, MET-02 | |
 | 2026-11-04 | `readings/katzman2023taxonomizing.md` | Drafted reading summary from AAAI PDF (Zotero storage); added the citekey to DET-01, MET-05, EVAL-02 | |
+| 2026-11-04 | `readings/lundberg2017unified.md` | Drafted reading summary from arXiv v2 PDF; added the citekey to UI-02, EVAL-04 | |

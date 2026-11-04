@@ -4,7 +4,7 @@ title: Attribution and explanation tests
 group: evaluation
 status: exploring
 decided_on:
-readings: [de-arteaga2019bias]
+readings: [de-arteaga2019bias, lundberg2017unified]
 ---
 
 ## Question
