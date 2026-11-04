@@ -502,8 +502,8 @@
   found_in: [{source: borkan2019nuanced, page: "500"}, {source: gebru2021datasheets, page: "93"}]
   why: "Cited in DET-03: every detector checkpoint ships with a model card."
   priority: high
-  status: suggested
-  key: ""
+  status: saved
+  key: "mitchell2019model"
 
 - title: "Masked language model scoring"
   authors: ["Salazar, J.", "Liang, D.", "Nguyen, T. Q.", "Kirchhoff, K."]

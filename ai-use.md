@@ -134,3 +134,4 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-11-04 | `readings/garg2019counterfactual.md` | Drafted reading summary from ACM PDF; added the citekey to VAL-01, MET-05, DET-03 | |
 | 2026-11-04 | `readings/dev2021harms.md` | Drafted reading summary from ACL Anthology PDF; added the citekey to MET-01, VAL-01, ETH-01 | |
 | 2026-11-04 | `readings/gururangan2022whose.md` | Drafted reading summary from ACL Anthology PDF; added the citekey to DET-01, EVAL-01 | |
+| 2026-11-04 | `readings/mitchell2019model.md` | Drafted reading summary from ACM PDF; added the citekey to DET-03, MET-04, MET-05, UI-01 | |
