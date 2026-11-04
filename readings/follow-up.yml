@@ -482,8 +482,8 @@
   found_in: [{source: borkan2019nuanced, page: "500"}]
   why: "Counterfactual token fairness: the basis of the gap set's swapped-group invariance tests (VAL-01). Published at AIES 2019, which the master plan cites."
   priority: high
-  status: suggested
-  key: ""
+  status: saved
+  key: "garg2019counterfactual"
 
 - title: "Reducing gender bias in abusive language detection"
   authors: ["Park, J. H.", "Shin, J.", "Fung, P."]

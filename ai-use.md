@@ -131,3 +131,4 @@ What the AI did: **drafted** (wrote new content), **edited** (substantially chan
 | 2026-11-04 | `readings/yin2021generalisable.md` | Drafted reading summary from the PeerJ PDF (peerj-cs-598); added the citekey to DET-03, VAL-01, MET-05, EVAL-06 | |
 | 2026-11-04 | `readings/pavlopoulos2020toxicity.md` | Drafted reading summary from ACL Anthology PDF; added the citekey to ARCH-04, DET-03 | |
 | 2026-11-04 | `readings/caselli2021hatebert.md` | Drafted reading summary from ACL Anthology PDF; added the citekey to DET-02, ARCH-05 | |
+| 2026-11-04 | `readings/garg2019counterfactual.md` | Drafted reading summary from ACM PDF; added the citekey to VAL-01, MET-05, DET-03 | |
