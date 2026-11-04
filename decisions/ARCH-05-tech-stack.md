@@ -4,7 +4,7 @@ title: Tech stack
 group: system
 status: decided
 decided_on: 2026-11-03
-readings: [zafrir2019q8bert]
+readings: [zafrir2019q8bert, warner2025smarter]
 ---
 
 ## Question

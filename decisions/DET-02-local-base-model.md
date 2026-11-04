@@ -4,7 +4,7 @@ title: Local base model
 group: detector
 status: decided
 decided_on: 2026-11-02
-readings: [mendu2025safer, zafrir2019q8bert]
+readings: [mendu2025safer, zafrir2019q8bert, warner2025smarter]
 ---
 
 ## Question
